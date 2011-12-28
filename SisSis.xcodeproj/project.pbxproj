@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1144E90B14AB2225004017D2 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */; };
+		1144E90E14AB22EE004017D2 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E90714AB221C004017D2 /* libTapkuLibrary.a */; };
+		1144E91114AB2306004017D2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E90F14AB2306004017D2 /* MapKit.framework */; };
+		1144E91214AB2306004017D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E91014AB2306004017D2 /* QuartzCore.framework */; };
 		1181DF1B14AB17F9001E7780 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1A14AB17F9001E7780 /* UIKit.framework */; };
 		1181DF1D14AB17F9001E7780 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1C14AB17F9001E7780 /* Foundation.framework */; };
 		1181DF1F14AB17F9001E7780 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1E14AB17F9001E7780 /* CoreGraphics.framework */; };
@@ -26,6 +30,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1144E90614AB221C004017D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1144E8FE14AB221C004017D2 /* TapkuLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = TapkuLibrary;
+		};
+		1144E90814AB221C004017D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1144E8FE14AB221C004017D2 /* TapkuLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3B45DDF1134C736600D24C1A;
+			remoteInfo = LogicTests;
+		};
+		1144E90C14AB22DF004017D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1144E8FE14AB221C004017D2 /* TapkuLibrary.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = TapkuLibrary;
+		};
 		1181DF4014AB17F9001E7780 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1181DF0D14AB17F9001E7780 /* Project object */;
@@ -36,6 +61,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1144E8FE14AB221C004017D2 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Libraries/TapkuLibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
+		1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = Libraries/TapkuLibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
+		1144E90F14AB2306004017D2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1144E91014AB2306004017D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1181DF1614AB17F9001E7780 /* SisSis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SisSis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1181DF1A14AB17F9001E7780 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1181DF1C14AB17F9001E7780 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,6 +92,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1144E91114AB2306004017D2 /* MapKit.framework in Frameworks */,
+				1144E91214AB2306004017D2 /* QuartzCore.framework in Frameworks */,
+				1144E90E14AB22EE004017D2 /* libTapkuLibrary.a in Frameworks */,
 				1181DF1B14AB17F9001E7780 /* UIKit.framework in Frameworks */,
 				1181DF1D14AB17F9001E7780 /* Foundation.framework in Frameworks */,
 				1181DF1F14AB17F9001E7780 /* CoreGraphics.framework in Frameworks */,
@@ -83,9 +115,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1144E8FF14AB221C004017D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1144E90714AB221C004017D2 /* libTapkuLibrary.a */,
+				1144E90914AB221C004017D2 /* LogicTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		1181DF0B14AB17F9001E7780 = {
 			isa = PBXGroup;
 			children = (
+				1144E90F14AB2306004017D2 /* MapKit.framework */,
+				1144E91014AB2306004017D2 /* QuartzCore.framework */,
 				1181DF2014AB17F9001E7780 /* SisSis */,
 				1181DF4214AB17F9001E7780 /* SisSisTests */,
 				1181DF1914AB17F9001E7780 /* Frameworks */,
@@ -105,6 +148,8 @@
 		1181DF1914AB17F9001E7780 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */,
+				1144E8FE14AB221C004017D2 /* TapkuLibrary.xcodeproj */,
 				1181DF1A14AB17F9001E7780 /* UIKit.framework */,
 				1181DF1C14AB17F9001E7780 /* Foundation.framework */,
 				1181DF1E14AB17F9001E7780 /* CoreGraphics.framework */,
@@ -171,6 +216,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1144E90D14AB22DF004017D2 /* PBXTargetDependency */,
 			);
 			name = SisSis;
 			productName = SisSis;
@@ -202,6 +248,7 @@
 		1181DF0D14AB17F9001E7780 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "東京工業大学";
 			};
 			buildConfigurationList = 1181DF1014AB17F9001E7780 /* Build configuration list for PBXProject "SisSis" */;
@@ -214,6 +261,12 @@
 			mainGroup = 1181DF0B14AB17F9001E7780;
 			productRefGroup = 1181DF1714AB17F9001E7780 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1144E8FF14AB221C004017D2 /* Products */;
+					ProjectRef = 1144E8FE14AB221C004017D2 /* TapkuLibrary.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1181DF1514AB17F9001E7780 /* SisSis */,
@@ -221,6 +274,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1144E90714AB221C004017D2 /* libTapkuLibrary.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTapkuLibrary.a;
+			remoteRef = 1144E90614AB221C004017D2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1144E90914AB221C004017D2 /* LogicTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = LogicTests.octest;
+			remoteRef = 1144E90814AB221C004017D2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1181DF1414AB17F9001E7780 /* Resources */ = {
@@ -230,6 +300,7 @@
 				1181DF2514AB17F9001E7780 /* InfoPlist.strings in Resources */,
 				1181DF2E14AB17F9001E7780 /* MainWindow.xib in Resources */,
 				1181DF3414AB17F9001E7780 /* SisSisViewController.xib in Resources */,
+				1144E90B14AB2225004017D2 /* TapkuLibrary.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +353,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1144E90D14AB22DF004017D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TapkuLibrary;
+			targetProxy = 1144E90C14AB22DF004017D2 /* PBXContainerItemProxy */;
+		};
 		1181DF4114AB17F9001E7780 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1181DF1514AB17F9001E7780 /* SisSis */;
@@ -373,7 +449,13 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SisSis/SisSis-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "Libraries/TapkuLibrary/src/**";
 				INFOPLIST_FILE = "SisSis/SisSis-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -384,7 +466,13 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SisSis/SisSis-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "Libraries/TapkuLibrary/src/**";
 				INFOPLIST_FILE = "SisSis/SisSis-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -400,6 +488,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SisSis/SisSis-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "SisSisTests/SisSisTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -417,6 +506,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SisSis/SisSis-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "SisSisTests/SisSisTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -443,6 +533,7 @@
 				1181DF5014AB17FA001E7780 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1181DF5114AB17FA001E7780 /* Build configuration list for PBXNativeTarget "SisSisTests" */ = {
 			isa = XCConfigurationList;
@@ -451,6 +542,7 @@
 				1181DF5314AB17FA001E7780 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

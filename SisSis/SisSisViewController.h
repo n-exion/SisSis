@@ -2,12 +2,18 @@
 //  SisSisViewController.h
 //  SisSis
 //
-//  Created by 直毅 江川 on 11/12/28.
+//  Created by Naoki Egawa on 11/12/28.
 //  Copyright 2011年 東京工業大学. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "TapkuLibrary.h"
 
-@interface SisSisViewController : UIViewController
+@interface SisSisViewController : UIViewController {
+  // カレンダービュー追加
+  TKCalendarMonthView *monthView;
+}
 
+@property (retain, nonatomic) TKCalendarMonthView
+*monthView;
 @end
