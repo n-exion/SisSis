@@ -19,7 +19,6 @@
 		1181DF2B14AB17F9001E7780 /* SisSisAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1181DF2A14AB17F9001E7780 /* SisSisAppDelegate.m */; };
 		1181DF2E14AB17F9001E7780 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1181DF2C14AB17F9001E7780 /* MainWindow.xib */; };
 		1181DF3114AB17F9001E7780 /* SisSisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1181DF3014AB17F9001E7780 /* SisSisViewController.m */; };
-		1181DF3414AB17F9001E7780 /* SisSisViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1181DF3214AB17F9001E7780 /* SisSisViewController.xib */; };
 		1181DF3C14AB17F9001E7780 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF3B14AB17F9001E7780 /* SenTestingKit.framework */; };
 		1181DF3D14AB17F9001E7780 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1A14AB17F9001E7780 /* UIKit.framework */; };
 		1181DF3E14AB17F9001E7780 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1C14AB17F9001E7780 /* Foundation.framework */; };
@@ -27,6 +26,7 @@
 		1181DF4714AB17FA001E7780 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1181DF4514AB17FA001E7780 /* InfoPlist.strings */; };
 		1181DF4914AB17FA001E7780 /* SisSisTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 1181DF4814AB17FA001E7780 /* SisSisTests.h */; };
 		1181DF4B14AB17FA001E7780 /* SisSisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1181DF4A14AB17FA001E7780 /* SisSisTests.m */; };
+		11EBFFE514B4985B00C93D06 /* SisSisViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11EBFFE414B4985B00C93D06 /* SisSisViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,13 +78,13 @@
 		1181DF2D14AB17F9001E7780 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		1181DF2F14AB17F9001E7780 /* SisSisViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SisSisViewController.h; sourceTree = "<group>"; };
 		1181DF3014AB17F9001E7780 /* SisSisViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SisSisViewController.m; sourceTree = "<group>"; };
-		1181DF3314AB17F9001E7780 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SisSisViewController.xib; sourceTree = "<group>"; };
 		1181DF3A14AB17F9001E7780 /* SisSisTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SisSisTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1181DF3B14AB17F9001E7780 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		1181DF4414AB17F9001E7780 /* SisSisTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SisSisTests-Info.plist"; sourceTree = "<group>"; };
 		1181DF4614AB17FA001E7780 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1181DF4814AB17FA001E7780 /* SisSisTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SisSisTests.h; sourceTree = "<group>"; };
 		1181DF4A14AB17FA001E7780 /* SisSisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SisSisTests.m; sourceTree = "<group>"; };
+		11EBFFE414B4985B00C93D06 /* SisSisViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SisSisViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +166,7 @@
 				1181DF2C14AB17F9001E7780 /* MainWindow.xib */,
 				1181DF2F14AB17F9001E7780 /* SisSisViewController.h */,
 				1181DF3014AB17F9001E7780 /* SisSisViewController.m */,
-				1181DF3214AB17F9001E7780 /* SisSisViewController.xib */,
+				11EBFFE414B4985B00C93D06 /* SisSisViewController.xib */,
 				1181DF2114AB17F9001E7780 /* Supporting Files */,
 			);
 			path = SisSis;
@@ -299,8 +299,8 @@
 			files = (
 				1181DF2514AB17F9001E7780 /* InfoPlist.strings in Resources */,
 				1181DF2E14AB17F9001E7780 /* MainWindow.xib in Resources */,
-				1181DF3414AB17F9001E7780 /* SisSisViewController.xib in Resources */,
 				1144E90B14AB2225004017D2 /* TapkuLibrary.bundle in Resources */,
+				11EBFFE514B4985B00C93D06 /* SisSisViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,14 +380,6 @@
 				1181DF2D14AB17F9001E7780 /* en */,
 			);
 			name = MainWindow.xib;
-			sourceTree = "<group>";
-		};
-		1181DF3214AB17F9001E7780 /* SisSisViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1181DF3314AB17F9001E7780 /* en */,
-			);
-			name = SisSisViewController.xib;
 			sourceTree = "<group>";
 		};
 		1181DF4514AB17FA001E7780 /* InfoPlist.strings */ = {

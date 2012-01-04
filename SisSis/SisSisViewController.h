@@ -12,8 +12,11 @@
 @interface SisSisViewController : UIViewController {
   // カレンダービュー追加
   TKCalendarMonthView *monthView;
+  UINavigationBar *navBar;
+  UIToolbar *toolBar;
 }
 
-@property (retain, nonatomic) TKCalendarMonthView
-*monthView;
+@property (retain, nonatomic) TKCalendarMonthView *monthView;
+@property (retain, nonatomic) IBOutlet UINavigationBar *navBar;
+@property (retain, nonatomic) IBOutlet UIToolbar *toolBar;
 @end

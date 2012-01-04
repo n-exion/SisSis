@@ -12,8 +12,8 @@
 
 @implementation SisSisAppDelegate
 
-@synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize window;
+@synthesize viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -21,7 +21,7 @@
    
   self.window.rootViewController = self.viewController;
   [self.window makeKeyAndVisible];
-    return YES;
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -65,9 +65,9 @@
 
 - (void)dealloc
 {
-  [_window release];
-  [_viewController release];
-    [super dealloc];
+  [window release];
+  [viewController release];
+  [super dealloc];
 }
 
 @end

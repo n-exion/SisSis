@@ -10,6 +10,8 @@
 
 @implementation SisSisViewController
 @synthesize monthView;
+@synthesize navBar;
+@synthesize toolBar;
 
 - (void)didReceiveMemoryWarning
 {
@@ -21,21 +23,24 @@
 
 #pragma mark - View lifecycle
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+  [super viewDidLoad];
+
 }
-*/
+
 
 - (void)loadView
 {
   [super loadView];
   // カレンダービュー初期化
-  //monthView = [[TKCalendarMonthView alloc] init];
-  //[self.view addSubview:monthView];
-  //[monthView reload];
+  monthView = [[TKCalendarMonthView alloc] init];
+  CGRect frame = monthView.frame;
+  [monthView setCenter:CGPointMake(160.0, 44.0+frame.size.height/2)];
+  [self.view addSubview:monthView];
+  [monthView reload];
 }
 
 - (void)viewDidUnload
@@ -51,10 +56,5 @@
   [super dealloc];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 @end

@@ -10,10 +10,12 @@
 
 @class SisSisViewController;
 
-@interface SisSisAppDelegate : NSObject <UIApplicationDelegate>
+@interface SisSisAppDelegate : NSObject <UIApplicationDelegate> {
+  UIWindow *window;
+  SisSisViewController *viewController;
+}
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-
 @property (nonatomic, retain) IBOutlet SisSisViewController *viewController;
 
 @end
