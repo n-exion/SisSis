@@ -8,18 +8,16 @@
 
 #import "SisSisAppDelegate.h"
 
-#import "SisSisViewController.h"
-
 @implementation SisSisAppDelegate
 
 @synthesize window;
-@synthesize viewController;
+@synthesize navController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   // Override point for customization after application launch.
    
-  self.window.rootViewController = self.viewController;
+  [self.window addSubview:self.navController.view];
   [self.window makeKeyAndVisible];
   return YES;
 }
@@ -66,7 +64,7 @@
 - (void)dealloc
 {
   [window release];
-  [viewController release];
+  [navController release];
   [super dealloc];
 }
 

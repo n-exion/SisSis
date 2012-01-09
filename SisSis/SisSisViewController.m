@@ -10,7 +10,6 @@
 
 @implementation SisSisViewController
 @synthesize monthView;
-@synthesize navBar;
 @synthesize toolBar;
 
 - (void)didReceiveMemoryWarning
@@ -37,8 +36,8 @@
   [super loadView];
   // カレンダービュー初期化
   monthView = [[TKCalendarMonthView alloc] init];
-  CGRect frame = monthView.frame;
-  [monthView setCenter:CGPointMake(160.0, 44.0+frame.size.height/2)];
+  //CGRect frame = monthView.frame;
+  //[monthView setCenter:CGPointMake(160.0, 44.0+frame.size.height/2)];
   [self.view addSubview:monthView];
   [monthView reload];
 }
