@@ -9,12 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "TapkuLibrary.h"
 
-@interface SisSisViewController : UIViewController {
+@interface SisSisViewController : TKCalendarMonthTableViewController {
   // カレンダービュー追加
-  TKCalendarMonthView *monthView;
   UIToolbar *toolBar;
+  NSMutableArray *dataArray; 
+	NSMutableDictionary *dataDictionary;
 }
 
-@property (retain, nonatomic) TKCalendarMonthView *monthView;
 @property (retain, nonatomic) IBOutlet UIToolbar *toolBar;
+@property (retain,nonatomic) NSMutableArray *dataArray;
+@property (retain,nonatomic) NSMutableDictionary *dataDictionary;
+
+- (void) generateEventDataForStartDate:(NSDate*)start endDate:(NSDate*)end;
 @end
