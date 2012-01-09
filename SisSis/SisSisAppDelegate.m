@@ -68,4 +68,10 @@
   [super dealloc];
 }
 
+// イベントハンドラども
+- (IBAction)pushedAddButton:(id)sender{
+  // ここで予定の追加の画面に遷移すればいいはず_egawa
+  NSLog(@"pushed AddEventButton");
+}
+
 @end

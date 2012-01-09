@@ -12,12 +12,12 @@
 
 @interface SisSisAppDelegate : NSObject <UIApplicationDelegate> {
   UIWindow *window;
-  //SisSisViewController *viewController;
   UINavigationController *navController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-//@property (nonatomic, retain) IBOutlet SisSisViewController *viewController;
 @property (nonatomic, retain) IBOutlet UINavigationController *navController;
+
+- (IBAction)pushedAddButton:(id)sender;
 
 @end
