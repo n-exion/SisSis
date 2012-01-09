@@ -11,9 +11,12 @@
 
 @implementation SisSisViewController
 
+@synthesize segControl;
 @synthesize toolBar;
 @synthesize dataArray;
 @synthesize dataDictionary;
+@synthesize todayButton;
+@synthesize tableEventView;
 
 
 - (void)didReceiveMemoryWarning
@@ -32,7 +35,10 @@
 {
   [super viewDidLoad];
   [self.monthView selectDate:[NSDate month]];
-
+  segControl.selectedSegmentIndex = 2;
+  tableEventView = [[UITableView alloc] init];
+  tableEventView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - toolBar.frame.size.height - 44);
+  displayedEventView = FALSE;
 }
 
 - (void) viewDidAppear:(BOOL)animated{
@@ -89,11 +95,15 @@
 	return 1;
 	
 }
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {	
 	NSArray *ar = [dataDictionary objectForKey:[self.monthView dateSelected]];
 	if(ar == nil) return 0;
 	return [ar count];
 }
+
+
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   static NSString *CellIdentifier = @"Cell";
@@ -109,6 +119,7 @@
 	
 }
 
+// EventStoreからイベント情報を生成
 - (void) generateEventDataForStartDate:(NSDate*)start endDate:(NSDate*)end{
   EKEventStore *eventStore = [[[EKEventStore alloc] init] autorelease];
   EKCalendar *cal = [eventStore defaultCalendarForNewEvents];
@@ -136,26 +147,52 @@
       }
     }
     [self.dataArray addObject:[NSNumber numberWithBool:exist]];
-    
-    //		int r = arc4random();
-    //		if(r % 3==1){
-    //			[self.dataDictionary setObject:[NSArray arrayWithObjects:@"Item one",@"Item two",nil] forKey:d];
-    //			[self.dataArray addObject:[NSNumber numberWithBool:YES]];
-    //			
-    //		}else if(r%4==1){
-    //			[self.dataDictionary setObject:[NSArray arrayWithObjects:@"Item one",nil] forKey:d];
-    //			[self.dataArray addObject:[NSNumber numberWithBool:YES]];
-    //			
-    //		}else
-    //			[self.dataArray addObject:[NSNumber numberWithBool:NO]];
-		
 		
 		TKDateInformation info = [d dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 		info.day++;
 		d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 		if([d compare:end]==NSOrderedDescending) break;
 	}
-	
 }
 
+// イベントハンドラから来る関数ども
+// ツールバーで"今日"ボタンが押された
+- (IBAction) didPushedTodayButton:(id)sender{
+  switch (segControl.selectedSegmentIndex) {
+      // リスト形式
+      case 0:
+      break;
+      // １日形式
+      case 1:
+      break;
+      // 月形式
+      case 2:
+      NSLog(@"MonthView pushed todayButton");
+      break;
+      default:
+      break;
+  }
+}
+
+// ツールバーでカレンダーの表示形式が変更された
+- (IBAction) changedSegmentedControlValue:(id)sender{
+  switch (segControl.selectedSegmentIndex) {
+      // リスト形式
+    case 0:
+      [self.view addSubview:tableEventView];
+      displayedEventView = TRUE;
+      break;
+      // １日形式
+    case 1:
+      break;
+      // 月形式
+    case 2:
+      if (displayedEventView) {
+        [tableEventView removeFromSuperview]; 
+      }
+      break;
+    default:
+      break;
+  }
+}
 @end
