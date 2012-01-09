@@ -23,9 +23,9 @@
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *todayButton;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segControl;
 @property (retain, nonatomic) IBOutlet UIToolbar *toolBar;
-@property (retain,nonatomic) NSMutableArray *dataArray;
-@property (retain,nonatomic) NSMutableDictionary *dataDictionary;
-@property UITableView  *tableEventView;
+@property (retain, nonatomic) NSMutableArray *dataArray;
+@property (retain, nonatomic) NSMutableDictionary *dataDictionary;
+@property (retain, nonatomic) UITableView  *tableEventView;
 
 - (void) generateEventDataForStartDate:(NSDate*)start endDate:(NSDate*)end;
 - (IBAction) didPushedTodayButton:(id)sender;
