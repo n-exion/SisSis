@@ -7,7 +7,6 @@
 //
 
 #import "SisSisViewController.h"
-#import <EventKit/EventKit.h>
 
 @implementation SisSisViewController
 
@@ -17,6 +16,7 @@
 @synthesize dataDictionary;
 @synthesize todayButton;
 @synthesize tableEventView;
+@synthesize eventStore;
 
 
 - (void)didReceiveMemoryWarning
@@ -29,12 +29,16 @@
 
 #pragma mark - View lifecycle
 
+- (void)loadView{
+  eventStore = [[EKEventStore alloc] init];
+  [super loadView];
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [self.monthView selectDate:[NSDate month]];
+  //[self.monthView selectDate:[NSDate month]];
   segControl.selectedSegmentIndex = 2;
   tableEventView = [[UITableView alloc] init];
   tableEventView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - toolBar.frame.size.height - 44);
@@ -51,12 +55,6 @@
   //[self.monthView selectDate:d];
 }
 
-- (void)loadView
-{
-  [super loadView];
-  [self.monthView reload];
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -66,6 +64,7 @@
 
 - (void)dealloc
 {
+  if (self.eventStore != nil) [self.eventStore release];
   if (self.monthView != nil) [self.monthView release];
   [super dealloc];
 }
@@ -121,11 +120,10 @@
 
 // EventStoreからイベント情報を生成
 - (void) generateEventDataForStartDate:(NSDate*)start endDate:(NSDate*)end{
-  EKEventStore *eventStore = [[[EKEventStore alloc] init] autorelease];
-  EKCalendar *cal = [eventStore defaultCalendarForNewEvents];
+  EKCalendar *cal = [self.eventStore defaultCalendarForNewEvents];
   
-  NSPredicate *p = [eventStore predicateForEventsWithStartDate:start endDate:end calendars:[NSArray arrayWithObject:cal]];
-  NSArray *events = [eventStore eventsMatchingPredicate:p];
+  NSPredicate *p = [self.eventStore predicateForEventsWithStartDate:start endDate:end calendars:[NSArray arrayWithObject:cal]];
+  NSArray *events = [self.eventStore eventsMatchingPredicate:p];
 	
 	self.dataArray = [NSMutableArray array];
 	self.dataDictionary = [NSMutableDictionary dictionary];
@@ -155,6 +153,46 @@
 	}
 }
 
+- (void) addEventData {
+  EKEvent *event = [EKEvent eventWithEventStore:eventStore];
+  event.title = @"This is title.";
+  event.location = @"Tokyo, Japan.";
+  event.startDate = [NSDate dateWithTimeIntervalSinceNow:0.0f];
+  event.endDate = [NSDate dateWithTimeIntervalSinceNow:3*60];
+  event.notes = @"This is notes.";
+  //[self.eventStore saveEvent:event span:EKSpanThisEvent error:&error];
+  EKEventEditViewController *eventEditViewController = [[[EKEventEditViewController alloc] init] autorelease];
+  eventEditViewController.editViewDelegate = self;
+  eventEditViewController.event = event;
+  eventEditViewController.eventStore = eventStore;
+  [self presentModalViewController:eventEditViewController animated:YES];
+}
+
+- (void)eventEditViewController:(EKEventEditViewController *)controller 
+          didCompleteWithAction:(EKEventEditViewAction)action
+{
+	
+	NSError *error = nil;
+	
+	switch (action) {
+		case EKEventEditViewActionCanceled:
+			break;
+			
+		case EKEventEditViewActionSaved:
+			[controller.eventStore saveEvent:controller.event span:EKSpanThisEvent error:&error];
+			break;
+			
+		case EKEventEditViewActionDeleted:
+			[controller.eventStore removeEvent:controller.event span:EKSpanThisEvent error:&error];
+			break;
+			
+		default:
+			break;
+	}
+  [self.monthView reload];
+	[controller dismissModalViewControllerAnimated:YES];
+}
+
 // イベントハンドラから来る関数ども
 // ツールバーで"今日"ボタンが押された
 - (IBAction) didPushedTodayButton:(id)sender{
@@ -167,7 +205,10 @@
       break;
       // 月形式
       case 2:
+      // とりあえず今日ボタンが押された時に予定を足してみる。
       NSLog(@"MonthView pushed todayButton");
+      [self addEventData];
+      [self.monthView reload];
       break;
       default:
       break;
@@ -194,5 +235,11 @@
     default:
       break;
   }
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+  // Return YES for supported orientations
+  return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 @end
