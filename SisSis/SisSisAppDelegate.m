@@ -7,6 +7,7 @@
 //
 
 #import "SisSisAppDelegate.h"
+#import "AddScheduleViewController.h"
 
 @implementation SisSisAppDelegate
 
@@ -72,6 +73,8 @@
 - (IBAction)pushedAddButton:(id)sender{
   // ここで予定の追加の画面に遷移すればいいはず_egawa
   NSLog(@"pushed AddEventButton");
+  AddScheduleViewController* addView = [[AddScheduleViewController alloc] initWithNibName:@"AddScheduleViewController" bundle:nil];
+  [self.navController pushViewController:addView animated:YES];
 }
 
 @end

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1034061814C425BE0049DE5D /* AddScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034061614C425BE0049DE5D /* AddScheduleViewController.m */; };
+		1034061914C425BE0049DE5D /* AddScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1034061714C425BE0049DE5D /* AddScheduleViewController.xib */; };
+		1034062114C425ED0049DE5D /* EditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1034061B14C425ED0049DE5D /* EditableCell.xib */; };
+		1034062214C425ED0049DE5D /* EditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034061D14C425ED0049DE5D /* EditableCell.m */; };
+		1034062314C425ED0049DE5D /* DoubleRowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1034061E14C425ED0049DE5D /* DoubleRowCell.xib */; };
+		1034062414C425ED0049DE5D /* DoubleRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034062014C425ED0049DE5D /* DoubleRowCell.m */; };
+		1034062814C426C20049DE5D /* WorkTImeDecideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1034062514C426C20049DE5D /* WorkTImeDecideViewController.xib */; };
+		1034062914C426C20049DE5D /* WorkTImeDecideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034062714C426C20049DE5D /* WorkTImeDecideViewController.m */; };
 		112079A214BB291B008B2E86 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112079A114BB291B008B2E86 /* EventKit.framework */; };
 		1144E90B14AB2225004017D2 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */; };
 		1144E90E14AB22EE004017D2 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E90714AB221C004017D2 /* libTapkuLibrary.a */; };
@@ -62,6 +70,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1034061514C425BE0049DE5D /* AddScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddScheduleViewController.h; sourceTree = "<group>"; };
+		1034061614C425BE0049DE5D /* AddScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddScheduleViewController.m; sourceTree = "<group>"; };
+		1034061714C425BE0049DE5D /* AddScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddScheduleViewController.xib; sourceTree = "<group>"; };
+		1034061B14C425ED0049DE5D /* EditableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditableCell.xib; sourceTree = "<group>"; };
+		1034061C14C425ED0049DE5D /* EditableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableCell.h; sourceTree = "<group>"; };
+		1034061D14C425ED0049DE5D /* EditableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableCell.m; sourceTree = "<group>"; };
+		1034061E14C425ED0049DE5D /* DoubleRowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoubleRowCell.xib; sourceTree = "<group>"; };
+		1034061F14C425ED0049DE5D /* DoubleRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleRowCell.h; sourceTree = "<group>"; };
+		1034062014C425ED0049DE5D /* DoubleRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubleRowCell.m; sourceTree = "<group>"; };
+		1034062514C426C20049DE5D /* WorkTImeDecideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkTImeDecideViewController.xib; sourceTree = "<group>"; };
+		1034062614C426C20049DE5D /* WorkTImeDecideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkTImeDecideViewController.h; sourceTree = "<group>"; };
+		1034062714C426C20049DE5D /* WorkTImeDecideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkTImeDecideViewController.m; sourceTree = "<group>"; };
 		112079A114BB291B008B2E86 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		1144E8FE14AB221C004017D2 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Libraries/TapkuLibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = Libraries/TapkuLibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
@@ -118,6 +138,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1034061414C425620049DE5D /* AddSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				1034061A14C425D60049DE5D /* TableParts */,
+				1034061514C425BE0049DE5D /* AddScheduleViewController.h */,
+				1034061614C425BE0049DE5D /* AddScheduleViewController.m */,
+				1034061714C425BE0049DE5D /* AddScheduleViewController.xib */,
+				1034062514C426C20049DE5D /* WorkTImeDecideViewController.xib */,
+				1034062614C426C20049DE5D /* WorkTImeDecideViewController.h */,
+				1034062714C426C20049DE5D /* WorkTImeDecideViewController.m */,
+			);
+			name = AddSchedule;
+			sourceTree = "<group>";
+		};
+		1034061A14C425D60049DE5D /* TableParts */ = {
+			isa = PBXGroup;
+			children = (
+				1034061B14C425ED0049DE5D /* EditableCell.xib */,
+				1034061C14C425ED0049DE5D /* EditableCell.h */,
+				1034061D14C425ED0049DE5D /* EditableCell.m */,
+				1034061E14C425ED0049DE5D /* DoubleRowCell.xib */,
+				1034061F14C425ED0049DE5D /* DoubleRowCell.h */,
+				1034062014C425ED0049DE5D /* DoubleRowCell.m */,
+			);
+			name = TableParts;
+			sourceTree = "<group>";
+		};
 		1144E8FF14AB221C004017D2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +212,7 @@
 		1181DF2014AB17F9001E7780 /* SisSis */ = {
 			isa = PBXGroup;
 			children = (
+				1034061414C425620049DE5D /* AddSchedule */,
 				1181DF2914AB17F9001E7780 /* SisSisAppDelegate.h */,
 				1181DF2A14AB17F9001E7780 /* SisSisAppDelegate.m */,
 				1181DF2C14AB17F9001E7780 /* MainWindow.xib */,
@@ -305,6 +353,10 @@
 				1181DF2E14AB17F9001E7780 /* MainWindow.xib in Resources */,
 				1144E90B14AB2225004017D2 /* TapkuLibrary.bundle in Resources */,
 				11EBFFE514B4985B00C93D06 /* SisSisViewController.xib in Resources */,
+				1034061914C425BE0049DE5D /* AddScheduleViewController.xib in Resources */,
+				1034062114C425ED0049DE5D /* EditableCell.xib in Resources */,
+				1034062314C425ED0049DE5D /* DoubleRowCell.xib in Resources */,
+				1034062814C426C20049DE5D /* WorkTImeDecideViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +395,10 @@
 				1181DF2714AB17F9001E7780 /* main.m in Sources */,
 				1181DF2B14AB17F9001E7780 /* SisSisAppDelegate.m in Sources */,
 				1181DF3114AB17F9001E7780 /* SisSisViewController.m in Sources */,
+				1034061814C425BE0049DE5D /* AddScheduleViewController.m in Sources */,
+				1034062214C425ED0049DE5D /* EditableCell.m in Sources */,
+				1034062414C425ED0049DE5D /* DoubleRowCell.m in Sources */,
+				1034062914C426C20049DE5D /* WorkTImeDecideViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
