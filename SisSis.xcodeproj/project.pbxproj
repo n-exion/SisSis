@@ -20,6 +20,7 @@
 		1144E90E14AB22EE004017D2 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E90714AB221C004017D2 /* libTapkuLibrary.a */; };
 		1144E91114AB2306004017D2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E90F14AB2306004017D2 /* MapKit.framework */; };
 		1144E91214AB2306004017D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E91014AB2306004017D2 /* QuartzCore.framework */; };
+		117AA0E414C41E7C00153C9D /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AA0E314C41E7C00153C9D /* EventKitUI.framework */; };
 		1181DF1B14AB17F9001E7780 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1A14AB17F9001E7780 /* UIKit.framework */; };
 		1181DF1D14AB17F9001E7780 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1C14AB17F9001E7780 /* Foundation.framework */; };
 		1181DF1F14AB17F9001E7780 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1E14AB17F9001E7780 /* CoreGraphics.framework */; };
@@ -87,6 +88,7 @@
 		1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = Libraries/TapkuLibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
 		1144E90F14AB2306004017D2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1144E91014AB2306004017D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		117AA0E314C41E7C00153C9D /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		1181DF1614AB17F9001E7780 /* SisSis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SisSis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1181DF1A14AB17F9001E7780 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1181DF1C14AB17F9001E7780 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -114,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				117AA0E414C41E7C00153C9D /* EventKitUI.framework in Frameworks */,
 				112079A214BB291B008B2E86 /* EventKit.framework in Frameworks */,
 				1144E91114AB2306004017D2 /* MapKit.framework in Frameworks */,
 				1144E91214AB2306004017D2 /* QuartzCore.framework in Frameworks */,
@@ -177,6 +180,7 @@
 		1181DF0B14AB17F9001E7780 = {
 			isa = PBXGroup;
 			children = (
+				117AA0E314C41E7C00153C9D /* EventKitUI.framework */,
 				112079A114BB291B008B2E86 /* EventKit.framework */,
 				1144E90F14AB2306004017D2 /* MapKit.framework */,
 				1144E91014AB2306004017D2 /* QuartzCore.framework */,

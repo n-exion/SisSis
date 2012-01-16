@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <EventKit/EventKit.h>
+#import <EventKitUI/EventKitUI.h>
 #import "TapkuLibrary.h"
 
-@interface SisSisViewController : TKCalendarMonthTableViewController {
+@interface SisSisViewController : TKCalendarMonthTableViewController <EKEventEditViewDelegate>
+{
   // カレンダービュー追加
   UIToolbar *toolBar;
   NSMutableArray *dataArray;
@@ -17,6 +20,7 @@
   UIBarButtonItem *todayButton;
   UITableView *tableEventView;
   UISegmentedControl *segControl;
+  EKEventStore* eventStore;
   BOOL displayedEventView;
 }
 
@@ -26,8 +30,11 @@
 @property (retain, nonatomic) NSMutableArray *dataArray;
 @property (retain, nonatomic) NSMutableDictionary *dataDictionary;
 @property (retain, nonatomic) UITableView  *tableEventView;
+@property (retain, nonatomic) EKEventStore *eventStore;
+
 
 - (void) generateEventDataForStartDate:(NSDate*)start endDate:(NSDate*)end;
+- (void) addEventData;
 - (IBAction) didPushedTodayButton:(id)sender;
 - (IBAction) changedSegmentedControlValue:(id)sender;
 @end
