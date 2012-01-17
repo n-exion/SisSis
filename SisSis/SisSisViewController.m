@@ -110,7 +110,6 @@
   if (cell == nil) cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
   
 	
-  
 	NSArray *ar = [dataDictionary objectForKey:[self.monthView dateSelected]];
 	cell.textLabel.text = [ar objectAtIndex:indexPath.row];
 	
@@ -242,4 +241,5 @@
   // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 @end

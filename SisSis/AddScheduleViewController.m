@@ -151,6 +151,7 @@
     if (cell == nil) {
         [[NSBundle mainBundle] loadNibNamed:@"EditableCell" owner:self options:nil];
         cell = (EditableCell*)editableCell;
+
         //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     cell.inputField.placeholder = defaultContent;
@@ -240,6 +241,15 @@
         [self.workTimeDecideController setAddScheduleController:self];
         [self.navigationController pushViewController:self.workTimeDecideController animated:YES];
     }
+}
+
+
+//文字列の入力が終わった際にキーボードを引っ込める
+- (IBAction)endInputText:(id)sender {
+  //[sourceText resignFirstResponder];
+  //[destinationText resignFirstResponder];
+  NSLog(@"End Push Button");
+
 }
 
 @end
