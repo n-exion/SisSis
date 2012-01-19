@@ -113,7 +113,6 @@
   if (cell == nil) cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
   
 	
-  
 	NSArray *ar = [dataDictionary objectForKey:[self.monthView dateSelected]];
   EKEvent *event = [ar objectAtIndex:indexPath.row];
 	cell.textLabel.text = event.title;
@@ -274,6 +273,4 @@
   // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
 @end
