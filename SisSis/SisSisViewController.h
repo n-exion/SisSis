@@ -10,8 +10,9 @@
 #import <EventKit/EventKit.h>
 #import <EventKitUI/EventKitUI.h>
 #import "TapkuLibrary.h"
+#import "SisSisAppDelegate.h"
 
-@interface SisSisViewController : TKCalendarMonthTableViewController <EKEventEditViewDelegate>
+@interface SisSisViewController : TKCalendarMonthTableViewController <EKEventEditViewDelegate, EKEventViewDelegate>
 {
   // カレンダービュー追加
   UIToolbar *toolBar;
@@ -21,6 +22,7 @@
   UITableView *tableEventView;
   UISegmentedControl *segControl;
   EKEventStore* eventStore;
+  SisSisAppDelegate* appDelegate;
   BOOL displayedEventView;
 }
 

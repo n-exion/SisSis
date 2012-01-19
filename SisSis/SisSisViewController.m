@@ -18,7 +18,6 @@
 @synthesize tableEventView;
 @synthesize eventStore;
 
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -32,6 +31,11 @@
 - (void)loadView{
   eventStore = [[EKEventStore alloc] init];
   [super loadView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  // 画面が表示される直前にする処理
+  appDelegate = (SisSisAppDelegate*)[[UIApplication sharedApplication] delegate];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -92,7 +96,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
-	
 }
 
 
@@ -112,7 +115,8 @@
 	
   
 	NSArray *ar = [dataDictionary objectForKey:[self.monthView dateSelected]];
-	cell.textLabel.text = [ar objectAtIndex:indexPath.row];
+  EKEvent *event = [ar objectAtIndex:indexPath.row];
+	cell.textLabel.text = event.title;
 	
   return cell;
 	
@@ -130,17 +134,15 @@
 	
 	NSDate *d = start;
 	while(YES){
-		
     BOOL exist = NO;
     for (EKEvent *e in events) {
       if ([d isSameDay:e.startDate]) {
-        
         NSMutableArray *array = [self.dataDictionary objectForKey:d];
         if (!array) {
           array = [NSMutableArray array];
         }
         [self.dataDictionary setObject:array forKey:d];
-        [array addObject:e.title];
+        [array addObject:e];
         exist = YES;
       }
     }
@@ -193,6 +195,36 @@
 	[controller dismissModalViewControllerAnimated:YES];
 }
 
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  EKEventViewController *eventViewController = [[[EKEventViewController alloc] init] autorelease];
+  eventViewController.delegate = self;
+  NSMutableArray *array = [self.dataDictionary objectForKey:self.monthView.dateSelected];
+  eventViewController.event = [array objectAtIndex:indexPath.row];
+  eventViewController.allowsEditing = YES;
+//  [self presentModalViewController:eventViewController animated:YES];
+  [appDelegate.navController pushViewController:eventViewController animated:YES];
+}
+
+- (void)eventViewController:(EKEventViewController *)controller didCompleteWithAction:(EKEventViewAction)action
+{
+  NSError *error = nil;
+  switch (action) {
+    case EKEventViewActionDone:
+      [self.eventStore saveEvent:controller.event span:EKSpanThisEvent error:&error];
+      break;
+    case EKEventViewActionDeleted:
+      [self.eventStore removeEvent:controller.event span:EKSpanThisEvent error:&error];
+      break;
+    case EKEventViewActionResponded:
+      break;
+    default:
+      break;
+  }
+  [self.monthView reload];
+  [controller dismissModalViewControllerAnimated:YES];
+}
+
 // イベントハンドラから来る関数ども
 // ツールバーで"今日"ボタンが押された
 - (IBAction) didPushedTodayButton:(id)sender{
@@ -242,4 +274,6 @@
   // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
 @end
