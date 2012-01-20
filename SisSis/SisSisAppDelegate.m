@@ -13,11 +13,15 @@
 
 @synthesize window;
 @synthesize navController;
+@synthesize eventStore;
+@synthesize dataArray;
+@synthesize dataDictionary;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   // Override point for customization after application launch.
-   
+
+  eventStore = [[EKEventStore alloc] init];
   [self.window addSubview:self.navController.view];
   [self.window makeKeyAndVisible];
   return YES;
@@ -66,6 +70,7 @@
 {
   [window release];
   [navController release];
+  if (eventStore != nil) [eventStore release];
   [super dealloc];
 }
 

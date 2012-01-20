@@ -16,25 +16,14 @@
 {
   // カレンダービュー追加
   UIToolbar *toolBar;
-  NSMutableArray *dataArray;
-	NSMutableDictionary *dataDictionary;
   UIBarButtonItem *todayButton;
-  UITableView *tableEventView;
   UISegmentedControl *segControl;
-  EKEventStore* eventStore;
   SisSisAppDelegate* appDelegate;
-  BOOL displayedEventView;
 }
 
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *todayButton;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segControl;
 @property (retain, nonatomic) IBOutlet UIToolbar *toolBar;
-@property (retain, nonatomic) NSMutableArray *dataArray;
-@property (retain, nonatomic) NSMutableDictionary *dataDictionary;
-@property (retain, nonatomic) UITableView  *tableEventView;
-@property (retain, nonatomic) EKEventStore *eventStore;
-
-
 
 - (void) generateEventDataForStartDate:(NSDate*)start endDate:(NSDate*)end;
 - (void) addEventData;

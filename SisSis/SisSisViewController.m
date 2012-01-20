@@ -12,30 +12,24 @@
 
 @synthesize segControl;
 @synthesize toolBar;
-@synthesize dataArray;
-@synthesize dataDictionary;
 @synthesize todayButton;
-@synthesize tableEventView;
-@synthesize eventStore;
 
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
     // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
 
 - (void)loadView{
-  eventStore = [[EKEventStore alloc] init];
+  appDelegate = (SisSisAppDelegate*)[[UIApplication sharedApplication] delegate];
   [super loadView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   // 画面が表示される直前にする処理
-  appDelegate = (SisSisAppDelegate*)[[UIApplication sharedApplication] delegate];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -44,39 +38,29 @@
   [super viewDidLoad];
   //[self.monthView selectDate:[NSDate month]];
   segControl.selectedSegmentIndex = 2;
-  tableEventView = [[UITableView alloc] init];
-  tableEventView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - toolBar.frame.size.height - 44);
-  displayedEventView = FALSE;
 }
 
 - (void) viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
-	
-  //NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init]; 
-  //[dateFormatter setDateFormat:@"dd.MM.yy"]; 
-  //NSDate *d = [dateFormatter dateFromString:@"02.05.11"]; 
-  //[dateFormatter release];
-  //[self.monthView selectDate:d];
 }
 
 - (void)viewDidUnload
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+  [super viewDidUnload];
+  // Release any retained subviews of the main view.
+  // e.g. self.myOutlet = nil;
 }
 
 - (void)dealloc
 {
-  if (self.eventStore != nil) [self.eventStore release];
-  if (self.monthView != nil) [self.monthView release];
   [super dealloc];
+  if (self.monthView != nil) [self.monthView release];
 }
 
 
 - (NSArray*) calendarMonthView:(TKCalendarMonthView*)monthView marksFromDate:(NSDate*)startDate toDate:(NSDate*)lastDate{
 	[self generateEventDataForStartDate:startDate endDate:lastDate];
-	return dataArray;
+	return appDelegate.dataArray;
 }
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)date{
 	
@@ -94,13 +78,14 @@
 }
 
 
+// 予定の入っている日数の分だけセクションを作る
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 1;
+	return MAX([appDelegate.dataDictionary count], 1);
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {	
-	NSArray *ar = [dataDictionary objectForKey:[self.monthView dateSelected]];
+	NSArray *ar = [appDelegate.dataDictionary objectForKey:[self.monthView dateSelected]];
 	if(ar == nil) return 0;
 	return [ar count];
 }
@@ -113,7 +98,7 @@
   if (cell == nil) cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
   
 	
-	NSArray *ar = [dataDictionary objectForKey:[self.monthView dateSelected]];
+	NSArray *ar = [appDelegate.dataDictionary objectForKey:[self.monthView dateSelected]];
   EKEvent *event = [ar objectAtIndex:indexPath.row];
 	cell.textLabel.text = event.title;
 	
@@ -123,29 +108,29 @@
 
 // EventStoreからイベント情報を生成
 - (void) generateEventDataForStartDate:(NSDate*)start endDate:(NSDate*)end{
-  EKCalendar *cal = [self.eventStore defaultCalendarForNewEvents];
+  EKCalendar *cal = [appDelegate.eventStore defaultCalendarForNewEvents];
   
-  NSPredicate *p = [self.eventStore predicateForEventsWithStartDate:start endDate:end calendars:[NSArray arrayWithObject:cal]];
-  NSArray *events = [self.eventStore eventsMatchingPredicate:p];
+  NSPredicate *p = [appDelegate.eventStore predicateForEventsWithStartDate:start endDate:end calendars:[NSArray arrayWithObject:cal]];
+  NSArray *events = [appDelegate.eventStore eventsMatchingPredicate:p];
 	
-	self.dataArray = [NSMutableArray array];
-	self.dataDictionary = [NSMutableDictionary dictionary];
+	appDelegate.dataArray = [NSMutableArray array];
+	appDelegate.dataDictionary = [NSMutableDictionary dictionary];
 	
 	NSDate *d = start;
 	while(YES){
     BOOL exist = NO;
     for (EKEvent *e in events) {
       if ([d isSameDay:e.startDate]) {
-        NSMutableArray *array = [self.dataDictionary objectForKey:d];
+        NSMutableArray *array = [appDelegate.dataDictionary objectForKey:d];
         if (!array) {
           array = [NSMutableArray array];
         }
-        [self.dataDictionary setObject:array forKey:d];
+        [appDelegate.dataDictionary setObject:array forKey:d];
         [array addObject:e];
         exist = YES;
       }
     }
-    [self.dataArray addObject:[NSNumber numberWithBool:exist]];
+    [appDelegate.dataArray addObject:[NSNumber numberWithBool:exist]];
 		
 		TKDateInformation info = [d dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 		info.day++;
@@ -155,7 +140,7 @@
 }
 
 - (void) addEventData {
-  EKEvent *event = [EKEvent eventWithEventStore:eventStore];
+  EKEvent *event = [EKEvent eventWithEventStore:appDelegate.eventStore];
   event.title = @"This is title.";
   event.location = @"Tokyo, Japan.";
   event.startDate = [NSDate dateWithTimeIntervalSinceNow:0.0f];
@@ -165,7 +150,7 @@
   EKEventEditViewController *eventEditViewController = [[[EKEventEditViewController alloc] init] autorelease];
   eventEditViewController.editViewDelegate = self;
   eventEditViewController.event = event;
-  eventEditViewController.eventStore = eventStore;
+  eventEditViewController.eventStore = appDelegate.eventStore;
   [self presentModalViewController:eventEditViewController animated:YES];
 }
 
@@ -198,7 +183,7 @@
 {
   EKEventViewController *eventViewController = [[[EKEventViewController alloc] init] autorelease];
   eventViewController.delegate = self;
-  NSMutableArray *array = [self.dataDictionary objectForKey:self.monthView.dateSelected];
+  NSMutableArray *array = [appDelegate.dataDictionary objectForKey:self.monthView.dateSelected];
   eventViewController.event = [array objectAtIndex:indexPath.row];
   eventViewController.allowsEditing = YES;
 //  [self presentModalViewController:eventViewController animated:YES];
@@ -210,10 +195,10 @@
   NSError *error = nil;
   switch (action) {
     case EKEventViewActionDone:
-      [self.eventStore saveEvent:controller.event span:EKSpanThisEvent error:&error];
+      [appDelegate.eventStore saveEvent:controller.event span:EKSpanThisEvent error:&error];
       break;
     case EKEventViewActionDeleted:
-      [self.eventStore removeEvent:controller.event span:EKSpanThisEvent error:&error];
+      [appDelegate.eventStore removeEvent:controller.event span:EKSpanThisEvent error:&error];
       break;
     case EKEventViewActionResponded:
       break;
@@ -251,17 +236,12 @@
   switch (segControl.selectedSegmentIndex) {
       // リスト形式
     case 0:
-      [self.view addSubview:tableEventView];
-      displayedEventView = TRUE;
       break;
       // １日形式
     case 1:
       break;
       // 月形式
     case 2:
-      if (displayedEventView) {
-        [tableEventView removeFromSuperview]; 
-      }
       break;
     default:
       break;
