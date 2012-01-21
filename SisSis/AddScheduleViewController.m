@@ -7,7 +7,6 @@
 //
 
 #import "AddScheduleViewController.h"
-#import "StartTimeDecideViewController.h"
 #import "DoubleRowCell.h"
 
 
@@ -17,7 +16,8 @@
 @synthesize editableCell;
 @synthesize doubleRowCell;
 @synthesize workTimeDecideController;
-@synthesize startTimeDecideController;
+@synthesize departureDecideViewController;
+
 
 @synthesize startTime;
 @synthesize endTime;
@@ -65,7 +65,7 @@
 {
   [editableCell release];
   [workTimeDecideController release];
-  [startTimeDecideController release];
+  [departureDecideViewController release];
   [super dealloc];
 }
 
@@ -273,11 +273,11 @@
   //出発時刻決定シークエンスへ
   else if(indexPath.section == 2){
     //TODO: 到着時刻入力を促す
-    if(!self.startTimeDecideController){
-      self.startTimeDecideController = [[[StartTimeDecideViewController alloc] initWithNibName:@"StartTimeDecideViewController" bundle:nil] autorelease];
+    if(!self.departureDecideViewController){
+      self.departureDecideViewController = [[[DepartureDecideViewController alloc] initWithNibName:@"DepartureDecideViewController" bundle:nil] autorelease];
     }
     
-    [self.navigationController pushViewController:self.startTimeDecideController animated:YES];
+    [self.navigationController pushViewController:self.departureDecideViewController animated:YES];
   }
 }
 
