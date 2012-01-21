@@ -12,7 +12,6 @@
 
 @interface WorkTimeDecideViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
-
     //現在, どちらの時刻を編集中か
     NSInteger selectedField;
     

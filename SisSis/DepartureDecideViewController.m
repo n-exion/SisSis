@@ -15,6 +15,7 @@
 @synthesize departurePosition;
 @synthesize arrivalTime;
 @synthesize arrivalPosition;
+@synthesize startTime;
 
 @end
 
@@ -22,6 +23,7 @@
 
 @synthesize travelModeSegment;
 @synthesize startPositionDecideViewController;
+@synthesize departureData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +32,24 @@
     self.title = NSLocalizedString(@"Master", @"Master");
   }
   
-  depatureData = [DepartureData alloc];
+  depatureData = [[DepartureData alloc] init];
+  sectionDictionary = [[NSMutableDictionary alloc] init];
+  rowDictionary = [[NSMutableDictionary alloc] init];
+  
+  [sectionDictionary setObject:[NSNumber numberWithInt:1] forKey:@"DeparturePosition"];
+  [rowDictionary setObject:[NSNumber numberWithInt:0] forKey:@"DeparturePosition"];
+  [sectionDictionary setObject:[NSNumber numberWithInt:1] forKey:@"DeparturePosition"];
+  [rowDictionary setObject:[NSNumber numberWithInt:1] forKey:@"DeparturePosition"];
+  [sectionDictionary setObject:[NSNumber numberWithInt:2] forKey:@"DepartureTime"];
+  [rowDictionary setObject:[NSNumber numberWithInt:0] forKey:@"DepartureTime"];
+  [sectionDictionary setObject:[NSNumber numberWithInt:2] forKey:@"ArrivalTime"];
+  [rowDictionary setObject:[NSNumber numberWithInt:1] forKey:@"ArrivalTime"];
+  [sectionDictionary setObject:[NSNumber numberWithInt:2] forKey:@"StartTime"];
+  [rowDictionary setObject:[NSNumber numberWithInt:2] forKey:@"StartTime"];
+  
+
+
+
   
   return self;
 }
@@ -38,8 +57,40 @@
 - (void)dealloc
 {
   [startPositionDecideViewController release];
+  [departureData release];
+  [sectionDictionary release];
+  [rowDictionary release];
   [super dealloc];
 }
+
+
+//departureDataの代入とともにテーブルを更新する
+- (void)updateDepartureData:(DepartureData *)new_departureData{
+  NSDateFormatter* dateFormat = [[[NSDateFormatter alloc] init] autorelease];
+  [dateFormat setDateFormat:@"MM-dd hh:mm"];
+
+  self.departureData = new_departureData;
+  NSLog([NSString stringWithFormat:@"%d¥n",[rowDictionary count]]);
+  
+  NSInteger section = [[sectionDictionary objectForKey:@"DeparturePostion"] integerValue];
+  NSInteger row = [[rowDictionary objectForKey:@"DeparturePostion"] integerValue];
+  UITableViewCell* targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+  targetCell.detailTextLabel.text = self.departureData.departurePosition;
+
+  //特定のcellを更新
+  [targetCell setNeedsLayout];
+  
+  section = [[sectionDictionary objectForKey:@"StartTime"] integerValue];
+  row = [[rowDictionary objectForKey:@"StartTime"] integerValue];
+  targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+  targetCell.detailTextLabel.text = [dateFormat stringFromDate:self.departureData.startTime];
+  
+  //特定のcellを更新
+  [targetCell setNeedsLayout];
+
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -151,6 +202,7 @@
       case 0:
         cell.textLabel.text = NSLocalizedString(@"出発地点", nil);
         cell.detailTextLabel.text = @"具体的な場所";
+        
         break;
       case 1:
         cell.textLabel.text = NSLocalizedString(@"到着地点", nil);
@@ -172,6 +224,7 @@
       cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier] autorelease];
       cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
+    
     
     switch(indexPath.row){
       case 0:

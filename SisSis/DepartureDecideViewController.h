@@ -19,12 +19,15 @@
   
   NSString* arrivalPosition;
   NSDate* arrivalTime;
+  
+  NSDate* startTime;
 }
 
 @property (strong,nonatomic) NSString* departurePosition;
 @property (strong,nonatomic) NSDate* departureTime;
 @property (strong,nonatomic) NSString* arrivalPosition;
 @property (strong,nonatomic) NSDate* arrivalTime;
+@property (strong,nonatomic) NSDate* startTime;
 
 
 @end
@@ -34,9 +37,15 @@
 	UISegmentedControl *travelModeSegment;
   DeparturePositionDecideViewController* startPositionDecideViewController;
   DepartureData *depatureData;
+  
+  NSMutableDictionary* sectionDictionary;
+  NSMutableDictionary* rowDictionary;
 }
 
 @property (strong, nonatomic) DeparturePositionDecideViewController *startPositionDecideViewController;
 @property (strong,nonatomic) UISegmentedControl* travelModeSegment;
+@property (strong,nonatomic) DepartureData* departureData;
+
+- (void) updateDepartureData:(DepartureData *)departureData;
 
 @end

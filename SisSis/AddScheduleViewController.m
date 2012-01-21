@@ -8,6 +8,7 @@
 
 #import "AddScheduleViewController.h"
 #import "DoubleRowCell.h"
+#import "DepartureDecideViewController.h"
 
 
 
@@ -49,15 +50,27 @@
   diff.hour = 2;
   self.endTime = [calendar dateByAddingComponents:diff toDate:now options:0];
   
+  dateFormat = [[NSDateFormatter alloc] init];
+  [dateFormat setDateFormat:@"MM-dd hh:mm"];
+
+  
   return self;
 }
 
 - (void) updateStartTime:(NSDate*)start{
   self.startTime = start;
+  
+  DoubleRowCell* doubleCell =  [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+  doubleCell.startTimeField.text = [dateFormat stringFromDate:start];
+  [doubleCell setNeedsLayout];
 }
 
 - (void) updateEndTime:(NSDate*)end{
   self.endTime = end;
+  
+  DoubleRowCell* doubleCell =  [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+  doubleCell.endTimeField.text = [dateFormat stringFromDate:end];
+  [doubleCell setNeedsLayout];
 }
 
 
@@ -66,6 +79,7 @@
   [editableCell release];
   [workTimeDecideController release];
   [departureDecideViewController release];
+  [dateFormat release];
   [super dealloc];
 }
 
@@ -277,7 +291,17 @@
       self.departureDecideViewController = [[[DepartureDecideViewController alloc] initWithNibName:@"DepartureDecideViewController" bundle:nil] autorelease];
     }
     
+    DepartureData* data = [[[DepartureData alloc] init] autorelease];
+    data.departurePosition = @"自宅";
+    data.departureTime = [self.startTime copy];
+    data.arrivalPosition = @"自宅";
+    data.arrivalTime = [self.startTime copy];
+    data.startTime = [self.startTime copy];
+    
     [self.navigationController pushViewController:self.departureDecideViewController animated:YES];
+    [self.departureDecideViewController updateDepartureData:data];
+
+
   }
 }
 
