@@ -212,6 +212,7 @@
 // イベントハンドラから来る関数ども
 // ツールバーで"今日"ボタンが押された
 - (IBAction) didPushedTodayButton:(id)sender{
+  NSDate *now = [NSDate date];
   switch (segControl.selectedSegmentIndex) {
       // リスト形式
       case 0:
@@ -223,8 +224,9 @@
       case 2:
       // とりあえず今日ボタンが押された時に予定を足してみる。
       NSLog(@"MonthView pushed todayButton");
-      [self addEventData];
+      [self.monthView selectDate:now];
       [self.monthView reload];
+      [self.tableView reloadData];
       break;
       default:
       break;
