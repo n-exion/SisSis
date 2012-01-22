@@ -11,6 +11,7 @@
 #import <EventKitUI/EventKitUI.h>
 #import "TapkuLibrary.h"
 #import "SisSisAppDelegate.h"
+#import "EventListViewController.h"
 
 @interface SisSisViewController : TKCalendarMonthTableViewController <EKEventEditViewDelegate, EKEventViewDelegate>
 {
