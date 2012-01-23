@@ -9,7 +9,8 @@
 #import "EventListCellController.h"
 
 @implementation EventListCell
-
+@synthesize time;
+@synthesize eventName;
 @end
 
 @implementation EventListCellController

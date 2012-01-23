@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface EventListCell : UITableViewCell {
-  
+  UILabel *time;
+  UILabel *eventName;
 }
+
+@property (retain, nonatomic) IBOutlet UILabel *time;
+@property (retain, nonatomic) IBOutlet UILabel *eventName;
 @end
 
 @interface EventListCellController : UIViewController {

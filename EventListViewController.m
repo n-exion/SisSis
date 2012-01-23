@@ -10,11 +10,12 @@
 
 @implementation EventListViewController
 
-@synthesize tableView;
+@synthesize eventTableView;
 @synthesize segControl;
 @synthesize toolBar;
 @synthesize todayButton;
-@synthesize sectionDict;
+@synthesize keyArray;
+@synthesize nowDate;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -23,7 +24,7 @@
     if (self) {
       // Custom initialization
       appDelegate = (SisSisAppDelegate*)[[UIApplication sharedApplication] delegate];
-      [self initSectionArray];
+      [self initKeyArray];
     }
     return self;
 }
@@ -59,75 +60,72 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
 {
-  NSInteger sections = [appDelegate.dataDictionary count];
-  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-	[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-	
-	NSString *nowDateStr = [dateFormatter stringFromDate:[NSDate date]];
-	NSDate *nowDate = [dateFormatter dateFromString:nowDateStr];
-	[dateFormatter release];
-  NSMutableArray *array = [appDelegate.dataDictionary objectForKey:nowDate];
-  if (!array) {
-    sections++;
-  }
-  return MAX(sections, 1);
+  [self initKeyArray];
+  return MAX([keyArray count], 1);
 }
 
-- (void) initSectionArray
+- (void) initKeyArray
 {
-  sectionDict = [NSMutableDictionary dictionary];
+  if (keyArray) {
+    [keyArray release];
+  }
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setTimeStyle:NSDateFormatterNoStyle];
 	[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
 	NSString *nowDateStr = [dateFormatter stringFromDate:[NSDate date]];
-	NSDate *nowDate = [dateFormatter dateFromString:nowDateStr];
+	nowDate = [dateFormatter dateFromString:nowDateStr];
 	[dateFormatter release];
-  NSEnumerator *objEnum = [appDelegate.dataDictionary objectEnumerator];
-  NSEnumerator *keyEnum = [appDelegate.dataDictionary keyEnumerator];
-  NSMutableArray *array;
-  NSDate *d;
-  NSInteger index;
-  index = 0;
-  BOOL todayFlg = NO;
-  while (array = [objEnum nextObject]) {
-    d = [keyEnum nextObject];
-    if (!todayFlg) {
-      if ([nowDate isEqualToDate:d]) {
-        todayFlg = YES;
-      } else if (nowDate != [nowDate earlierDate:d]) {
-        todayFlg = YES;
-        [sectionDict setObject:[NSDictionary dictionaryWithObjectsAndKeys:
-                                nowDate, @"date", [NSNumber numberWithInt:0], @"count",nil]
-                        forKey:[NSNumber numberWithInt:index]];
-        index++;
-      }
-    }
-    [sectionDict setObject:[NSDictionary dictionaryWithObjectsAndKeys:
-                            d, @"date", [NSNumber numberWithInt:[array count]], @"count",nil]
-                    forKey:[NSNumber numberWithInt:index]];
-    index++;
+  NSArray *tempKeyArray = appDelegate.dataDictionary.allKeys;
+  if (![appDelegate.dataDictionary objectForKey:nowDate]){
+    NSMutableArray *tempArray = [tempKeyArray mutableCopy];
+    [tempArray addObject:nowDate];
+    keyArray = [[NSArray alloc] initWithArray:[tempArray sortedArrayUsingSelector:@selector(compare:)]];
+  } else {
+    keyArray = [[NSArray alloc] initWithArray:[tempKeyArray sortedArrayUsingSelector:@selector(compare:)]];
   }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  NSDictionary *dict = [sectionDict objectForKey:[NSNumber numberWithInt:section]];
-  NSNumber *number = [dict objectForKey:@"count"];
-  return [number integerValue];
+  NSDate *key = [keyArray objectAtIndex:section];
+  if (![appDelegate.dataDictionary objectForKey:key]) {
+    return 0;
+  }
+  NSMutableArray *array = [appDelegate.dataDictionary objectForKey:key];
+  return [array count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  return nil;
+  static NSString *CellIdentifier = @"Cell";
+  
+  EventListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  if (cell == nil) {
+    cell = [[[EventListCell alloc] 
+             initWithStyle:UITableViewCellStyleDefault 
+             reuseIdentifier:CellIdentifier] 
+             autorelease];
+  }
+  NSDate *key = [keyArray objectAtIndex:indexPath.section];
+  NSMutableArray *eventArray = [appDelegate.dataDictionary objectForKey:key];
+  EKEvent *event = [eventArray objectAtIndex:indexPath.row];
+  cell.eventName.text = event.title;
+  if (event.allDay) {
+    cell.time.text = @"終日";
+  } else {
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setDateFormat:@"hh:mm"];
+    cell.time.text = [outputFormatter stringFromDate:event.startDate];
+  }
+  return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-  NSDictionary *dict = [sectionDict objectForKey:[NSNumber numberWithInt:section]];
-  NSDate *date = [dict objectForKey:@"date"];
+  NSDate *date = [keyArray objectAtIndex:section];
   NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
   [outputFormatter setDateFormat:@"yyyy MM dd"];
   NSString *str = [outputFormatter stringFromDate:date];
+  [outputFormatter release];
   return str; //ビルド警告回避用
 }
 

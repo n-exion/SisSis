@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SisSisAppDelegate.h"
+#import "EventListCellController.h"
 
 @interface EventListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
@@ -15,16 +16,18 @@
   UIBarButtonItem *todayButton;
   UISegmentedControl *segControl;
   SisSisAppDelegate* appDelegate;
-  UITableView *tableView;
-  NSMutableDictionary *sectionDict;
+  UITableView *eventTableView;
+  NSArray *keyArray;
+  NSDate *nowDate;
 }
 
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *todayButton;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segControl;
 @property (retain, nonatomic) IBOutlet UIToolbar *toolBar;
-@property (retain, nonatomic) IBOutlet UITableView *tableView;
-@property (retain, nonatomic) NSMutableDictionary *sectionDict;
+@property (retain, nonatomic) IBOutlet UITableView *eventTableView;
+@property (retain, nonatomic) NSArray *keyArray;
+@property (retain, nonatomic) NSDate *nowDate;
 
 - (IBAction) changedSegmentedControlValue:(id)sender;
-- (void) initSectionArray;
+- (void) initKeyArray;
 @end

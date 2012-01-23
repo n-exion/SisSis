@@ -59,7 +59,7 @@
 								</object>
 							</object>
 						</array>
-						<string key="NSFrameSize">{320, 460}</string>
+						<string key="NSFrameSize">{320, 372}</string>
 						<reference key="NSSuperview" ref="232276870"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1020904201"/>
@@ -180,14 +180,6 @@
 			<array class="NSMutableArray" key="connectionRecords">
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">tableView</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="298427222"/>
-					</object>
-					<int key="connectionID">12</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">view</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="232276870"/>
@@ -225,6 +217,14 @@
 						<reference key="destination" ref="174821476"/>
 					</object>
 					<int key="connectionID">20</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">eventTableView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="298427222"/>
+					</object>
+					<int key="connectionID">36</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -323,8 +323,8 @@
 						<int key="objectID">4</int>
 						<reference key="object" ref="232276870"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="298427222"/>
 							<reference ref="679655076"/>
+							<reference ref="298427222"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -408,7 +408,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">35</int>
+			<int key="maxID">36</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -427,19 +427,19 @@
 						</object>
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="eventTableView">UITableView</string>
 						<string key="segControl">UISegmentedControl</string>
-						<string key="tableView">UITableView</string>
 						<string key="todayButton">UIBarButtonItem</string>
 						<string key="toolBar">UIToolbar</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="eventTableView">
+							<string key="name">eventTableView</string>
+							<string key="candidateClassName">UITableView</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="segControl">
 							<string key="name">segControl</string>
 							<string key="candidateClassName">UISegmentedControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tableView">
-							<string key="name">tableView</string>
-							<string key="candidateClassName">UITableView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="todayButton">
 							<string key="name">todayButton</string>
