@@ -16,10 +16,15 @@
   UISegmentedControl *segControl;
   SisSisAppDelegate* appDelegate;
   UITableView *tableView;
+  NSMutableDictionary *sectionDict;
 }
 
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *todayButton;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segControl;
 @property (retain, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
+@property (retain, nonatomic) NSMutableDictionary *sectionDict;
+
+- (IBAction) changedSegmentedControlValue:(id)sender;
+- (void) initSectionArray;
 @end

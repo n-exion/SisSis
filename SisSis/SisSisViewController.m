@@ -256,6 +256,7 @@
     default:
       break;
   }
+  segControl.selectedSegmentIndex = 2;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
