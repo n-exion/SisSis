@@ -24,6 +24,13 @@
   eventStore = [[EKEventStore alloc] init];
   [self.window addSubview:self.navController.view];
   [self.window makeKeyAndVisible];
+  // DBファイル初期化
+  SqliteDB* db = [[SqliteDB alloc] init];
+  [db initializeDatabaseIfNeeded];
+  [db release];
+  // account model 取得
+  AccountModel* account = [AccountModel selectById:1];
+  
   return YES;
 }
 
