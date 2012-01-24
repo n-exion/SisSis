@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SisSisAppDelegate.h"
-#import "EventListCellController.h"
+#import "EventListCell.h"
 
 @interface EventListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {

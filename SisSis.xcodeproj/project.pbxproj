@@ -43,8 +43,8 @@
 		1181DF4714AB17FA001E7780 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1181DF4514AB17FA001E7780 /* InfoPlist.strings */; };
 		1181DF4914AB17FA001E7780 /* SisSisTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 1181DF4814AB17FA001E7780 /* SisSisTests.h */; };
 		1181DF4B14AB17FA001E7780 /* SisSisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1181DF4A14AB17FA001E7780 /* SisSisTests.m */; };
-		11B49F6614CD1A2A003E4CE0 /* EventListCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B49F6414CD1A2A003E4CE0 /* EventListCellController.m */; };
-		11B49F6714CD1A2A003E4CE0 /* EventListCellController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11B49F6514CD1A2A003E4CE0 /* EventListCellController.xib */; };
+		11B49F6614CD1A2A003E4CE0 /* EventListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B49F6414CD1A2A003E4CE0 /* EventListCell.m */; };
+		11B49F6714CD1A2A003E4CE0 /* EventListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11B49F6514CD1A2A003E4CE0 /* EventListCell.xib */; };
 		11EBFFE514B4985B00C93D06 /* SisSisViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11EBFFE414B4985B00C93D06 /* SisSisViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -128,9 +128,9 @@
 		1181DF4614AB17FA001E7780 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1181DF4814AB17FA001E7780 /* SisSisTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SisSisTests.h; sourceTree = "<group>"; };
 		1181DF4A14AB17FA001E7780 /* SisSisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SisSisTests.m; sourceTree = "<group>"; };
-		11B49F6314CD1A2A003E4CE0 /* EventListCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListCellController.h; sourceTree = "<group>"; };
-		11B49F6414CD1A2A003E4CE0 /* EventListCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListCellController.m; sourceTree = "<group>"; };
-		11B49F6514CD1A2A003E4CE0 /* EventListCellController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventListCellController.xib; sourceTree = "<group>"; };
+		11B49F6314CD1A2A003E4CE0 /* EventListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; path = EventListCell.h; sourceTree = "<group>"; };
+		11B49F6414CD1A2A003E4CE0 /* EventListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListCell.m; sourceTree = "<group>"; };
+		11B49F6514CD1A2A003E4CE0 /* EventListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventListCell.xib; sourceTree = "<group>"; };
 		11EBFFE414B4985B00C93D06 /* SisSisViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SisSisViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,9 +217,9 @@
 				11707C3314CC71B1005632E1 /* EventListViewController.xib */,
 				11707C2E14CC703F005632E1 /* RouteData.h */,
 				11707C2F14CC7040005632E1 /* RouteData.m */,
-				11B49F6314CD1A2A003E4CE0 /* EventListCellController.h */,
-				11B49F6414CD1A2A003E4CE0 /* EventListCellController.m */,
-				11B49F6514CD1A2A003E4CE0 /* EventListCellController.xib */,
+				11B49F6314CD1A2A003E4CE0 /* EventListCell.h */,
+				11B49F6414CD1A2A003E4CE0 /* EventListCell.m */,
+				11B49F6514CD1A2A003E4CE0 /* EventListCell.xib */,
 			);
 			name = Calender;
 			sourceTree = "<group>";
@@ -409,7 +409,7 @@
 				101B521F14CABF77005534FD /* DepartureDecideViewController.xib in Resources */,
 				101B522414CABF92005534FD /* DeparturePositionDecideViewController.xib in Resources */,
 				11707C3514CC71B1005632E1 /* EventListViewController.xib in Resources */,
-				11B49F6714CD1A2A003E4CE0 /* EventListCellController.xib in Resources */,
+				11B49F6714CD1A2A003E4CE0 /* EventListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,7 +456,7 @@
 				101B522314CABF92005534FD /* DeparturePositionDecideViewController.m in Sources */,
 				11707C3014CC7040005632E1 /* RouteData.m in Sources */,
 				11707C3414CC71B1005632E1 /* EventListViewController.m in Sources */,
-				11B49F6614CD1A2A003E4CE0 /* EventListCellController.m in Sources */,
+				11B49F6614CD1A2A003E4CE0 /* EventListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

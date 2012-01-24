@@ -97,25 +97,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  static NSString *CellIdentifier = @"Cell";
-  
-  EventListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  static NSString *CellIdentifier = @"EventListCell";
+  EventListCell *cell = (EventListCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
-    cell = [[[EventListCell alloc] 
-             initWithStyle:UITableViewCellStyleDefault 
-             reuseIdentifier:CellIdentifier] 
-             autorelease];
+    UIViewController *vc = [[UIViewController alloc] initWithNibName:@"EventListCell" bundle:nil];
+    cell = (EventListCell *)vc.view;
   }
   NSDate *key = [keyArray objectAtIndex:indexPath.section];
   NSMutableArray *eventArray = [appDelegate.dataDictionary objectForKey:key];
   EKEvent *event = [eventArray objectAtIndex:indexPath.row];
-  cell.eventName.text = event.title;
+  [cell.eventLabel setText:event.title];
   if (event.allDay) {
-    cell.time.text = @"終日";
+    [cell.timeLabel setText:@"終日"];
   } else {
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
     [outputFormatter setDateFormat:@"hh:mm"];
-    cell.time.text = [outputFormatter stringFromDate:event.startDate];
+    NSString *timeText = [outputFormatter stringFromDate:event.startDate];
+    [cell.timeLabel setText:timeText];
   }
   return cell;
 }
