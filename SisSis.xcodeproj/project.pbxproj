@@ -280,10 +280,10 @@
 		1181DF2014AB17F9001E7780 /* SisSis */ = {
 			isa = PBXGroup;
 			children = (
-				1034061414C425620049DE5D /* AddSchedule */,
 				1181DF2914AB17F9001E7780 /* SisSisAppDelegate.h */,
 				1181DF2A14AB17F9001E7780 /* SisSisAppDelegate.m */,
 				1181DF2C14AB17F9001E7780 /* MainWindow.xib */,
+				1034061414C425620049DE5D /* AddSchedule */,
 				11B49F8014CF1CD4003E4CE0 /* Sqlite */,
 				11707C2814CC6F1A005632E1 /* Calender */,
 				1181DF2114AB17F9001E7780 /* Supporting Files */,
