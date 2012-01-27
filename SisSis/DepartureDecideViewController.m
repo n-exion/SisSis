@@ -76,16 +76,19 @@
   NSInteger row = [[rowDictionary objectForKey:@"DeparturePostion"] integerValue];
   UITableViewCell* targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
   targetCell.detailTextLabel.text = self.departureData.departurePosition;
-
-  //特定のcellを更新
   [targetCell setNeedsLayout];
   
   section = [[sectionDictionary objectForKey:@"StartTime"] integerValue];
   row = [[rowDictionary objectForKey:@"StartTime"] integerValue];
   targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
   targetCell.detailTextLabel.text = [dateFormat stringFromDate:self.departureData.startTime];
-  
-  //特定のcellを更新
+  [targetCell setNeedsLayout];
+
+  //arrivalPositionの更新
+  section = [[sectionDictionary objectForKey:@"ArrivalPosition"] integerValue];
+  row = [[rowDictionary objectForKey:@"ArrivalPosition"] integerValue];
+  targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+  targetCell.detailTextLabel.text = self.departureData.arrivalPosition;
   [targetCell setNeedsLayout];
 
 }
@@ -205,8 +208,14 @@
         
         break;
       case 1:
+        if(self.departureData.arrivalPosition){
+          cell.detailTextLabel.text = self.departureData.arrivalPosition;
+        }
+        else{
+          cell.detailTextLabel.text = @"具体的な場所";        
+        }
         cell.textLabel.text = NSLocalizedString(@"到着地点", nil);
-        cell.detailTextLabel.text = @"具体的な場所";
+
         break;
     }
 		cell.textLabel.textAlignment = UITextAlignmentCenter;

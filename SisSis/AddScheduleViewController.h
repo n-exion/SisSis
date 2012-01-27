@@ -21,7 +21,9 @@
   NSDate* startTime;
   NSDate* endTime;
   NSDateFormatter* dateFormat;
-
+  
+  EditableCell* titleCell;
+  EditableCell* positionCell;
 }
 
 @property (strong, nonatomic) IBOutlet EditableCell* editableCell;

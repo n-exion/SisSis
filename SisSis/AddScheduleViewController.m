@@ -167,7 +167,7 @@
   return 0.0f;
 }
 
-- (UITableViewCell*) createEditableCell:(NSString*)defaultContent inView:(UITableView*)tableView{
+- (EditableCell*) createEditableCell:(NSString*)defaultContent inView:(UITableView*)tableView{
   static NSString *CellIdentifier = @"EditableCell";
   
   //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -193,9 +193,12 @@
   if (section == 0){
     switch([indexPath row]){
       case 0:
-        return [self createEditableCell:@"タイトル" inView:tableView];
+        //TODO: これらの解放は？
+        titleCell = [self createEditableCell:@"タイトル" inView:tableView];
+        return titleCell;
       case 1:
-        return [self createEditableCell:@"場所" inView:tableView];
+        positionCell = [self createEditableCell:@"場所" inView:tableView];
+        return positionCell;
     }
   }
   
@@ -294,7 +297,19 @@
     DepartureData* data = [[[DepartureData alloc] init] autorelease];
     data.departurePosition = @"自宅";
     data.departureTime = [self.startTime copy];
-    data.arrivalPosition = @"自宅";
+    
+    //arrivalPosition
+    /*
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" 
+                                                    message:@"場所を指定してください"
+                                                   delegate:self 
+                                          cancelButtonTitle:@"OK" 
+                                          otherButtonTitles: nil];
+    
+    [alert show];
+    [alert release];
+     */
+    data.arrivalPosition = positionCell.inputField.text;
     data.arrivalTime = [self.startTime copy];
     data.startTime = [self.startTime copy];
     
