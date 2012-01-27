@@ -94,6 +94,13 @@
   targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
   targetCell.detailTextLabel.text = self.departureData.arrivalPosition;
   [targetCell setNeedsLayout];
+  
+  //departureTimeの更新
+  section = [[sectionDictionary objectForKey:@"DepartureTime"] integerValue];
+  row = [[rowDictionary objectForKey:@"DepartureTime"] integerValue];
+  targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+  targetCell.detailTextLabel.text = [dateFormat stringFromDate:self.departureData.departureTime];
+  [targetCell setNeedsLayout];
 
 }
 
@@ -330,15 +337,26 @@
    NSLog([keys2 objectAtIndex:0]);
    */
   
-  NSLog([fmt stringForObjectValue:[directions.duration objectForKey:@"seconds"]]);
+
   NSString* durationSecondStr = [fmt stringForObjectValue:[directions.duration objectForKey:@"seconds"]];
+  int second = [durationSecondStr intValue];
+  NSCalendar* calendar = [NSCalendar currentCalendar];
+  NSDateComponents* diff = [[[NSDateComponents alloc] init] autorelease];
+  diff.second = -second;
   
+  DepartureData* data = self.departureData;
+  data.departureTime = [calendar dateByAddingComponents:diff toDate:self.departureData.arrivalTime options:0];
+  
+  [self updateDepartureData:data];
+
+  
+  /*
   UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Warning" 
                                                    message:durationSecondStr
                                                   delegate:self 
                                          cancelButtonTitle:@"OK" 
                                          otherButtonTitles: nil] autorelease];
-  [alert show];
+  [alert show];*/
 
   
   //durationText.text = [NSString stringWithFormat:@"%@から%@までにかかる時間は%@秒です",startPoint,endPoint,durationSecondStr];
