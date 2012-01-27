@@ -19,6 +19,28 @@
 		1034062414C425ED0049DE5D /* DoubleRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034062014C425ED0049DE5D /* DoubleRowCell.m */; };
 		1034062814C426C20049DE5D /* WorkTImeDecideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1034062514C426C20049DE5D /* WorkTImeDecideViewController.xib */; };
 		1034062914C426C20049DE5D /* WorkTImeDecideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034062714C426C20049DE5D /* WorkTImeDecideViewController.m */; };
+		103AB46A14D292730020F9E1 /* api.html in Resources */ = {isa = PBXBuildFile; fileRef = 103AB46914D292730020F9E1 /* api.html */; };
+		103AB46C14D292800020F9E1 /* json2.js in Sources */ = {isa = PBXBuildFile; fileRef = 103AB46B14D292800020F9E1 /* json2.js */; };
+		103AB49714D2944A0020F9E1 /* MapDirectionsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB47214D2944A0020F9E1 /* MapDirectionsAppDelegate.m */; };
+		103AB49814D2944A0020F9E1 /* MapDirectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB47414D2944A0020F9E1 /* MapDirectionsViewController.m */; };
+		103AB49914D2944A0020F9E1 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB47614D2944A0020F9E1 /* NSObject+SBJSON.m */; };
+		103AB49A14D2944A0020F9E1 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB47814D2944A0020F9E1 /* NSString+SBJSON.m */; };
+		103AB49B14D2944A0020F9E1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB47A14D2944A0020F9E1 /* RootViewController.m */; };
+		103AB49C14D2944A0020F9E1 /* RouteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB47C14D2944A0020F9E1 /* RouteListViewController.m */; };
+		103AB49D14D2944A0020F9E1 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB47E14D2944A0020F9E1 /* SBJSON.m */; };
+		103AB49E14D2944A0020F9E1 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB48014D2944A0020F9E1 /* SBJsonBase.m */; };
+		103AB49F14D2944A0020F9E1 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB48214D2944A0020F9E1 /* SBJsonParser.m */; };
+		103AB4A014D2944A0020F9E1 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB48414D2944A0020F9E1 /* SBJsonWriter.m */; };
+		103AB4A114D2944A0020F9E1 /* UICGClientGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB48614D2944A0020F9E1 /* UICGClientGeocoder.m */; };
+		103AB4A214D2944A0020F9E1 /* UICGDirections.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB48814D2944A0020F9E1 /* UICGDirections.m */; };
+		103AB4A314D2944A0020F9E1 /* UICGDirectionsOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB48A14D2944A0020F9E1 /* UICGDirectionsOptions.m */; };
+		103AB4A414D2944A0020F9E1 /* UICGoogleMapsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB48C14D2944A0020F9E1 /* UICGoogleMapsAPI.m */; };
+		103AB4A514D2944A0020F9E1 /* UICGPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB48E14D2944A0020F9E1 /* UICGPolyline.m */; };
+		103AB4A614D2944A0020F9E1 /* UICGRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB49014D2944A0020F9E1 /* UICGRoute.m */; };
+		103AB4A714D2944A0020F9E1 /* UICGStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB49214D2944A0020F9E1 /* UICGStep.m */; };
+		103AB4A814D2944A0020F9E1 /* UICRouteAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB49414D2944A0020F9E1 /* UICRouteAnnotation.m */; };
+		103AB4A914D2944A0020F9E1 /* UICRouteOverlayMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB49614D2944A0020F9E1 /* UICRouteOverlayMapView.m */; };
+		103AB4AE14D2999B0020F9E1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 103AB4AD14D2999B0020F9E1 /* CoreLocation.framework */; };
 		112079A214BB291B008B2E86 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112079A114BB291B008B2E86 /* EventKit.framework */; };
 		1144E90B14AB2225004017D2 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */; };
 		1144E90E14AB22EE004017D2 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E90714AB221C004017D2 /* libTapkuLibrary.a */; };
@@ -104,6 +126,48 @@
 		1034062514C426C20049DE5D /* WorkTImeDecideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkTImeDecideViewController.xib; sourceTree = "<group>"; };
 		1034062614C426C20049DE5D /* WorkTImeDecideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkTImeDecideViewController.h; sourceTree = "<group>"; };
 		1034062714C426C20049DE5D /* WorkTImeDecideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkTImeDecideViewController.m; sourceTree = "<group>"; };
+		103AB46914D292730020F9E1 /* api.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = api.html; sourceTree = "<group>"; };
+		103AB46B14D292800020F9E1 /* json2.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = json2.js; sourceTree = "<group>"; };
+		103AB47014D2944A0020F9E1 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		103AB47114D2944A0020F9E1 /* MapDirectionsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDirectionsAppDelegate.h; sourceTree = "<group>"; };
+		103AB47214D2944A0020F9E1 /* MapDirectionsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDirectionsAppDelegate.m; sourceTree = "<group>"; };
+		103AB47314D2944A0020F9E1 /* MapDirectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDirectionsViewController.h; sourceTree = "<group>"; };
+		103AB47414D2944A0020F9E1 /* MapDirectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDirectionsViewController.m; sourceTree = "<group>"; };
+		103AB47514D2944A0020F9E1 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		103AB47614D2944A0020F9E1 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		103AB47714D2944A0020F9E1 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		103AB47814D2944A0020F9E1 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		103AB47914D2944A0020F9E1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		103AB47A14D2944A0020F9E1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		103AB47B14D2944A0020F9E1 /* RouteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteListViewController.h; sourceTree = "<group>"; };
+		103AB47C14D2944A0020F9E1 /* RouteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteListViewController.m; sourceTree = "<group>"; };
+		103AB47D14D2944A0020F9E1 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		103AB47E14D2944A0020F9E1 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		103AB47F14D2944A0020F9E1 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		103AB48014D2944A0020F9E1 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		103AB48114D2944A0020F9E1 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		103AB48214D2944A0020F9E1 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		103AB48314D2944A0020F9E1 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		103AB48414D2944A0020F9E1 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		103AB48514D2944A0020F9E1 /* UICGClientGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICGClientGeocoder.h; sourceTree = "<group>"; };
+		103AB48614D2944A0020F9E1 /* UICGClientGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICGClientGeocoder.m; sourceTree = "<group>"; };
+		103AB48714D2944A0020F9E1 /* UICGDirections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICGDirections.h; sourceTree = "<group>"; };
+		103AB48814D2944A0020F9E1 /* UICGDirections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICGDirections.m; sourceTree = "<group>"; };
+		103AB48914D2944A0020F9E1 /* UICGDirectionsOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICGDirectionsOptions.h; sourceTree = "<group>"; };
+		103AB48A14D2944A0020F9E1 /* UICGDirectionsOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICGDirectionsOptions.m; sourceTree = "<group>"; };
+		103AB48B14D2944A0020F9E1 /* UICGoogleMapsAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICGoogleMapsAPI.h; sourceTree = "<group>"; };
+		103AB48C14D2944A0020F9E1 /* UICGoogleMapsAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICGoogleMapsAPI.m; sourceTree = "<group>"; };
+		103AB48D14D2944A0020F9E1 /* UICGPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICGPolyline.h; sourceTree = "<group>"; };
+		103AB48E14D2944A0020F9E1 /* UICGPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICGPolyline.m; sourceTree = "<group>"; };
+		103AB48F14D2944A0020F9E1 /* UICGRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICGRoute.h; sourceTree = "<group>"; };
+		103AB49014D2944A0020F9E1 /* UICGRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICGRoute.m; sourceTree = "<group>"; };
+		103AB49114D2944A0020F9E1 /* UICGStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICGStep.h; sourceTree = "<group>"; };
+		103AB49214D2944A0020F9E1 /* UICGStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICGStep.m; sourceTree = "<group>"; };
+		103AB49314D2944A0020F9E1 /* UICRouteAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICRouteAnnotation.h; sourceTree = "<group>"; };
+		103AB49414D2944A0020F9E1 /* UICRouteAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICRouteAnnotation.m; sourceTree = "<group>"; };
+		103AB49514D2944A0020F9E1 /* UICRouteOverlayMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICRouteOverlayMapView.h; sourceTree = "<group>"; };
+		103AB49614D2944A0020F9E1 /* UICRouteOverlayMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICRouteOverlayMapView.m; sourceTree = "<group>"; };
+		103AB4AD14D2999B0020F9E1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		112079A114BB291B008B2E86 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		1144E8FE14AB221C004017D2 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Libraries/TapkuLibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = Libraries/TapkuLibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
@@ -156,6 +220,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				103AB4AE14D2999B0020F9E1 /* CoreLocation.framework in Frameworks */,
 				11B49F7214CF0D42003E4CE0 /* libsqlite3.0.dylib in Frameworks */,
 				117AA0E414C41E7C00153C9D /* EventKitUI.framework in Frameworks */,
 				112079A214BB291B008B2E86 /* EventKit.framework in Frameworks */,
@@ -215,6 +280,61 @@
 			name = TableParts;
 			sourceTree = "<group>";
 		};
+		103AB46814D292440020F9E1 /* References */ = {
+			isa = PBXGroup;
+			children = (
+				103AB46B14D292800020F9E1 /* json2.js */,
+				103AB46914D292730020F9E1 /* api.html */,
+			);
+			name = References;
+			sourceTree = "<group>";
+		};
+		103AB46F14D293EA0020F9E1 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				103AB47014D2944A0020F9E1 /* JSON.h */,
+				103AB47114D2944A0020F9E1 /* MapDirectionsAppDelegate.h */,
+				103AB47214D2944A0020F9E1 /* MapDirectionsAppDelegate.m */,
+				103AB47314D2944A0020F9E1 /* MapDirectionsViewController.h */,
+				103AB47414D2944A0020F9E1 /* MapDirectionsViewController.m */,
+				103AB47514D2944A0020F9E1 /* NSObject+SBJSON.h */,
+				103AB47614D2944A0020F9E1 /* NSObject+SBJSON.m */,
+				103AB47714D2944A0020F9E1 /* NSString+SBJSON.h */,
+				103AB47814D2944A0020F9E1 /* NSString+SBJSON.m */,
+				103AB47914D2944A0020F9E1 /* RootViewController.h */,
+				103AB47A14D2944A0020F9E1 /* RootViewController.m */,
+				103AB47B14D2944A0020F9E1 /* RouteListViewController.h */,
+				103AB47C14D2944A0020F9E1 /* RouteListViewController.m */,
+				103AB47D14D2944A0020F9E1 /* SBJSON.h */,
+				103AB47E14D2944A0020F9E1 /* SBJSON.m */,
+				103AB47F14D2944A0020F9E1 /* SBJsonBase.h */,
+				103AB48014D2944A0020F9E1 /* SBJsonBase.m */,
+				103AB48114D2944A0020F9E1 /* SBJsonParser.h */,
+				103AB48214D2944A0020F9E1 /* SBJsonParser.m */,
+				103AB48314D2944A0020F9E1 /* SBJsonWriter.h */,
+				103AB48414D2944A0020F9E1 /* SBJsonWriter.m */,
+				103AB48514D2944A0020F9E1 /* UICGClientGeocoder.h */,
+				103AB48614D2944A0020F9E1 /* UICGClientGeocoder.m */,
+				103AB48714D2944A0020F9E1 /* UICGDirections.h */,
+				103AB48814D2944A0020F9E1 /* UICGDirections.m */,
+				103AB48914D2944A0020F9E1 /* UICGDirectionsOptions.h */,
+				103AB48A14D2944A0020F9E1 /* UICGDirectionsOptions.m */,
+				103AB48B14D2944A0020F9E1 /* UICGoogleMapsAPI.h */,
+				103AB48C14D2944A0020F9E1 /* UICGoogleMapsAPI.m */,
+				103AB48D14D2944A0020F9E1 /* UICGPolyline.h */,
+				103AB48E14D2944A0020F9E1 /* UICGPolyline.m */,
+				103AB48F14D2944A0020F9E1 /* UICGRoute.h */,
+				103AB49014D2944A0020F9E1 /* UICGRoute.m */,
+				103AB49114D2944A0020F9E1 /* UICGStep.h */,
+				103AB49214D2944A0020F9E1 /* UICGStep.m */,
+				103AB49314D2944A0020F9E1 /* UICRouteAnnotation.h */,
+				103AB49414D2944A0020F9E1 /* UICRouteAnnotation.m */,
+				103AB49514D2944A0020F9E1 /* UICRouteOverlayMapView.h */,
+				103AB49614D2944A0020F9E1 /* UICRouteOverlayMapView.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		1144E8FF14AB221C004017D2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,15 +363,14 @@
 		1181DF0B14AB17F9001E7780 = {
 			isa = PBXGroup;
 			children = (
+				103AB4AD14D2999B0020F9E1 /* CoreLocation.framework */,
 				11B49F7114CF0D42003E4CE0 /* libsqlite3.0.dylib */,
-				117AA0E314C41E7C00153C9D /* EventKitUI.framework */,
-				112079A114BB291B008B2E86 /* EventKit.framework */,
-				1144E90F14AB2306004017D2 /* MapKit.framework */,
-				1144E91014AB2306004017D2 /* QuartzCore.framework */,
 				1181DF2014AB17F9001E7780 /* SisSis */,
 				1181DF4214AB17F9001E7780 /* SisSisTests */,
 				1181DF1914AB17F9001E7780 /* Frameworks */,
 				1181DF1714AB17F9001E7780 /* Products */,
+				103AB46F14D293EA0020F9E1 /* Classes */,
+				103AB46814D292440020F9E1 /* References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -267,6 +386,10 @@
 		1181DF1914AB17F9001E7780 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				117AA0E314C41E7C00153C9D /* EventKitUI.framework */,
+				112079A114BB291B008B2E86 /* EventKit.framework */,
+				1144E90F14AB2306004017D2 /* MapKit.framework */,
+				1144E91014AB2306004017D2 /* QuartzCore.framework */,
 				1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */,
 				1144E8FE14AB221C004017D2 /* TapkuLibrary.xcodeproj */,
 				1181DF1A14AB17F9001E7780 /* UIKit.framework */,
@@ -463,6 +586,7 @@
 				101B522414CABF92005534FD /* DeparturePositionDecideViewController.xib in Resources */,
 				11707C3514CC71B1005632E1 /* EventListViewController.xib in Resources */,
 				11B49F6714CD1A2A003E4CE0 /* EventListCell.xib in Resources */,
+				103AB46A14D292730020F9E1 /* api.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +639,26 @@
 				11B49F8F14CF20C6003E4CE0 /* FMDatabase.m in Sources */,
 				11B49F9014CF20C6003E4CE0 /* FMDatabaseAdditions.m in Sources */,
 				11B49F9214CF20C6003E4CE0 /* FMResultSet.m in Sources */,
+				103AB46C14D292800020F9E1 /* json2.js in Sources */,
+				103AB49714D2944A0020F9E1 /* MapDirectionsAppDelegate.m in Sources */,
+				103AB49814D2944A0020F9E1 /* MapDirectionsViewController.m in Sources */,
+				103AB49914D2944A0020F9E1 /* NSObject+SBJSON.m in Sources */,
+				103AB49A14D2944A0020F9E1 /* NSString+SBJSON.m in Sources */,
+				103AB49B14D2944A0020F9E1 /* RootViewController.m in Sources */,
+				103AB49C14D2944A0020F9E1 /* RouteListViewController.m in Sources */,
+				103AB49D14D2944A0020F9E1 /* SBJSON.m in Sources */,
+				103AB49E14D2944A0020F9E1 /* SBJsonBase.m in Sources */,
+				103AB49F14D2944A0020F9E1 /* SBJsonParser.m in Sources */,
+				103AB4A014D2944A0020F9E1 /* SBJsonWriter.m in Sources */,
+				103AB4A114D2944A0020F9E1 /* UICGClientGeocoder.m in Sources */,
+				103AB4A214D2944A0020F9E1 /* UICGDirections.m in Sources */,
+				103AB4A314D2944A0020F9E1 /* UICGDirectionsOptions.m in Sources */,
+				103AB4A414D2944A0020F9E1 /* UICGoogleMapsAPI.m in Sources */,
+				103AB4A514D2944A0020F9E1 /* UICGPolyline.m in Sources */,
+				103AB4A614D2944A0020F9E1 /* UICGRoute.m in Sources */,
+				103AB4A714D2944A0020F9E1 /* UICGStep.m in Sources */,
+				103AB4A814D2944A0020F9E1 /* UICRouteAnnotation.m in Sources */,
+				103AB4A914D2944A0020F9E1 /* UICRouteOverlayMapView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +759,10 @@
 		1181DF4F14AB17FA001E7780 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SisSis/SisSis-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -632,6 +780,10 @@
 		1181DF5014AB17FA001E7780 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SisSis/SisSis-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;

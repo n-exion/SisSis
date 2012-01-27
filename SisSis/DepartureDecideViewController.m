@@ -9,6 +9,10 @@
 #import "DepartureDecideViewController.h"
 #import "DeparturePositionDecideViewController.h"
 
+#import "UICGDirections.h"
+#import "UICRouteAnnotation.h"
+
+
 @implementation DepartureData
 
 @synthesize departureTime;
@@ -238,7 +242,7 @@
     switch(indexPath.row){
       case 0:
         cell.textLabel.text = NSLocalizedString(@"出発時刻", nil);
-        cell.detailTextLabel.text = @"具体的な時間";
+        cell.detailTextLabel.text = @"を計算する";
         break;
       case 1:
         cell.textLabel.text = NSLocalizedString(@"到着時刻", nil);
@@ -295,6 +299,50 @@
     
     [self.navigationController pushViewController:self.departurePositionDecideViewController animated:YES];
   }
+  //検索開始が呼ばれたら
+  if(indexPath.section == 2 && indexPath.row == 0){
+    NSString* startPoint = departureData.departurePosition;
+    NSString* endPoint = departureData.arrivalPosition;
+    
+    UICGDirections *directions = [UICGDirections sharedDirections];
+    directions.delegate = self;
+    UICGDirectionsOptions* options = [[[UICGDirectionsOptions alloc] init] autorelease];
+    //TODO: 交通機関をここで切り替えなければいけない
+    options.travelMode = UICGTravelModeDriving; //UICGTravelModeWalking
+    
+    [directions loadWithStartPoint:startPoint endPoint:endPoint options:options];
+
+  }
 }
+
+//loadWithStartPointを呼んで終わったらここになります
+- (void) directionsDidUpdateDirections:(UICGDirections *)directions{
+ NSNumberFormatter* fmt = [[[NSNumberFormatter alloc] init] autorelease];
+  
+  /*
+   NSArray* keys = [directions.distance allKeys];
+   NSArray* values = [directions.distance allValues];
+   //NSLog([keys objectAtIndex:0]);
+   //NSLog([fmt stringForObjectValue:[values objectAtIndex:0]]);
+   NSLog([fmt stringForObjectValue:[directions.distance objectForKey:@"meters"]]);
+   
+   NSArray* keys2 = [directions.duration allKeys];
+   NSLog([keys2 objectAtIndex:0]);
+   */
+  
+  NSLog([fmt stringForObjectValue:[directions.duration objectForKey:@"seconds"]]);
+  NSString* durationSecondStr = [fmt stringForObjectValue:[directions.duration objectForKey:@"seconds"]];
+  
+  UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Warning" 
+                                                   message:durationSecondStr
+                                                  delegate:self 
+                                         cancelButtonTitle:@"OK" 
+                                         otherButtonTitles: nil] autorelease];
+  [alert show];
+
+  
+  //durationText.text = [NSString stringWithFormat:@"%@から%@までにかかる時間は%@秒です",startPoint,endPoint,durationSecondStr];
+}
+
 
 @end

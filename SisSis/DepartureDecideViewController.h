@@ -7,6 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+
+#import "UICGDirections.h"
+
+
 
 @class DetailViewController;
 @class DeparturePositionDecideViewController;
@@ -33,7 +38,7 @@
 @end
 
 
-@interface DepartureDecideViewController : UITableViewController{
+@interface DepartureDecideViewController : UITableViewController<UICGDirectionsDelegate,MKMapViewDelegate>{
 	UISegmentedControl *travelModeSegment;
   DeparturePositionDecideViewController* departurePositionDecideViewController;
   DepartureData *departureData;
