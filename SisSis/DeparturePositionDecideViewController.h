@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class DepartureDecideViewController;
 
-@interface DeparturePositionDecideViewController : UITableViewController
+@interface DeparturePositionDecideViewController : UITableViewController{
+  DepartureDecideViewController* departureDecideViewController;
+}
+
+-(void) setDeparturePositionDecideViewController:(DepartureDecideViewController*)controller;
 
 @end

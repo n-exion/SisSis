@@ -22,7 +22,7 @@
 @implementation DepartureDecideViewController
 
 @synthesize travelModeSegment;
-@synthesize startPositionDecideViewController;
+@synthesize departurePositionDecideViewController;
 @synthesize departureData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -41,8 +41,8 @@
   
   [sectionDictionary setObject:[NSNumber numberWithInt:1] forKey:@"DeparturePosition"];
   [rowDictionary setObject:[NSNumber numberWithInt:0] forKey:@"DeparturePosition"];
-  [sectionDictionary setObject:[NSNumber numberWithInt:1] forKey:@"DeparturePosition"];
-  [rowDictionary setObject:[NSNumber numberWithInt:1] forKey:@"DeparturePosition"];
+  [sectionDictionary setObject:[NSNumber numberWithInt:1] forKey:@"ArrivalPosition"];
+  [rowDictionary setObject:[NSNumber numberWithInt:1] forKey:@"ArrivalPosition"];
   [sectionDictionary setObject:[NSNumber numberWithInt:2] forKey:@"DepartureTime"];
   [rowDictionary setObject:[NSNumber numberWithInt:0] forKey:@"DepartureTime"];
   [sectionDictionary setObject:[NSNumber numberWithInt:2] forKey:@"ArrivalTime"];
@@ -59,7 +59,7 @@
 
 - (void)dealloc
 {
-  [startPositionDecideViewController release];
+  [departurePositionDecideViewController release];
   [departureData release];
   [sectionDictionary release];
   [rowDictionary release];
@@ -72,8 +72,8 @@
 - (void)updateDepartureData:(DepartureData *)new_departureData{
   self.departureData = new_departureData;
   
-  NSInteger section = [[sectionDictionary objectForKey:@"DeparturePostion"] integerValue];
-  NSInteger row = [[rowDictionary objectForKey:@"DeparturePostion"] integerValue];
+  NSInteger section = [[sectionDictionary objectForKey:@"DeparturePosition"] integerValue];
+  NSInteger row = [[rowDictionary objectForKey:@"DeparturePosition"] integerValue];
   UITableViewCell* targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
   targetCell.detailTextLabel.text = self.departureData.departurePosition;
   [targetCell setNeedsLayout];
@@ -268,52 +268,17 @@
   return nil;
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source.
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
- }   
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   //出発場所を決めるなら
   if(indexPath.section == 1 && indexPath.row == 0){
-    if(!self.startPositionDecideViewController){
-      self.startPositionDecideViewController = [[[DeparturePositionDecideViewController alloc] initWithNibName:@"DeparturePositionDecideViewController" bundle:nil] autorelease];
+    if(!self.departurePositionDecideViewController){
+      self.departurePositionDecideViewController = [[[DeparturePositionDecideViewController alloc] initWithNibName:@"DeparturePositionDecideViewController" bundle:nil] autorelease];
+      [self.departurePositionDecideViewController setDeparturePositionDecideViewController:self];
     }
-    [self.navigationController pushViewController:self.startPositionDecideViewController animated:YES];
+    
+    [self.navigationController pushViewController:self.departurePositionDecideViewController animated:YES];
   }
 }
 

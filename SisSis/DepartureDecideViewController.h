@@ -35,7 +35,7 @@
 
 @interface DepartureDecideViewController : UITableViewController{
 	UISegmentedControl *travelModeSegment;
-  DeparturePositionDecideViewController* startPositionDecideViewController;
+  DeparturePositionDecideViewController* departurePositionDecideViewController;
   DepartureData *depatureData;
   
   NSMutableDictionary* sectionDictionary;
@@ -43,7 +43,7 @@
   NSDateFormatter* dateFormat;
 }
 
-@property (strong, nonatomic) DeparturePositionDecideViewController *startPositionDecideViewController;
+@property (strong, nonatomic) DeparturePositionDecideViewController *departurePositionDecideViewController;
 @property (strong,nonatomic) UISegmentedControl* travelModeSegment;
 @property (strong,nonatomic) DepartureData* departureData;
 

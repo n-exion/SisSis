@@ -7,6 +7,7 @@
 //
 
 #import "DeparturePositionDecideViewController.h"
+#import "DepartureDecideViewController.h"
 
 @implementation DeparturePositionDecideViewController
 
@@ -17,6 +18,10 @@
     // Custom initialization
   }
   return self;
+}
+
+-(void)setDeparturePositionDecideViewController:(DepartureDecideViewController *)controller{
+  departureDecideViewController = controller;
 }
 
 - (void)didReceiveMemoryWarning
@@ -174,6 +179,30 @@
    [self.navigationController pushViewController:detailViewController animated:YES];
    [detailViewController release];
    */
+  int section = indexPath.section;
+  
+  //位置を指定したら前の画面に戻りつつ、場所入力
+  if(section == 1){
+    DepartureData* data = departureDecideViewController.departureData;
+    
+    UITableViewCell* targetCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NSString* positionName = targetCell.textLabel.text;
+    
+    data.departurePosition = positionName;
+    [departureDecideViewController updateDepartureData:data];
+    [self.navigationController popViewControllerAnimated:YES];
+
+    /*
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Warning" 
+                                                    message:positionName
+                                                   delegate:self 
+                                          cancelButtonTitle:@"OK" 
+                                          otherButtonTitles: nil] autorelease];
+    [alert show];
+     */
+    
+    
+  }
 }
 
 @end
