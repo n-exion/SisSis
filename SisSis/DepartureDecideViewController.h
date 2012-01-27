@@ -19,8 +19,8 @@
   
   NSString* arrivalPosition;
   NSDate* arrivalTime;
-  
   NSDate* startTime;
+
 }
 
 @property (strong,nonatomic) NSString* departurePosition;
@@ -40,6 +40,7 @@
   
   NSMutableDictionary* sectionDictionary;
   NSMutableDictionary* rowDictionary;
+  NSDateFormatter* dateFormat;
 }
 
 @property (strong, nonatomic) DeparturePositionDecideViewController *startPositionDecideViewController;

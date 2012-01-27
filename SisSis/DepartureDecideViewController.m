@@ -35,6 +35,9 @@
   depatureData = [[DepartureData alloc] init];
   sectionDictionary = [[NSMutableDictionary alloc] init];
   rowDictionary = [[NSMutableDictionary alloc] init];
+  dateFormat = [[NSDateFormatter alloc] init];
+  [dateFormat setDateFormat:@"MM-dd hh:mm"];
+
   
   [sectionDictionary setObject:[NSNumber numberWithInt:1] forKey:@"DeparturePosition"];
   [rowDictionary setObject:[NSNumber numberWithInt:0] forKey:@"DeparturePosition"];
@@ -60,17 +63,14 @@
   [departureData release];
   [sectionDictionary release];
   [rowDictionary release];
+  [dateFormat release];
   [super dealloc];
 }
 
 
 //departureDataの代入とともにテーブルを更新する
 - (void)updateDepartureData:(DepartureData *)new_departureData{
-  NSDateFormatter* dateFormat = [[[NSDateFormatter alloc] init] autorelease];
-  [dateFormat setDateFormat:@"MM-dd hh:mm"];
-
   self.departureData = new_departureData;
-  NSLog([NSString stringWithFormat:@"%d¥n",[rowDictionary count]]);
   
   NSInteger section = [[sectionDictionary objectForKey:@"DeparturePostion"] integerValue];
   NSInteger row = [[rowDictionary objectForKey:@"DeparturePostion"] integerValue];
@@ -237,7 +237,14 @@
         break;
       case 2:
         cell.textLabel.text = NSLocalizedString(@"開始時刻", nil);
-        cell.detailTextLabel.text = @"具体的な時間";
+        
+        if(self.departureData.startTime){
+          cell.detailTextLabel.text = [dateFormat stringFromDate:self.departureData.startTime];
+        }
+        else{
+          cell.detailTextLabel.text = @"具体的な時間";
+        }
+        
         cell.detailTextLabel.textColor = [UIColor grayColor];
         cell.accessoryType = UITableViewCellAccessoryNone;
         break;
