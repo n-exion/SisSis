@@ -242,7 +242,22 @@
         break;
       case 1:
         cell.textLabel.text = NSLocalizedString(@"到着時刻", nil);
-        cell.detailTextLabel.text = @"具体的な時間";
+
+        if(self.departureData.arrivalTime){
+          cell.detailTextLabel.text = @"具体的な時間";
+          //TODO: これのelseがうまってない  
+          if(self.departureData.startTime){
+            //開始時間の5分前
+            //TODO: これをカスタマイズできるようにする(ダイヤルかな)
+            NSCalendar* calendar = [NSCalendar currentCalendar];
+            NSDateComponents* diff = [[[NSDateComponents alloc] init] autorelease];
+            diff.minute = -5;
+            self.departureData.arrivalTime = [calendar dateByAddingComponents:diff toDate:self.departureData.startTime options:0];
+          }
+        }
+        
+        cell.detailTextLabel.text = [dateFormat stringFromDate:self.departureData.arrivalTime];
+        
         break;
       case 2:
         cell.textLabel.text = NSLocalizedString(@"開始時刻", nil);

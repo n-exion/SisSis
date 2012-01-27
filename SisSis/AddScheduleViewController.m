@@ -60,7 +60,7 @@
 - (void) updateStartTime:(NSDate*)start{
   self.startTime = start;
   
-  DoubleRowCell* doubleCell =  [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+  DoubleRowCell* doubleCell =  (DoubleRowCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
   doubleCell.startTimeField.text = [dateFormat stringFromDate:start];
   [doubleCell setNeedsLayout];
 }
@@ -68,7 +68,7 @@
 - (void) updateEndTime:(NSDate*)end{
   self.endTime = end;
   
-  DoubleRowCell* doubleCell =  [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+  DoubleRowCell* doubleCell =  (DoubleRowCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
   doubleCell.endTimeField.text = [dateFormat stringFromDate:end];
   [doubleCell setNeedsLayout];
 }
