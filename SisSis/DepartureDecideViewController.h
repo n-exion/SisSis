@@ -36,7 +36,7 @@
 @interface DepartureDecideViewController : UITableViewController{
 	UISegmentedControl *travelModeSegment;
   DeparturePositionDecideViewController* departurePositionDecideViewController;
-  DepartureData *depatureData;
+  DepartureData *departureData;
   
   NSMutableDictionary* sectionDictionary;
   NSMutableDictionary* rowDictionary;

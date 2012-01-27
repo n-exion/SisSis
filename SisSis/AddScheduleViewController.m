@@ -292,24 +292,19 @@
     //TODO: 到着時刻入力を促す
     if(!self.departureDecideViewController){
       self.departureDecideViewController = [[[DepartureDecideViewController alloc] initWithNibName:@"DepartureDecideViewController" bundle:nil] autorelease];
+      
     }
     
-    DepartureData* data = [[[DepartureData alloc] init] autorelease];
-    data.departurePosition = @"自宅";
+    DepartureData* data = self.departureDecideViewController.departureData;
+    if(!data.departurePosition){
+      data.departurePosition = @"自宅";
+    }
+    if(!data.arrivalPosition){
+      data.arrivalPosition = positionCell.inputField.text;
+    }
+    
+    
     data.departureTime = [self.startTime copy];
-    
-    //arrivalPosition
-    /*
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" 
-                                                    message:@"場所を指定してください"
-                                                   delegate:self 
-                                          cancelButtonTitle:@"OK" 
-                                          otherButtonTitles: nil];
-    
-    [alert show];
-    [alert release];
-     */
-    data.arrivalPosition = positionCell.inputField.text;
     data.arrivalTime = [self.startTime copy];
     data.startTime = [self.startTime copy];
     

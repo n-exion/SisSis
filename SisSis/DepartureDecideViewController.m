@@ -32,7 +32,7 @@
     self.title = NSLocalizedString(@"Master", @"Master");
   }
   
-  depatureData = [[DepartureData alloc] init];
+  departureData = [[DepartureData alloc] init];
   sectionDictionary = [[NSMutableDictionary alloc] init];
   rowDictionary = [[NSMutableDictionary alloc] init];
   dateFormat = [[NSDateFormatter alloc] init];
