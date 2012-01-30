@@ -15,7 +15,7 @@
 @class ScheduleData;
 
 //EventKit
-@interface AddScheduleViewController : UITableViewController{
+@interface AddScheduleViewController : UITableViewController<UITextFieldDelegate>{
   EditableCell* editableCell;
   WorkTimeDecideViewController* workTimeDecideController;
   DepartureDecideViewController* departureDecideViewController;

@@ -195,6 +195,12 @@
   return cell;
 }
 
+//場所を変更したときのみ呼ばれるようになってる
+-(void) textFieldDidEndEditing:(UITextField *)textField{
+  schedule.position = textField.text;
+  schedule.arrivalPosition = textField.text;
+
+}
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -210,6 +216,7 @@
       case 1:
         positionCell = [self createEditableCell:@"場所" inView:tableView];
         positionCell.inputField.text = self->schedule.position;
+        positionCell.inputField.delegate = self;
         return positionCell;
     }
   }
@@ -294,6 +301,8 @@
   schedule.title = ((EditableCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]).inputField.text;
   schedule.position = ((EditableCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]]).inputField.text;
   
+  //((EditableCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]).inputField.
+  
   //到着地点の処理. 本当はここじゃなくて場所の処理がおこった際にこの処理を行うべき
   if (schedule.arrivalPosition == nil){
     if (![schedule.position isEqualToString:@""]){
@@ -337,7 +346,9 @@
       return;
     }
     
+    [self.departureDecideViewController syncTableWithScheduleData];
     [self.navigationController pushViewController:self.departureDecideViewController animated:YES];
+    
   }
 }
 
