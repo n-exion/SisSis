@@ -10,6 +10,7 @@
 #import "DoubleRowCell.h"
 #import "DepartureDecideViewController.h"
 
+#import "ScheduleData.h"
 
 
 @implementation AddScheduleViewController
@@ -19,9 +20,7 @@
 @synthesize workTimeDecideController;
 @synthesize departureDecideViewController;
 
-
-@synthesize startTime;
-@synthesize endTime;
+@synthesize schedule;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,8 +30,11 @@
     self.title = @"予定の追加";
   }
   
-  //NSLog([NSString stringWithFormat:@"StartCount:%d",[listTableObj count]]);
-  //時刻の初期化処理
+  //登録するスケジュールデータの作成(初期値をここで与える)
+  schedule = [[ScheduleData alloc] init];
+  schedule.departurePosition = @"自宅";
+  schedule.departureTime = nil;
+  
   NSDate* now = [NSDate date];
   NSCalendar* calendar = [NSCalendar currentCalendar];
   
@@ -45,20 +47,24 @@
   
   diff.minute = -dateComps.minute;
   
-  self.startTime = [calendar dateByAddingComponents:diff toDate:now options:0];
+  //予定開始時間
+  schedule.startTime = [calendar dateByAddingComponents:diff toDate:now options:0];
   
   diff.hour = 2;
-  self.endTime = [calendar dateByAddingComponents:diff toDate:now options:0];
+  schedule.endTime = [calendar dateByAddingComponents:diff toDate:now options:0];
+
+  schedule.position = @"";
+  schedule.arrivalPosition = nil;
+  schedule.arrivalTime = nil;
   
   dateFormat = [[NSDateFormatter alloc] init];
   [dateFormat setDateFormat:@"MM-dd hh:mm"];
 
-  
   return self;
 }
 
 - (void) updateStartTime:(NSDate*)start{
-  self.startTime = start;
+  schedule.startTime = start;
   
   DoubleRowCell* doubleCell =  (DoubleRowCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
   doubleCell.startTimeField.text = [dateFormat stringFromDate:start];
@@ -66,11 +72,15 @@
 }
 
 - (void) updateEndTime:(NSDate*)end{
-  self.endTime = end;
+  schedule.endTime = end;
   
   DoubleRowCell* doubleCell =  (DoubleRowCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
   doubleCell.endTimeField.text = [dateFormat stringFromDate:end];
   [doubleCell setNeedsLayout];
+}
+
+- (NSString*) convertDateToString:(NSDate *)date{
+  return [dateFormat stringFromDate:date];
 }
 
 
@@ -80,6 +90,7 @@
   [workTimeDecideController release];
   [departureDecideViewController release];
   [dateFormat release];
+  [schedule release];
   [super dealloc];
 }
 
@@ -198,6 +209,7 @@
         return titleCell;
       case 1:
         positionCell = [self createEditableCell:@"場所" inView:tableView];
+        positionCell.inputField.text = self->schedule.position;
         return positionCell;
     }
   }
@@ -213,7 +225,7 @@
       cell = (DoubleRowCell*)doubleRowCell;
       //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    [cell setTime:self.startTime endTime:self.endTime];
+    [cell setTime:schedule.startTime endTime:schedule.endTime];
     
     return cell;
   }
@@ -230,7 +242,6 @@
     //cell.detailTextLabel.text = [NSString stringWithFormat:@"detailTextLabel - %d", indexPath.row];
     
     return cell;
-
   }
   
   
@@ -277,13 +288,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  //このタイミングでフォーム内容をデータscheduleに反映
+  //時間系は面倒だからsetTime系でやってる
+  //positionCell.inputField.text = self->schedule.position;
+  schedule.title = ((EditableCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]]).inputField.text;
+  schedule.position = ((EditableCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]]).inputField.text;
+  
+  //到着地点の処理. 本当はここじゃなくて場所の処理がおこった際にこの処理を行うべき
+  if (schedule.arrivalPosition == nil){
+    if (![schedule.position isEqualToString:@""]){
+      schedule.arrivalPosition = schedule.position;
+    }
+  }
+
   if(indexPath.section == 1){
-    
     if (!self.workTimeDecideController) {
       self.workTimeDecideController = [[[WorkTimeDecideViewController alloc] initWithNibName:@"WorkTimeDecideViewController" bundle:nil] autorelease];
+      [self.workTimeDecideController setAddScheduleController:self];
     }
     
-    [self.workTimeDecideController setAddScheduleController:self];
+    //初回のセットなら
+    if (schedule.arrivalTime == nil){
+      schedule.arrivalTime = schedule.startTime;
+    }
+
     [self.navigationController pushViewController:self.workTimeDecideController animated:YES];
   }
   
@@ -293,25 +321,23 @@
     if(!self.departureDecideViewController){
       self.departureDecideViewController = [[[DepartureDecideViewController alloc] initWithNibName:@"DepartureDecideViewController" bundle:nil] autorelease];
       
+      [self.departureDecideViewController setAddScheduleViewController:self];
+      
     }
     
-    DepartureData* data = self.departureDecideViewController.departureData;
-    if(!data.departurePosition){
-      data.departurePosition = @"自宅";
+    //目的地を入れないと進めない
+    if([positionCell.inputField.text isEqualToString:@""]){
+      schedule.arrivalPosition = positionCell.inputField.text;
+      UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Warning" 
+                                                       message:@"目的地を入力してください"
+                                                      delegate:self 
+                                             cancelButtonTitle:@"OK" 
+                                             otherButtonTitles: nil] autorelease];
+      [alert show];
+      return;
     }
-    if(!data.arrivalPosition){
-      data.arrivalPosition = positionCell.inputField.text;
-    }
-    
-    
-    data.departureTime = [self.startTime copy];
-    data.arrivalTime = [self.startTime copy];
-    data.startTime = [self.startTime copy];
     
     [self.navigationController pushViewController:self.departureDecideViewController animated:YES];
-    [self.departureDecideViewController updateDepartureData:data];
-
-
   }
 }
 

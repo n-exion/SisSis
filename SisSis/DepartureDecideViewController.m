@@ -12,22 +12,14 @@
 #import "UICGDirections.h"
 #import "UICRouteAnnotation.h"
 
+#import "AddScheduleViewController.h"
+#import "ScheduleData.h"
 
-@implementation DepartureData
-
-@synthesize departureTime;
-@synthesize departurePosition;
-@synthesize arrivalTime;
-@synthesize arrivalPosition;
-@synthesize startTime;
-
-@end
 
 @implementation DepartureDecideViewController
 
 @synthesize travelModeSegment;
 @synthesize departurePositionDecideViewController;
-@synthesize departureData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,12 +28,8 @@
     self.title = NSLocalizedString(@"Master", @"Master");
   }
   
-  departureData = [[DepartureData alloc] init];
   sectionDictionary = [[NSMutableDictionary alloc] init];
   rowDictionary = [[NSMutableDictionary alloc] init];
-  dateFormat = [[NSDateFormatter alloc] init];
-  [dateFormat setDateFormat:@"MM-dd hh:mm"];
-
   
   [sectionDictionary setObject:[NSNumber numberWithInt:1] forKey:@"DeparturePosition"];
   [rowDictionary setObject:[NSNumber numberWithInt:0] forKey:@"DeparturePosition"];
@@ -54,52 +42,50 @@
   [sectionDictionary setObject:[NSNumber numberWithInt:2] forKey:@"StartTime"];
   [rowDictionary setObject:[NSNumber numberWithInt:2] forKey:@"StartTime"];
   
-
-
-
-  
   return self;
+}
+
+- (void) setAddScheduleViewController:(AddScheduleViewController *)controller{
+  addController = controller;
 }
 
 - (void)dealloc
 {
   [departurePositionDecideViewController release];
-  [departureData release];
   [sectionDictionary release];
   [rowDictionary release];
-  [dateFormat release];
   [super dealloc];
 }
 
 
-//departureDataの代入とともにテーブルを更新する
-- (void)updateDepartureData:(DepartureData *)new_departureData{
-  self.departureData = new_departureData;
+//スケジュールデータとテーブルの内容を同期
+- (void)syncTableWithScheduleData{
+  ScheduleData* schedule = addController.schedule;
   
   NSInteger section = [[sectionDictionary objectForKey:@"DeparturePosition"] integerValue];
   NSInteger row = [[rowDictionary objectForKey:@"DeparturePosition"] integerValue];
   UITableViewCell* targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
-  targetCell.detailTextLabel.text = self.departureData.departurePosition;
+  targetCell.detailTextLabel.text = schedule.departurePosition;
   [targetCell setNeedsLayout];
   
   section = [[sectionDictionary objectForKey:@"StartTime"] integerValue];
   row = [[rowDictionary objectForKey:@"StartTime"] integerValue];
   targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
-  targetCell.detailTextLabel.text = [dateFormat stringFromDate:self.departureData.startTime];
+  targetCell.detailTextLabel.text = [addController convertDateToString:schedule.startTime];
   [targetCell setNeedsLayout];
 
   //arrivalPositionの更新
   section = [[sectionDictionary objectForKey:@"ArrivalPosition"] integerValue];
   row = [[rowDictionary objectForKey:@"ArrivalPosition"] integerValue];
   targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
-  targetCell.detailTextLabel.text = self.departureData.arrivalPosition;
+  targetCell.detailTextLabel.text = schedule.arrivalPosition;
   [targetCell setNeedsLayout];
   
   //departureTimeの更新
   section = [[sectionDictionary objectForKey:@"DepartureTime"] integerValue];
   row = [[rowDictionary objectForKey:@"DepartureTime"] integerValue];
   targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
-  targetCell.detailTextLabel.text = [dateFormat stringFromDate:self.departureData.departureTime];
+  targetCell.detailTextLabel.text = [addController convertDateToString:schedule.departureTime];
   [targetCell setNeedsLayout];
 
 }
@@ -215,18 +201,20 @@
     switch(indexPath.row){
       case 0:
         cell.textLabel.text = NSLocalizedString(@"出発地点", nil);
-        cell.detailTextLabel.text = @"具体的な場所";
+        
+        if (addController.schedule.departurePosition == nil){
+          addController.schedule.departurePosition = @"自宅";
+        }
+        cell.detailTextLabel.text = addController.schedule.departurePosition;
         
         break;
       case 1:
-        if(self.departureData.arrivalPosition){
-          cell.detailTextLabel.text = self.departureData.arrivalPosition;
+        if(addController.schedule.arrivalPosition == nil){
+          addController.schedule.arrivalPosition = addController.schedule.position;
         }
-        else{
-          cell.detailTextLabel.text = @"具体的な場所";        
-        }
-        cell.textLabel.text = NSLocalizedString(@"到着地点", nil);
 
+        cell.detailTextLabel.text = addController.schedule.arrivalPosition;
+        cell.textLabel.text = NSLocalizedString(@"到着地点", nil);
         break;
     }
 		cell.textLabel.textAlignment = UITextAlignmentCenter;
@@ -254,32 +242,21 @@
       case 1:
         cell.textLabel.text = NSLocalizedString(@"到着時刻", nil);
 
-        if(self.departureData.arrivalTime){
-          cell.detailTextLabel.text = @"具体的な時間";
-          //TODO: これのelseがうまってない  
-          if(self.departureData.startTime){
-            //開始時間の5分前
-            //TODO: これをカスタマイズできるようにする(ダイヤルかな)
-            NSCalendar* calendar = [NSCalendar currentCalendar];
-            NSDateComponents* diff = [[[NSDateComponents alloc] init] autorelease];
-            diff.minute = -5;
-            self.departureData.arrivalTime = [calendar dateByAddingComponents:diff toDate:self.departureData.startTime options:0];
-          }
+        if(addController.schedule.arrivalTime == nil){
+          NSCalendar* calendar = [NSCalendar currentCalendar];
+          NSDateComponents* diff = [[[NSDateComponents alloc] init] autorelease];
+          diff.minute = -5;
+          addController.schedule.arrivalTime = [calendar dateByAddingComponents:diff toDate:addController.schedule.startTime options:0];
+          //addController.schedule.arrivalTime = addController.schedule.startTime;
         }
-        
-        cell.detailTextLabel.text = [dateFormat stringFromDate:self.departureData.arrivalTime];
-        
+
+        cell.detailTextLabel.text = [addController convertDateToString:addController.schedule.arrivalTime];
         break;
+        
       case 2:
         cell.textLabel.text = NSLocalizedString(@"開始時刻", nil);
-        
-        if(self.departureData.startTime){
-          cell.detailTextLabel.text = [dateFormat stringFromDate:self.departureData.startTime];
-        }
-        else{
-          cell.detailTextLabel.text = @"具体的な時間";
-        }
-        
+        cell.detailTextLabel.text = [addController convertDateToString:addController.schedule.startTime];
+
         cell.detailTextLabel.textColor = [UIColor grayColor];
         cell.accessoryType = UITableViewCellAccessoryNone;
         break;
@@ -302,14 +279,15 @@
     if(!self.departurePositionDecideViewController){
       self.departurePositionDecideViewController = [[[DeparturePositionDecideViewController alloc] initWithNibName:@"DeparturePositionDecideViewController" bundle:nil] autorelease];
       [self.departurePositionDecideViewController setDeparturePositionDecideViewController:self];
+      [self.departurePositionDecideViewController setAddScheduleViewController:addController];
     }
     
     [self.navigationController pushViewController:self.departurePositionDecideViewController animated:YES];
   }
   //検索開始が呼ばれたら
   if(indexPath.section == 2 && indexPath.row == 0){
-    NSString* startPoint = departureData.departurePosition;
-    NSString* endPoint = departureData.arrivalPosition;
+    NSString* startPoint = addController.schedule.departurePosition;
+    NSString* endPoint = addController.schedule.arrivalPosition;
     
     UICGDirections *directions = [UICGDirections sharedDirections];
     directions.delegate = self;
@@ -344,22 +322,10 @@
   NSDateComponents* diff = [[[NSDateComponents alloc] init] autorelease];
   diff.second = -second;
   
-  DepartureData* data = self.departureData;
-  data.departureTime = [calendar dateByAddingComponents:diff toDate:self.departureData.arrivalTime options:0];
+  addController.schedule.departureTime= [calendar dateByAddingComponents:diff toDate:addController.schedule.arrivalTime options:0];
   
-  [self updateDepartureData:data];
+  [self syncTableWithScheduleData];
 
-  
-  /*
-  UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Warning" 
-                                                   message:durationSecondStr
-                                                  delegate:self 
-                                         cancelButtonTitle:@"OK" 
-                                         otherButtonTitles: nil] autorelease];
-  [alert show];*/
-
-  
-  //durationText.text = [NSString stringWithFormat:@"%@から%@までにかかる時間は%@秒です",startPoint,endPoint,durationSecondStr];
 }
 
 

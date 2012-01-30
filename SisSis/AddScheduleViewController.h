@@ -12,15 +12,16 @@
 #import "WorkTimeDecideViewController.h"
 #import "DepartureDecideViewController.h"
 
+@class ScheduleData;
+
 //EventKit
 @interface AddScheduleViewController : UITableViewController{
   EditableCell* editableCell;
   WorkTimeDecideViewController* workTimeDecideController;
   DepartureDecideViewController* departureDecideViewController;
   
-  NSDate* startTime;
-  NSDate* endTime;
   NSDateFormatter* dateFormat;
+  ScheduleData* schedule;
   
   EditableCell* titleCell;
   EditableCell* positionCell;
@@ -28,13 +29,13 @@
 
 @property (strong, nonatomic) IBOutlet EditableCell* editableCell;
 @property (strong, nonatomic) IBOutlet DoubleRowCell* doubleRowCell;
+@property (strong, nonatomic) ScheduleData* schedule;
 
 @property (strong) WorkTimeDecideViewController* workTimeDecideController;
 @property (strong) DepartureDecideViewController* departureDecideViewController;
-@property (strong) NSDate* startTime;
-@property (strong) NSDate* endTime;
 
 - (void) updateStartTime:(NSDate*)start;
 - (void) updateEndTime:(NSDate*)end;
+- (NSString*) convertDateToString:(NSDate*)date;
 
 @end

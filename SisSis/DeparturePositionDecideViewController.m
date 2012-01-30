@@ -8,6 +8,8 @@
 
 #import "DeparturePositionDecideViewController.h"
 #import "DepartureDecideViewController.h"
+#import "AddScheduleViewController.h"
+#import "ScheduleData.h"
 
 @implementation DeparturePositionDecideViewController
 
@@ -22,6 +24,10 @@
 
 -(void)setDeparturePositionDecideViewController:(DepartureDecideViewController *)controller{
   departureDecideViewController = controller;
+}
+
+-(void)setAddScheduleViewController:(AddScheduleViewController *)controller{
+  addController = controller;
 }
 
 - (void)didReceiveMemoryWarning
@@ -183,13 +189,11 @@
   
   //位置を指定したら前の画面に戻りつつ、場所入力
   if(section == 1){
-    DepartureData* data = departureDecideViewController.departureData;
-    
     UITableViewCell* targetCell = [self.tableView cellForRowAtIndexPath:indexPath];
     NSString* positionName = targetCell.textLabel.text;
     
-    data.departurePosition = positionName;
-    [departureDecideViewController updateDepartureData:data];
+    addController.schedule.departurePosition = positionName;
+    [departureDecideViewController syncTableWithScheduleData];
     [self.navigationController popViewControllerAnimated:YES];
 
     /*

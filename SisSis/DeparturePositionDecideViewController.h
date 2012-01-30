@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @class DepartureDecideViewController;
+@class AddScheduleViewController;
 
 @interface DeparturePositionDecideViewController : UITableViewController{
   DepartureDecideViewController* departureDecideViewController;
+  AddScheduleViewController* addController;
 }
 
 -(void) setDeparturePositionDecideViewController:(DepartureDecideViewController*)controller;
+-(void) setAddScheduleViewController:(AddScheduleViewController*)controller;
 
 @end

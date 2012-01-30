@@ -8,6 +8,7 @@
 
 #import "WorkTimeDecideViewController.h"
 #import "AddScheduleViewController.h"
+#import "ScheduleData.h"
 
 @implementation WorkTimeDecideViewController
 @synthesize DataTable;
@@ -31,7 +32,6 @@
   self.DataTable.delegate = self;
   self.DataTable.dataSource = self;
   
-  
   //datePicker関係
   selectedField = 0;
   
@@ -39,7 +39,6 @@
 
 -(void) setAddScheduleController: (AddScheduleViewController*) controller{
   self->addScheduleController = controller; 
-  [datePicker setDate:controller.startTime];
 }
 
 
@@ -52,14 +51,16 @@
   // e.g. self.myOutlet = nil;
 }
 
+
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-  [super viewDidAppear:animated];
+  UITableViewCell* cell = [self.DataTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+  cell.detailTextLabel.text = [addScheduleController convertDateToString:addScheduleController.schedule.startTime];
+  
+  cell = [self.DataTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+  cell.detailTextLabel.text = [addScheduleController convertDateToString:addScheduleController.schedule.endTime];
+  
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -86,10 +87,16 @@
   return 2;
 }
 
+//表示された後にデータを共有
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
   NSDate* startDate,*endDate;
-  startDate = self->addScheduleController.startTime;
-  endDate = self->addScheduleController.endTime;
+  startDate = self->addScheduleController.schedule.startTime;
+  endDate = self->addScheduleController.schedule.endTime;
   
   static NSString *CellIdentifier = @"Cell";
   
@@ -146,16 +153,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  // Navigation logic may go here. Create and push another view controller.
-  /*
-   <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-   // ...
-   // Pass the selected object to the new view controller.
-   [self.navigationController pushViewController:detailViewController animated:YES];
-   [detailViewController release];
-   */
-  
-  
   switch (indexPath.row){
     case 0:
       selectedField = 0;
@@ -168,11 +165,10 @@
   NSDate* target;
   switch (selectedField) {
     case 0:
-      target = self->addScheduleController.startTime;
+      target = addScheduleController.schedule.startTime;
       break;
-      
     case 1:
-      target = self->addScheduleController.endTime;
+      target = addScheduleController.schedule.endTime;
       break;
   }
   
