@@ -225,7 +225,14 @@
   }
   
   else if(indexPath.section == 2){
-    static NSString *CellIdentifier = @"CellValue2";
+    static NSString *CellIdentifier;
+    
+    if(indexPath.row == 0){
+      CellIdentifier = @"CellValu2AI";
+    }
+    else{
+      CellIdentifier = @"CellValue2";
+    }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -236,9 +243,16 @@
     
     switch(indexPath.row){
       case 0:
+      {
+        searchIndicator = [[[UIActivityIndicatorView alloc] init] autorelease];
+        searchIndicator.frame = CGRectMake(50, 0, 200,50);
+        [searchIndicator startAnimating];
+        
+        [cell.contentView addSubview:searchIndicator];
         cell.textLabel.text = NSLocalizedString(@"出発時刻", nil);
         cell.detailTextLabel.text = @"を計算する";
         break;
+      }
       case 1:
         cell.textLabel.text = NSLocalizedString(@"到着時刻", nil);
 
@@ -289,6 +303,10 @@
     NSString* startPoint = addController.schedule.departurePosition;
     NSString* endPoint = addController.schedule.arrivalPosition;
     
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
+    cell.detailTextLabel.text = @"";
+    [searchIndicator startAnimating];
+    
     UICGDirections *directions = [UICGDirections sharedDirections];
     directions.delegate = self;
     UICGDirectionsOptions* options = [[[UICGDirectionsOptions alloc] init] autorelease];
@@ -321,6 +339,8 @@
   NSCalendar* calendar = [NSCalendar currentCalendar];
   NSDateComponents* diff = [[[NSDateComponents alloc] init] autorelease];
   diff.second = -second;
+  
+  [searchIndicator stopAnimating];
   
   addController.schedule.departureTime= [calendar dateByAddingComponents:diff toDate:addController.schedule.arrivalTime options:0];
   

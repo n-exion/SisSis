@@ -25,6 +25,7 @@
   NSMutableDictionary* rowDictionary;
   
   AddScheduleViewController* addController;
+  UIActivityIndicatorView* searchIndicator;
 }
 
 @property (strong, nonatomic) DeparturePositionDecideViewController *departurePositionDecideViewController;
