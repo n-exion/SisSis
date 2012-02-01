@@ -42,6 +42,12 @@
 		103AB4B114D699530020F9E1 /* ScheduleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB4B014D699530020F9E1 /* ScheduleData.m */; };
 		10484BA214D949A300BD122C /* api.html in Resources */ = {isa = PBXBuildFile; fileRef = 10484BA014D949A300BD122C /* api.html */; };
 		10484BA314D949A300BD122C /* json2.js in Sources */ = {isa = PBXBuildFile; fileRef = 10484BA114D949A300BD122C /* json2.js */; };
+		10484BAB14D99D7400BD122C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BA514D99D7400BD122C /* Icon.png */; };
+		10484BAC14D99D7400BD122C /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BA614D99D7400BD122C /* add.png */; };
+		10484BAD14D99D7400BD122C /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BA714D99D7400BD122C /* remove.png */; };
+		10484BAE14D99D7400BD122C /* reticle.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BA814D99D7400BD122C /* reticle.png */; };
+		10484BAF14D99D7400BD122C /* map_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BA914D99D7400BD122C /* map_pin.png */; };
+		10484BB014D99D7400BD122C /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BAA14D99D7400BD122C /* list.png */; };
 		112079A214BB291B008B2E86 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112079A114BB291B008B2E86 /* EventKit.framework */; };
 		1144E90B14AB2225004017D2 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */; };
 		1144E90E14AB22EE004017D2 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E90714AB221C004017D2 /* libTapkuLibrary.a */; };
@@ -171,6 +177,12 @@
 		103AB4B014D699530020F9E1 /* ScheduleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleData.m; sourceTree = "<group>"; };
 		10484BA014D949A300BD122C /* api.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = api.html; sourceTree = "<group>"; };
 		10484BA114D949A300BD122C /* json2.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = json2.js; sourceTree = "<group>"; };
+		10484BA514D99D7400BD122C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		10484BA614D99D7400BD122C /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		10484BA714D99D7400BD122C /* remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove.png; sourceTree = "<group>"; };
+		10484BA814D99D7400BD122C /* reticle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reticle.png; sourceTree = "<group>"; };
+		10484BA914D99D7400BD122C /* map_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin.png; sourceTree = "<group>"; };
+		10484BAA14D99D7400BD122C /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
 		112079A114BB291B008B2E86 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		1144E8FE14AB221C004017D2 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Libraries/TapkuLibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = Libraries/TapkuLibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
@@ -285,6 +297,12 @@
 			children = (
 				10484BA014D949A300BD122C /* api.html */,
 				10484BA114D949A300BD122C /* json2.js */,
+				10484BA514D99D7400BD122C /* Icon.png */,
+				10484BA614D99D7400BD122C /* add.png */,
+				10484BA714D99D7400BD122C /* remove.png */,
+				10484BA814D99D7400BD122C /* reticle.png */,
+				10484BA914D99D7400BD122C /* map_pin.png */,
+				10484BAA14D99D7400BD122C /* list.png */,
 			);
 			name = References;
 			sourceTree = "<group>";
@@ -600,6 +618,12 @@
 				11707C3514CC71B1005632E1 /* EventListViewController.xib in Resources */,
 				11B49F6714CD1A2A003E4CE0 /* EventListCell.xib in Resources */,
 				10484BA214D949A300BD122C /* api.html in Resources */,
+				10484BAB14D99D7400BD122C /* Icon.png in Resources */,
+				10484BAC14D99D7400BD122C /* add.png in Resources */,
+				10484BAD14D99D7400BD122C /* remove.png in Resources */,
+				10484BAE14D99D7400BD122C /* reticle.png in Resources */,
+				10484BAF14D99D7400BD122C /* map_pin.png in Resources */,
+				10484BB014D99D7400BD122C /* list.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
