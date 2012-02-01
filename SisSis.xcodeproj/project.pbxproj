@@ -19,8 +19,6 @@
 		1034062414C425ED0049DE5D /* DoubleRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034062014C425ED0049DE5D /* DoubleRowCell.m */; };
 		1034062814C426C20049DE5D /* WorkTImeDecideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1034062514C426C20049DE5D /* WorkTImeDecideViewController.xib */; };
 		1034062914C426C20049DE5D /* WorkTImeDecideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034062714C426C20049DE5D /* WorkTImeDecideViewController.m */; };
-		103AB46A14D292730020F9E1 /* api.html in Resources */ = {isa = PBXBuildFile; fileRef = 103AB46914D292730020F9E1 /* api.html */; };
-		103AB46C14D292800020F9E1 /* json2.js in Sources */ = {isa = PBXBuildFile; fileRef = 103AB46B14D292800020F9E1 /* json2.js */; };
 		103AB49714D2944A0020F9E1 /* MapDirectionsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB47214D2944A0020F9E1 /* MapDirectionsAppDelegate.m */; };
 		103AB49814D2944A0020F9E1 /* MapDirectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB47414D2944A0020F9E1 /* MapDirectionsViewController.m */; };
 		103AB49914D2944A0020F9E1 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB47614D2944A0020F9E1 /* NSObject+SBJSON.m */; };
@@ -42,6 +40,8 @@
 		103AB4A914D2944A0020F9E1 /* UICRouteOverlayMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB49614D2944A0020F9E1 /* UICRouteOverlayMapView.m */; };
 		103AB4AE14D2999B0020F9E1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 103AB4AD14D2999B0020F9E1 /* CoreLocation.framework */; };
 		103AB4B114D699530020F9E1 /* ScheduleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB4B014D699530020F9E1 /* ScheduleData.m */; };
+		10484BA214D949A300BD122C /* api.html in Resources */ = {isa = PBXBuildFile; fileRef = 10484BA014D949A300BD122C /* api.html */; };
+		10484BA314D949A300BD122C /* json2.js in Sources */ = {isa = PBXBuildFile; fileRef = 10484BA114D949A300BD122C /* json2.js */; };
 		112079A214BB291B008B2E86 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112079A114BB291B008B2E86 /* EventKit.framework */; };
 		1144E90B14AB2225004017D2 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */; };
 		1144E90E14AB22EE004017D2 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E90714AB221C004017D2 /* libTapkuLibrary.a */; };
@@ -127,21 +127,19 @@
 		1034062514C426C20049DE5D /* WorkTImeDecideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkTImeDecideViewController.xib; sourceTree = "<group>"; };
 		1034062614C426C20049DE5D /* WorkTImeDecideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkTImeDecideViewController.h; sourceTree = "<group>"; };
 		1034062714C426C20049DE5D /* WorkTImeDecideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkTImeDecideViewController.m; sourceTree = "<group>"; };
-		103AB46914D292730020F9E1 /* api.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = api.html; sourceTree = "<group>"; };
-		103AB46B14D292800020F9E1 /* json2.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = json2.js; sourceTree = "<group>"; };
 		103AB47014D2944A0020F9E1 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		103AB47114D2944A0020F9E1 /* MapDirectionsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDirectionsAppDelegate.h; sourceTree = "<group>"; };
 		103AB47214D2944A0020F9E1 /* MapDirectionsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDirectionsAppDelegate.m; sourceTree = "<group>"; };
-		103AB47314D2944A0020F9E1 /* MapDirectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDirectionsViewController.h; sourceTree = "<group>"; };
-		103AB47414D2944A0020F9E1 /* MapDirectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDirectionsViewController.m; sourceTree = "<group>"; };
+		103AB47314D2944A0020F9E1 /* MapDirectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapDirectionsViewController.h; path = ../MapDirectionsViewController.h; sourceTree = "<group>"; };
+		103AB47414D2944A0020F9E1 /* MapDirectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapDirectionsViewController.m; path = ../MapDirectionsViewController.m; sourceTree = "<group>"; };
 		103AB47514D2944A0020F9E1 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		103AB47614D2944A0020F9E1 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
 		103AB47714D2944A0020F9E1 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
 		103AB47814D2944A0020F9E1 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
-		103AB47914D2944A0020F9E1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		103AB47A14D2944A0020F9E1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		103AB47B14D2944A0020F9E1 /* RouteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteListViewController.h; sourceTree = "<group>"; };
-		103AB47C14D2944A0020F9E1 /* RouteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteListViewController.m; sourceTree = "<group>"; };
+		103AB47914D2944A0020F9E1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ../RootViewController.h; sourceTree = "<group>"; };
+		103AB47A14D2944A0020F9E1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ../RootViewController.m; sourceTree = "<group>"; };
+		103AB47B14D2944A0020F9E1 /* RouteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RouteListViewController.h; path = ../RouteListViewController.h; sourceTree = "<group>"; };
+		103AB47C14D2944A0020F9E1 /* RouteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RouteListViewController.m; path = ../RouteListViewController.m; sourceTree = "<group>"; };
 		103AB47D14D2944A0020F9E1 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
 		103AB47E14D2944A0020F9E1 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
 		103AB47F14D2944A0020F9E1 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
@@ -171,6 +169,8 @@
 		103AB4AD14D2999B0020F9E1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		103AB4AF14D699530020F9E1 /* ScheduleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleData.h; sourceTree = "<group>"; };
 		103AB4B014D699530020F9E1 /* ScheduleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleData.m; sourceTree = "<group>"; };
+		10484BA014D949A300BD122C /* api.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = api.html; sourceTree = "<group>"; };
+		10484BA114D949A300BD122C /* json2.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = json2.js; sourceTree = "<group>"; };
 		112079A114BB291B008B2E86 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		1144E8FE14AB221C004017D2 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Libraries/TapkuLibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = Libraries/TapkuLibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
@@ -253,12 +253,7 @@
 		1034061414C425620049DE5D /* AddSchedule */ = {
 			isa = PBXGroup;
 			children = (
-				101B522014CABF91005534FD /* DeparturePositionDecideViewController.h */,
-				101B522114CABF92005534FD /* DeparturePositionDecideViewController.m */,
-				101B522214CABF92005534FD /* DeparturePositionDecideViewController.xib */,
-				101B521E14CABF77005534FD /* DepartureDecideViewController.xib */,
-				101B521B14CABF6B005534FD /* DepartureDecideViewController.m */,
-				101B521C14CABF6B005534FD /* DepartureDecideViewController.h */,
+				10484BA414D949AC00BD122C /* DepartureDecide */,
 				1034061A14C425D60049DE5D /* TableParts */,
 				1034061514C425BE0049DE5D /* AddScheduleViewController.h */,
 				1034061614C425BE0049DE5D /* AddScheduleViewController.m */,
@@ -288,8 +283,8 @@
 		103AB46814D292440020F9E1 /* References */ = {
 			isa = PBXGroup;
 			children = (
-				103AB46B14D292800020F9E1 /* json2.js */,
-				103AB46914D292730020F9E1 /* api.html */,
+				10484BA014D949A300BD122C /* api.html */,
+				10484BA114D949A300BD122C /* json2.js */,
 			);
 			name = References;
 			sourceTree = "<group>";
@@ -300,16 +295,10 @@
 				103AB47014D2944A0020F9E1 /* JSON.h */,
 				103AB47114D2944A0020F9E1 /* MapDirectionsAppDelegate.h */,
 				103AB47214D2944A0020F9E1 /* MapDirectionsAppDelegate.m */,
-				103AB47314D2944A0020F9E1 /* MapDirectionsViewController.h */,
-				103AB47414D2944A0020F9E1 /* MapDirectionsViewController.m */,
 				103AB47514D2944A0020F9E1 /* NSObject+SBJSON.h */,
 				103AB47614D2944A0020F9E1 /* NSObject+SBJSON.m */,
 				103AB47714D2944A0020F9E1 /* NSString+SBJSON.h */,
 				103AB47814D2944A0020F9E1 /* NSString+SBJSON.m */,
-				103AB47914D2944A0020F9E1 /* RootViewController.h */,
-				103AB47A14D2944A0020F9E1 /* RootViewController.m */,
-				103AB47B14D2944A0020F9E1 /* RouteListViewController.h */,
-				103AB47C14D2944A0020F9E1 /* RouteListViewController.m */,
 				103AB47D14D2944A0020F9E1 /* SBJSON.h */,
 				103AB47E14D2944A0020F9E1 /* SBJSON.m */,
 				103AB47F14D2944A0020F9E1 /* SBJsonBase.h */,
@@ -338,6 +327,25 @@
 				103AB49614D2944A0020F9E1 /* UICRouteOverlayMapView.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		10484BA414D949AC00BD122C /* DepartureDecide */ = {
+			isa = PBXGroup;
+			children = (
+				101B522014CABF91005534FD /* DeparturePositionDecideViewController.h */,
+				101B522114CABF92005534FD /* DeparturePositionDecideViewController.m */,
+				101B522214CABF92005534FD /* DeparturePositionDecideViewController.xib */,
+				101B521E14CABF77005534FD /* DepartureDecideViewController.xib */,
+				101B521B14CABF6B005534FD /* DepartureDecideViewController.m */,
+				101B521C14CABF6B005534FD /* DepartureDecideViewController.h */,
+				103AB47314D2944A0020F9E1 /* MapDirectionsViewController.h */,
+				103AB47414D2944A0020F9E1 /* MapDirectionsViewController.m */,
+				103AB47914D2944A0020F9E1 /* RootViewController.h */,
+				103AB47A14D2944A0020F9E1 /* RootViewController.m */,
+				103AB47B14D2944A0020F9E1 /* RouteListViewController.h */,
+				103AB47C14D2944A0020F9E1 /* RouteListViewController.m */,
+			);
+			name = DepartureDecide;
 			sourceTree = "<group>";
 		};
 		1144E8FF14AB221C004017D2 /* Products */ = {
@@ -591,7 +599,7 @@
 				101B522414CABF92005534FD /* DeparturePositionDecideViewController.xib in Resources */,
 				11707C3514CC71B1005632E1 /* EventListViewController.xib in Resources */,
 				11B49F6714CD1A2A003E4CE0 /* EventListCell.xib in Resources */,
-				103AB46A14D292730020F9E1 /* api.html in Resources */,
+				10484BA214D949A300BD122C /* api.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,7 +652,6 @@
 				11B49F8F14CF20C6003E4CE0 /* FMDatabase.m in Sources */,
 				11B49F9014CF20C6003E4CE0 /* FMDatabaseAdditions.m in Sources */,
 				11B49F9214CF20C6003E4CE0 /* FMResultSet.m in Sources */,
-				103AB46C14D292800020F9E1 /* json2.js in Sources */,
 				103AB49714D2944A0020F9E1 /* MapDirectionsAppDelegate.m in Sources */,
 				103AB49814D2944A0020F9E1 /* MapDirectionsViewController.m in Sources */,
 				103AB49914D2944A0020F9E1 /* NSObject+SBJSON.m in Sources */,
@@ -665,6 +672,7 @@
 				103AB4A814D2944A0020F9E1 /* UICRouteAnnotation.m in Sources */,
 				103AB4A914D2944A0020F9E1 /* UICRouteOverlayMapView.m in Sources */,
 				103AB4B114D699530020F9E1 /* ScheduleData.m in Sources */,
+				10484BA314D949A300BD122C /* json2.js in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

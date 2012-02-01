@@ -13,7 +13,7 @@
 
 	function initialize() {
 		if (GBrowserIsCompatible()) {
-			gdir = new GDirections(null, null);
+			gdir = new GDirections(null, document.getElementById("route"));
 			geocoder = new GClientGeocoder();
 			
 			GEvent.addListener(gdir, "load", onGDirectionsLoad);
@@ -77,7 +77,7 @@
         
 	</head>
 	<body onload="initialize()" onunload="GUnload()">
-    
+      <div id="route"></div>
 
 	</body>
 </html>
