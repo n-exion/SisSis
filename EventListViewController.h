@@ -29,5 +29,6 @@
 @property (retain, nonatomic) NSDate *nowDate;
 
 - (IBAction) changedSegmentedControlValue:(id)sender;
+- (IBAction) didPushedTodayButton:(id)sender;
 - (void) initKeyArray;
 @end

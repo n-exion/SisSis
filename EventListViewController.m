@@ -142,4 +142,31 @@
   }
 }
 
+// ツールバーで"今日"ボタンが押された
+- (IBAction) didPushedTodayButton:(id)sender{
+  int i;
+  for (i = 0; i < keyArray.count; i++) {
+    NSDate *d = [keyArray objectAtIndex:i];
+    if (d == nowDate) {
+      break;
+    }
+  }
+  NSIndexPath* indexPath = [NSIndexPath indexPathForRow:NSNotFound inSection:i];
+  switch (segControl.selectedSegmentIndex) {
+      // リスト形式
+    case 0:
+      // NSIndexPath で指定したセルが表示されるように UITableView をスクロールします。
+      [self.eventTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+      break;
+      // １日形式
+    case 1:
+      break;
+      // 月形式
+    case 2:
+      break;
+    default:
+      break;
+  }
+}
+
 @end
