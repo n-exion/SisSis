@@ -36,7 +36,6 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  //[self.monthView selectDate:[NSDate month]];
   segControl.selectedSegmentIndex = 2;
 }
 
@@ -69,8 +68,7 @@
 	NSDate *myTimeZoneDay = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone systemTimeZone]];
 	
 	NSLog(@"Date Selected: %@",myTimeZoneDay);
-	
-	[self.tableView reloadData];
+  [self.tableView reloadData];
 }
 - (void) calendarMonthView:(TKCalendarMonthView*)mv monthDidChange:(NSDate*)d animated:(BOOL)animated{
 	[super calendarMonthView:mv monthDidChange:d animated:animated];
@@ -111,8 +109,8 @@
   NSPredicate *p = [appDelegate.eventStore predicateForEventsWithStartDate:start endDate:end calendars:[NSArray arrayWithObject:cal]];
   NSArray *events = [appDelegate.eventStore eventsMatchingPredicate:p];
 	
-	dataArray = [NSMutableArray array];
-	dataDictionary = [NSMutableDictionary dictionary];
+	dataArray = [[NSMutableArray alloc] init];
+	dataDictionary = [[NSMutableDictionary alloc] init];
 	
 	NSDate *d = start;
 	while(YES){
