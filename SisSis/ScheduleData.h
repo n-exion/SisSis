@@ -26,6 +26,7 @@
   
   //タイトル
   NSString* title;
+  
 }
 
 @property (strong,nonatomic) NSString* departurePosition;

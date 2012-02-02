@@ -15,6 +15,8 @@
 #import "AddScheduleViewController.h"
 #import "ScheduleData.h"
 
+#import "MapDirectionsViewController.h"
+
 
 @implementation DepartureDecideViewController
 
@@ -299,6 +301,7 @@
     [self.navigationController pushViewController:self.departurePositionDecideViewController animated:YES];
   }
   //検索開始が呼ばれたら
+  /*
   if(indexPath.section == 2 && indexPath.row == 0){
     NSString* startPoint = addController.schedule.departurePosition;
     NSString* endPoint = addController.schedule.arrivalPosition;
@@ -311,11 +314,30 @@
     directions.delegate = self;
     UICGDirectionsOptions* options = [[[UICGDirectionsOptions alloc] init] autorelease];
     //TODO: 交通機関をここで切り替えなければいけない
-    options.travelMode = UICGTravelModeDriving; //UICGTravelModeWalking
+    //options.travelMode = UICGTravelModeDriving; //UICGTravelModeWalking
+    options.travelMode = UICGTravelModeWalking;
     
     [directions loadWithStartPoint:startPoint endPoint:endPoint options:options];
 
-  }
+  }*/
+  if (indexPath.section == 2 && indexPath.row == 0) {
+		MapDirectionsViewController *controller = [[MapDirectionsViewController alloc] init];
+		
+		controller.startPoint = addController.schedule.departurePosition;
+		controller.endPoint = addController.schedule.arrivalPosition;
+		
+		if (travelModeSegment.selectedSegmentIndex == 0) {
+			controller.travelMode = UICGTravelModeDriving;
+		} else {
+			controller.travelMode = UICGTravelModeWalking;
+		}
+		
+		[self.navigationController pushViewController:controller animated:YES];
+		[controller release];
+		
+		[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	}
+
 }
 
 //loadWithStartPointを呼んで終わったらここになります
