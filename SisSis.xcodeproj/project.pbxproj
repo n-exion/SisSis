@@ -49,6 +49,8 @@
 		10484BAF14D99D7400BD122C /* map_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BA914D99D7400BD122C /* map_pin.png */; };
 		10484BB014D99D7400BD122C /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BAA14D99D7400BD122C /* list.png */; };
 		112079A214BB291B008B2E86 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112079A114BB291B008B2E86 /* EventKit.framework */; };
+		1132270D14DA8E6600FB52B0 /* DayEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1132270B14DA8E6600FB52B0 /* DayEventViewController.m */; };
+		1132270E14DA8E6600FB52B0 /* DayEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1132270C14DA8E6600FB52B0 /* DayEventViewController.xib */; };
 		1144E90B14AB2225004017D2 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */; };
 		1144E90E14AB22EE004017D2 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E90714AB221C004017D2 /* libTapkuLibrary.a */; };
 		1144E91114AB2306004017D2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E90F14AB2306004017D2 /* MapKit.framework */; };
@@ -184,6 +186,9 @@
 		10484BA914D99D7400BD122C /* map_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin.png; sourceTree = "<group>"; };
 		10484BAA14D99D7400BD122C /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
 		112079A114BB291B008B2E86 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		1132270A14DA8E6600FB52B0 /* DayEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayEventViewController.h; sourceTree = "<group>"; };
+		1132270B14DA8E6600FB52B0 /* DayEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayEventViewController.m; sourceTree = "<group>"; };
+		1132270C14DA8E6600FB52B0 /* DayEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayEventViewController.xib; sourceTree = "<group>"; };
 		1144E8FE14AB221C004017D2 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Libraries/TapkuLibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = Libraries/TapkuLibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
 		1144E90F14AB2306004017D2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -384,6 +389,9 @@
 				11707C3114CC71B1005632E1 /* EventListViewController.h */,
 				11707C3214CC71B1005632E1 /* EventListViewController.m */,
 				11707C3314CC71B1005632E1 /* EventListViewController.xib */,
+				1132270A14DA8E6600FB52B0 /* DayEventViewController.h */,
+				1132270B14DA8E6600FB52B0 /* DayEventViewController.m */,
+				1132270C14DA8E6600FB52B0 /* DayEventViewController.xib */,
 				11707C2E14CC703F005632E1 /* RouteData.h */,
 				11707C2F14CC7040005632E1 /* RouteData.m */,
 				11B49F7014CF0C01003E4CE0 /* TableParts */,
@@ -624,6 +632,7 @@
 				10484BAE14D99D7400BD122C /* reticle.png in Resources */,
 				10484BAF14D99D7400BD122C /* map_pin.png in Resources */,
 				10484BB014D99D7400BD122C /* list.png in Resources */,
+				1132270E14DA8E6600FB52B0 /* DayEventViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,6 +706,7 @@
 				103AB4A914D2944A0020F9E1 /* UICRouteOverlayMapView.m in Sources */,
 				103AB4B114D699530020F9E1 /* ScheduleData.m in Sources */,
 				10484BA314D949A300BD122C /* json2.js in Sources */,
+				1132270D14DA8E6600FB52B0 /* DayEventViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

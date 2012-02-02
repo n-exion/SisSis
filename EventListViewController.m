@@ -16,6 +16,7 @@
 @synthesize todayButton;
 @synthesize keyArray;
 @synthesize nowDate;
+@synthesize delegate;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -181,17 +182,9 @@
 
 // ツールバーでカレンダーの表示形式が変更された
 - (IBAction) changedSegmentedControlValue:(id)sender{
-  switch (segControl.selectedSegmentIndex) {
-    // １日形式
-    case 1:
-      break;
-      // 月形式
-    case 2:
-      [self.view removeFromSuperview];
-      break;
-    default:
-      break;
-  }
+  [delegate changedSegmentControlValue:segControl.selectedSegmentIndex];
+  [self.view removeFromSuperview];
+  segControl.selectedSegmentIndex = 0;
 }
 
 // ツールバーで"今日"ボタンが押された

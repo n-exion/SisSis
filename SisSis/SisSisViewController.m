@@ -207,15 +207,6 @@
   [controller dismissModalViewControllerAnimated:YES];
 }
 
-- (void) changeViewToEventList
-{
-  EventListViewController *dialog = [[EventListViewController alloc]
-                                     initWithNibName:@"EventListViewController"
-                                     bundle:[NSBundle mainBundle]];
-  [self.view addSubview:dialog.view];
-  //[self presentModalViewController:dialog animated:NO];
-}
-
 // イベントハンドラから来る関数ども
 // ツールバーで"今日"ボタンが押された
 - (IBAction) didPushedTodayButton:(id)sender{
@@ -240,24 +231,32 @@
   }
 }
 
-// ツールバーでカレンダーの表示形式が変更された
-- (IBAction) changedSegmentedControlValue:(id)sender{
-  switch (segControl.selectedSegmentIndex) {
-      // リスト形式
-    case 0:
-      [self changeViewToEventList];
-      break;
-      // １日形式
-    case 1:
-      break;
-      // 月形式
-    case 2:
-      break;
-    default:
-      break;
-  }
+- (void) changeViewFromSegmentControl:(NSInteger)value {
+  if (value == 0) {
+    EventListViewController *dialog = [[EventListViewController alloc]
+                                        initWithNibName:@"EventListViewController"
+                                        bundle:[NSBundle mainBundle]];
+      dialog.delegate = self;
+      [self.view addSubview:dialog.view];
+  } else if (value == 1) {
+    DayEventViewController *dialog = [[DayEventViewController alloc]
+                                      initWithNibName:@"DayEventViewController"
+                                      bundle:[NSBundle mainBundle]]; 
+    dialog.delegate = self;
+    [self.view addSubview:dialog.view];
+  } 
   segControl.selectedSegmentIndex = 2;
 }
+
+// ツールバーでカレンダーの表示形式が変更された
+- (IBAction) changedSegmentedControlValue:(id)sender{
+  [self changeViewFromSegmentControl:segControl.selectedSegmentIndex];
+}
+
+- (void) changedSegmentControlValue:(NSInteger)value {
+  [self changeViewFromSegmentControl:value];
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

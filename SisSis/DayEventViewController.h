@@ -1,19 +1,15 @@
 //
-//  EventListViewController.h
+//  DayEventViewController.h
 //  SisSis
 //
-//  Created by 直毅 江川 on 12/01/23.
+//  Created by 直毅 江川 on 12/02/02.
 //  Copyright (c) 2012年 東京工業大学. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "TapkuLibrary.h"
 #import "SisSisAppDelegate.h"
-#import "EventListCell.h"
-#import "SisSisViewController.h"
-#import "DayEventViewController.h"
-
-@interface EventListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@protocol CalSegControlDelegate;
+@interface DayEventViewController : UIViewController 
 {
   UIToolbar *toolBar;
   UIBarButtonItem *todayButton;
@@ -30,13 +26,13 @@
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *todayButton;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segControl;
 @property (retain, nonatomic) IBOutlet UIToolbar *toolBar;
-@property (retain, nonatomic) IBOutlet UITableView *eventTableView;
-@property (retain, nonatomic) NSArray *keyArray;
-@property (retain, nonatomic) NSDate *nowDate;
+@property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (retain, nonatomic) id <CalSegControlDelegate> delegate;
 
 - (IBAction) changedSegmentedControlValue:(id)sender;
 - (IBAction) didPushedTodayButton:(id)sender;
-- (void) generateEventDataForStartDate:(NSDate*)start endDate:(NSDate*)end;
-- (void) initKeyArray;
+@end
+
+@protocol CalSegControlDelegate
+- (void) changedSegmentControlValue:(NSInteger)value;
 @end
