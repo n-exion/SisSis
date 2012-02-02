@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TapkuLibrary.h"
 #import "SisSisAppDelegate.h"
 #import "EventListCell.h"
 
@@ -18,6 +19,8 @@
   SisSisAppDelegate* appDelegate;
   UITableView *eventTableView;
   NSArray *keyArray;
+  NSMutableArray *dataArray;
+	NSMutableDictionary *dataDictionary;
   NSDate *nowDate;
 }
 
@@ -30,5 +33,6 @@
 
 - (IBAction) changedSegmentedControlValue:(id)sender;
 - (IBAction) didPushedTodayButton:(id)sender;
+- (void) generateEventDataForStartDate:(NSDate*)start endDate:(NSDate*)end;
 - (void) initKeyArray;
 @end

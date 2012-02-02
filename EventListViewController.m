@@ -47,9 +47,15 @@
 
 - (void)viewDidUnload
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+  [super viewDidUnload];
+  // Release any retained subviews of the main view.
+  // e.g. self.myOutlet = nil;
+  if (dataArray) {
+    [dataArray release];
+  }
+  if (dataDictionary) {
+    [dataDictionary release];
+  }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -64,6 +70,45 @@
   return MAX([keyArray count], 1);
 }
 
+// EventStoreからイベント情報を生成
+- (void) generateEventDataForStartDate:(NSDate*)start endDate:(NSDate*)end{
+  EKCalendar *cal = [appDelegate.eventStore defaultCalendarForNewEvents];
+  
+  NSPredicate *p = [appDelegate.eventStore predicateForEventsWithStartDate:start endDate:end calendars:[NSArray arrayWithObject:cal]];
+  NSArray *events = [appDelegate.eventStore eventsMatchingPredicate:p];
+	
+  if (dataArray) {
+    [dataArray release];
+  }
+  if (dataDictionary) {
+    [dataDictionary release];
+  }
+	dataArray = [[NSMutableArray alloc] init];
+	dataDictionary = [[NSMutableDictionary alloc] init];
+	
+	NSDate *d = start;
+	while(YES){
+    BOOL exist = NO;
+    for (EKEvent *e in events) {
+      if ([d isSameDay:e.startDate]) {
+        NSMutableArray *array = [dataDictionary objectForKey:d];
+        if (!array) {
+          array = [NSMutableArray array];
+        }
+        [dataDictionary setObject:array forKey:d];
+        [array addObject:e];
+        exist = YES;
+      }
+    }
+    [dataArray addObject:[NSNumber numberWithBool:exist]];
+		
+		TKDateInformation info = [d dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		info.day++;
+		d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		if([d compare:end]==NSOrderedDescending) break;
+	}
+}
+
 - (void) initKeyArray
 {
   if (keyArray) {
@@ -74,9 +119,16 @@
 	[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
 	NSString *nowDateStr = [dateFormatter stringFromDate:[NSDate date]];
 	nowDate = [dateFormatter dateFromString:nowDateStr];
-	[dateFormatter release];
-  NSArray *tempKeyArray = appDelegate.dataDictionary.allKeys;
-  if (![appDelegate.dataDictionary objectForKey:nowDate]){
+  [dateFormatter release];
+  NSDateComponents *dateComp = [[NSDateComponents alloc] init];
+  [dateComp setMonth:-3];
+	NSDate *start = [[NSCalendar currentCalendar] dateByAddingComponents:dateComp toDate:[NSDate date] options:0];
+  [dateComp setMonth:6];
+  NSDate *end = [[NSCalendar currentCalendar] dateByAddingComponents:dateComp toDate:[NSDate date] options:0];
+  [dateComp release];
+  [self generateEventDataForStartDate:start endDate:end];
+  NSArray *tempKeyArray = dataDictionary.allKeys;
+  if (![dataDictionary objectForKey:nowDate]){
     NSMutableArray *tempArray = [tempKeyArray mutableCopy];
     [tempArray addObject:nowDate];
     keyArray = [[NSArray alloc] initWithArray:[tempArray sortedArrayUsingSelector:@selector(compare:)]];
@@ -88,10 +140,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   NSDate *key = [keyArray objectAtIndex:section];
-  if (![appDelegate.dataDictionary objectForKey:key]) {
+  if (![dataDictionary objectForKey:key]) {
     return 0;
   }
-  NSMutableArray *array = [appDelegate.dataDictionary objectForKey:key];
+  NSMutableArray *array = [dataDictionary objectForKey:key];
   return [array count];
 }
 
@@ -104,7 +156,7 @@
     cell = (EventListCell *)vc.view;
   }
   NSDate *key = [keyArray objectAtIndex:indexPath.section];
-  NSMutableArray *eventArray = [appDelegate.dataDictionary objectForKey:key];
+  NSMutableArray *eventArray = [dataDictionary objectForKey:key];
   EKEvent *event = [eventArray objectAtIndex:indexPath.row];
   [cell.eventLabel setText:event.title];
   if (event.allDay) {

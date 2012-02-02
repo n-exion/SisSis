@@ -20,6 +20,8 @@
   UIBarButtonItem *todayButton;
   UISegmentedControl *segControl;
   SisSisAppDelegate* appDelegate;
+  NSMutableArray *dataArray;
+	NSMutableDictionary *dataDictionary;
 }
 
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *todayButton;

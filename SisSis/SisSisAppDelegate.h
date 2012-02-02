@@ -17,8 +17,6 @@
 @interface SisSisAppDelegate : NSObject <UIApplicationDelegate> {
   UIWindow *window;
   UINavigationController *navController;
-  NSMutableArray *dataArray;
-	NSMutableDictionary *dataDictionary;
   EKEventStore* eventStore;
 }
 

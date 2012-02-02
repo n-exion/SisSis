@@ -60,7 +60,7 @@
 
 - (NSArray*) calendarMonthView:(TKCalendarMonthView*)monthView marksFromDate:(NSDate*)startDate toDate:(NSDate*)lastDate{
 	[self generateEventDataForStartDate:startDate endDate:lastDate];
-	return appDelegate.dataArray;
+	return dataArray;
 }
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)date{
 	
@@ -83,7 +83,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {	
-	NSArray *ar = [appDelegate.dataDictionary objectForKey:[self.monthView dateSelected]];
+	NSArray *ar = [dataDictionary objectForKey:[self.monthView dateSelected]];
 	if(ar == nil) return 0;
 	return [ar count];
 }
@@ -96,7 +96,7 @@
   if (cell == nil) cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
   
 	
-	NSArray *ar = [appDelegate.dataDictionary objectForKey:[self.monthView dateSelected]];
+	NSArray *ar = [dataDictionary objectForKey:[self.monthView dateSelected]];
   EKEvent *event = [ar objectAtIndex:indexPath.row];
 	cell.textLabel.text = event.title;
 	
@@ -111,24 +111,24 @@
   NSPredicate *p = [appDelegate.eventStore predicateForEventsWithStartDate:start endDate:end calendars:[NSArray arrayWithObject:cal]];
   NSArray *events = [appDelegate.eventStore eventsMatchingPredicate:p];
 	
-	appDelegate.dataArray = [NSMutableArray array];
-	appDelegate.dataDictionary = [NSMutableDictionary dictionary];
+	dataArray = [NSMutableArray array];
+	dataDictionary = [NSMutableDictionary dictionary];
 	
 	NSDate *d = start;
 	while(YES){
     BOOL exist = NO;
     for (EKEvent *e in events) {
       if ([d isSameDay:e.startDate]) {
-        NSMutableArray *array = [appDelegate.dataDictionary objectForKey:d];
+        NSMutableArray *array = [dataDictionary objectForKey:d];
         if (!array) {
           array = [NSMutableArray array];
         }
-        [appDelegate.dataDictionary setObject:array forKey:d];
+        [dataDictionary setObject:array forKey:d];
         [array addObject:e];
         exist = YES;
       }
     }
-    [appDelegate.dataArray addObject:[NSNumber numberWithBool:exist]];
+    [dataArray addObject:[NSNumber numberWithBool:exist]];
 		
 		TKDateInformation info = [d dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 		info.day++;
@@ -181,7 +181,7 @@
 {
   EKEventViewController *eventViewController = [[[EKEventViewController alloc] init] autorelease];
   eventViewController.delegate = self;
-  NSMutableArray *array = [appDelegate.dataDictionary objectForKey:self.monthView.dateSelected];
+  NSMutableArray *array = [dataDictionary objectForKey:self.monthView.dateSelected];
   eventViewController.event = [array objectAtIndex:indexPath.row];
   eventViewController.allowsEditing = YES;
 //  [self presentModalViewController:eventViewController animated:YES];
