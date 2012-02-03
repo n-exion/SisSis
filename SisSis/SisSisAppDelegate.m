@@ -8,6 +8,7 @@
 
 #import "SisSisAppDelegate.h"
 #import "AddScheduleViewController.h"
+#import "ScheduleData.h"
 
 @implementation SisSisAppDelegate
 
@@ -81,12 +82,38 @@
   [super dealloc];
 }
 
+- (void) addEventToEventStore:(ScheduleData*)data {
+  if (!self.eventStore) {
+    self.eventStore = [[EKEventStore alloc] init];
+  }
+  EKEvent *event = [EKEvent eventWithEventStore:self.eventStore];
+  event.title = data.title;
+  event.location = data.position;
+  event.startDate = data.startTime;
+  event.endDate = data.endTime;
+  //event.notes = data.description;
+  NSError *error = nil;
+  // イベントが関連付けられるカレンダーを設定
+  [event setCalendar:[self.eventStore defaultCalendarForNewEvents]];S
+  [self.eventStore saveEvent:event span:EKSpanThisEvent error:&error];
+  NSLog(@"saved new Event");
+}
+
 // イベントハンドラども
 - (IBAction)pushedAddButton:(id)sender{
   // ここで予定の追加の画面に遷移すればいいはず_egawa
   NSLog(@"pushed AddEventButton");
   AddScheduleViewController* addView = [[AddScheduleViewController alloc] initWithNibName:@"AddScheduleViewController" bundle:nil];
   [self.navController pushViewController:addView animated:YES];
+}
+
+- (IBAction)pushedCalenderButton:(id)sender {
+  ScheduleData *data = [[ScheduleData alloc] init];
+  data.title = @"testEvent";
+  data.startTime = [NSDate date];
+  data.endTime = [NSDate dateWithTimeIntervalSinceNow:86400];
+  data.position = @"自宅";
+  [self addEventToEventStore:data];
 }
 
 @end

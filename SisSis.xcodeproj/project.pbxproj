@@ -55,7 +55,6 @@
 		1144E90E14AB22EE004017D2 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E90714AB221C004017D2 /* libTapkuLibrary.a */; };
 		1144E91114AB2306004017D2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E90F14AB2306004017D2 /* MapKit.framework */; };
 		1144E91214AB2306004017D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E91014AB2306004017D2 /* QuartzCore.framework */; };
-		11707C3014CC7040005632E1 /* RouteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 11707C2F14CC7040005632E1 /* RouteData.m */; };
 		11707C3414CC71B1005632E1 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11707C3214CC71B1005632E1 /* EventListViewController.m */; };
 		11707C3514CC71B1005632E1 /* EventListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11707C3314CC71B1005632E1 /* EventListViewController.xib */; };
 		117AA0E414C41E7C00153C9D /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AA0E314C41E7C00153C9D /* EventKitUI.framework */; };
@@ -193,8 +192,6 @@
 		1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = Libraries/TapkuLibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
 		1144E90F14AB2306004017D2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1144E91014AB2306004017D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		11707C2E14CC703F005632E1 /* RouteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteData.h; sourceTree = "<group>"; };
-		11707C2F14CC7040005632E1 /* RouteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteData.m; sourceTree = "<group>"; };
 		11707C3114CC71B1005632E1 /* EventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListViewController.h; path = ../EventListViewController.h; sourceTree = "<group>"; };
 		11707C3214CC71B1005632E1 /* EventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListViewController.m; path = ../EventListViewController.m; sourceTree = "<group>"; };
 		11707C3314CC71B1005632E1 /* EventListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventListViewController.xib; path = ../EventListViewController.xib; sourceTree = "<group>"; };
@@ -392,8 +389,6 @@
 				1132270A14DA8E6600FB52B0 /* DayEventViewController.h */,
 				1132270B14DA8E6600FB52B0 /* DayEventViewController.m */,
 				1132270C14DA8E6600FB52B0 /* DayEventViewController.xib */,
-				11707C2E14CC703F005632E1 /* RouteData.h */,
-				11707C2F14CC7040005632E1 /* RouteData.m */,
 				11B49F7014CF0C01003E4CE0 /* TableParts */,
 			);
 			name = Calender;
@@ -677,7 +672,6 @@
 				1034062914C426C20049DE5D /* WorkTImeDecideViewController.m in Sources */,
 				101B521D14CABF6C005534FD /* DepartureDecideViewController.m in Sources */,
 				101B522314CABF92005534FD /* DeparturePositionDecideViewController.m in Sources */,
-				11707C3014CC7040005632E1 /* RouteData.m in Sources */,
 				11707C3414CC71B1005632E1 /* EventListViewController.m in Sources */,
 				11B49F6614CD1A2A003E4CE0 /* EventListCell.m in Sources */,
 				11B49F8314CF1D18003E4CE0 /* SqliteDB.m in Sources */,
