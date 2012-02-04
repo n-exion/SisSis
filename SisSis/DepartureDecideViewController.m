@@ -17,6 +17,7 @@
 
 #import "MapDirectionsViewController.h"
 #import "ModalDatePickerViewController.h"
+#import "MapDirectionsViewController.h"
 
 
 @implementation DepartureDecideViewController
@@ -55,10 +56,14 @@
 
 - (void)dealloc
 {
-  [departurePositionDecideViewController release];
+  if(departurePositionDecideViewController){
+    [departurePositionDecideViewController release];
+  }
   [sectionDictionary release];
   [rowDictionary release];
-  [arrivalTimeController release];
+  if(arrivalTimeController){
+    [arrivalTimeController release];
+  }
   [super dealloc];
 }
 
@@ -98,7 +103,11 @@
   section = [[sectionDictionary objectForKey:@"DepartureTime"] integerValue];
   row = [[rowDictionary objectForKey:@"DepartureTime"] integerValue];
   targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
-  targetCell.detailTextLabel.text = [addController convertDateToString:schedule.departureTime];
+
+  if(schedule.departureTime)
+    targetCell.detailTextLabel.text = [addController convertDateToString:schedule.departureTime];
+  else
+    targetCell.detailTextLabel.text = @"を更新する";
   [targetCell setNeedsLayout];
 
 }
@@ -317,18 +326,18 @@
   }
   //検索開始が呼ばれたら
   if (indexPath.section == 2 && indexPath.row == 0) {
-		MapDirectionsViewController *controller = [[MapDirectionsViewController alloc] init];
+    MapDirectionsViewController* mapController;
+
+    mapController = [[[MapDirectionsViewController alloc] initWithNibName:@"MapDirectionsViewController" bundle:nil] autorelease];
+    mapController.addController = addController;
+    mapController.departureController = self;
 		
-		controller.startPoint = addController.schedule.departurePosition;
-		controller.endPoint = addController.schedule.arrivalPosition;
-    controller.travelMode = addController.schedule.travelMode;
+		mapController.startPoint = addController.schedule.departurePosition;
+		mapController.endPoint = addController.schedule.arrivalPosition;
+    mapController.travelMode = addController.schedule.travelMode;
 		
-		
-		[self.navigationController pushViewController:controller animated:YES];
-		[controller release];
-		
-		[tableView deselectRowAtIndexPath:indexPath animated:YES];
-	}
+		[self.navigationController pushViewController:mapController animated:YES];
+  }
   
   if (indexPath.section == 2 && indexPath.row == 1) {
     if(!self.arrivalTimeController){
@@ -343,6 +352,8 @@
     [UIView commitAnimations];
 
 	}
+  
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
 }
 

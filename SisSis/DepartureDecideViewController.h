@@ -21,7 +21,7 @@
 @interface DepartureDecideViewController : UITableViewController<UICGDirectionsDelegate,MKMapViewDelegate>{
 	UISegmentedControl *travelModeSegment;
   DeparturePositionDecideViewController* departurePositionDecideViewController;
-  
+    
   NSMutableDictionary* sectionDictionary;
   NSMutableDictionary* rowDictionary;
   
