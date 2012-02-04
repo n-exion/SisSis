@@ -16,6 +16,7 @@
 @class DetailViewController;
 @class DeparturePositionDecideViewController;
 @class AddScheduleViewController;
+@class ModalDatePickerViewController;
 
 @interface DepartureDecideViewController : UITableViewController<UICGDirectionsDelegate,MKMapViewDelegate>{
 	UISegmentedControl *travelModeSegment;
@@ -26,10 +27,12 @@
   
   AddScheduleViewController* addController;
   UIActivityIndicatorView* searchIndicator;
+  ModalDatePickerViewController* arrivalTimeController;
 }
 
 @property (strong, nonatomic) DeparturePositionDecideViewController *departurePositionDecideViewController;
 @property (strong,nonatomic) UISegmentedControl* travelModeSegment;
+@property (strong,nonatomic) ModalDatePickerViewController* arrivalTimeController;
 
 -(void) setAddScheduleViewController:(AddScheduleViewController*) controller;
 -(void) syncTableWithScheduleData;

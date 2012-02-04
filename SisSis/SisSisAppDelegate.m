@@ -94,7 +94,7 @@
   //event.notes = data.description;
   NSError *error = nil;
   // イベントが関連付けられるカレンダーを設定
-  [event setCalendar:[self.eventStore defaultCalendarForNewEvents]];S
+  [event setCalendar:[self.eventStore defaultCalendarForNewEvents]];
   [self.eventStore saveEvent:event span:EKSpanThisEvent error:&error];
   NSLog(@"saved new Event");
 }

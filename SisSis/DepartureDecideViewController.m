@@ -16,12 +16,14 @@
 #import "ScheduleData.h"
 
 #import "MapDirectionsViewController.h"
+#import "ModalDatePickerViewController.h"
 
 
 @implementation DepartureDecideViewController
 
 @synthesize travelModeSegment;
 @synthesize departurePositionDecideViewController;
+@synthesize arrivalTimeController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,6 +58,7 @@
   [departurePositionDecideViewController release];
   [sectionDictionary release];
   [rowDictionary release];
+  [arrivalTimeController release];
   [super dealloc];
 }
 
@@ -82,6 +85,14 @@
   targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
   targetCell.detailTextLabel.text = schedule.arrivalPosition;
   [targetCell setNeedsLayout];
+  
+  //arrivalTimeの更新
+  section = [[sectionDictionary objectForKey:@"ArrivalTime"] integerValue];
+  row = [[rowDictionary objectForKey:@"ArrivalTime"] integerValue];
+  targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+  targetCell.detailTextLabel.text = [addController convertDateToString:schedule.arrivalTime];
+  [targetCell setNeedsLayout];
+
   
   //departureTimeの更新
   section = [[sectionDictionary objectForKey:@"DepartureTime"] integerValue];
@@ -111,6 +122,7 @@
 - (void)viewDidUnload
 {
   [super viewDidUnload];
+
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
 }
@@ -304,25 +316,6 @@
     [self.navigationController pushViewController:self.departurePositionDecideViewController animated:YES];
   }
   //検索開始が呼ばれたら
-  /*
-  if(indexPath.section == 2 && indexPath.row == 0){
-    NSString* startPoint = addController.schedule.departurePosition;
-    NSString* endPoint = addController.schedule.arrivalPosition;
-    
-    UITableViewCell* cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
-    cell.detailTextLabel.text = @"";
-    [searchIndicator startAnimating];
-    
-    UICGDirections *directions = [UICGDirections sharedDirections];
-    directions.delegate = self;
-    UICGDirectionsOptions* options = [[[UICGDirectionsOptions alloc] init] autorelease];
-    //TODO: 交通機関をここで切り替えなければいけない
-    //options.travelMode = UICGTravelModeDriving; //UICGTravelModeWalking
-    options.travelMode = UICGTravelModeWalking;
-    
-    [directions loadWithStartPoint:startPoint endPoint:endPoint options:options];
-
-  }*/
   if (indexPath.section == 2 && indexPath.row == 0) {
 		MapDirectionsViewController *controller = [[MapDirectionsViewController alloc] init];
 		
@@ -335,6 +328,20 @@
 		[controller release];
 		
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	}
+  
+  if (indexPath.section == 2 && indexPath.row == 1) {
+    if(!self.arrivalTimeController){
+      self.arrivalTimeController = [[[ModalDatePickerViewController alloc] initWithNibName:@"ModalDatePickerViewController" bundle:nil] autorelease];
+      self.arrivalTimeController.addMainController = addController;
+      self.arrivalTimeController.departureController = self;
+    }
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDelay:0.75];
+    [self.view addSubview:self.arrivalTimeController.view];
+    [UIView commitAnimations];
+
 	}
 
 }
