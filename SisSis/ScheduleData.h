@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UICGDirections.h"
 
 
 //出発情報をまとめたクラス
@@ -27,6 +28,10 @@
   //タイトル
   NSString* title;
   
+  UICGTravelModes travelMode;
+  
+  //TODO: イベントの詳細
+  
 }
 
 @property (strong,nonatomic) NSString* departurePosition;
@@ -37,7 +42,9 @@
 @property (strong,nonatomic) NSDate* startTime;
 @property (strong,nonatomic) NSDate* endTime;
 @property (strong,nonatomic) NSString* title;
+@property (nonatomic) UICGTravelModes travelMode;
 
+//Extract EkEvent
 
 @end
 

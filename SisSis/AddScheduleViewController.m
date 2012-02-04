@@ -58,7 +58,8 @@
   schedule.arrivalTime = nil;
   
   dateFormat = [[NSDateFormatter alloc] init];
-  [dateFormat setDateFormat:@"MM-dd hh:mm"];
+  //[dateFormat setDateFormat:@"MM-dd hh:mm"];
+  [dateFormat setDateFormat:@"hh:mm"];
 
   return self;
 }

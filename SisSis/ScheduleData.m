@@ -20,5 +20,7 @@
 @synthesize endTime;
 @synthesize title;
 
+@synthesize travelMode;
+
 @end
 

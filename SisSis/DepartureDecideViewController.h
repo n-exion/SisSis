@@ -33,5 +33,7 @@
 
 -(void) setAddScheduleViewController:(AddScheduleViewController*) controller;
 -(void) syncTableWithScheduleData;
+-(void) changeTravelMode : (UISegmentedControl*)seg;
+
 
 @end

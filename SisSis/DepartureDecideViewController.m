@@ -186,6 +186,9 @@
                            NSLocalizedString(@"Walking", nil), nil]] autorelease];
 		[travelModeSegment setFrame:CGRectMake(9.0f, 0.0f, 302.0f, 45.0f)];
 		travelModeSegment.selectedSegmentIndex = 0;
+
+    [travelModeSegment addTarget:self action:@selector(changeTravelMode:) forControlEvents:UIControlEventValueChanged];
+
 		[cell addSubview:travelModeSegment];
     
     return cell;
@@ -325,12 +328,8 @@
 		
 		controller.startPoint = addController.schedule.departurePosition;
 		controller.endPoint = addController.schedule.arrivalPosition;
+    controller.travelMode = addController.schedule.travelMode;
 		
-		if (travelModeSegment.selectedSegmentIndex == 0) {
-			controller.travelMode = UICGTravelModeDriving;
-		} else {
-			controller.travelMode = UICGTravelModeWalking;
-		}
 		
 		[self.navigationController pushViewController:controller animated:YES];
 		[controller release];
@@ -370,5 +369,13 @@
 
 }
 
+-(void) changeTravelMode : (UISegmentedControl*)seg{
+  if (travelModeSegment.selectedSegmentIndex == 0) {
+    addController.schedule.travelMode = UICGTravelModeDriving;
+  } else {
+    addController.schedule.travelMode = UICGTravelModeWalking;
+  }
+  
+}
 
 @end
