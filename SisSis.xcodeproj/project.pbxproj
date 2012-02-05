@@ -48,8 +48,6 @@
 		10484BAE14D99D7400BD122C /* reticle.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BA814D99D7400BD122C /* reticle.png */; };
 		10484BAF14D99D7400BD122C /* map_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BA914D99D7400BD122C /* map_pin.png */; };
 		10484BB014D99D7400BD122C /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BAA14D99D7400BD122C /* list.png */; };
-		1071C28A14DD773E00BD4FA2 /* ButtonEditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071C28814DD773E00BD4FA2 /* ButtonEditableCell.m */; };
-		1071C28B14DD773E00BD4FA2 /* ButtonEditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1071C28914DD773E00BD4FA2 /* ButtonEditableCell.xib */; };
 		107A42F614DD0F3700EE41B0 /* ModalDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 107A42F414DD0F3700EE41B0 /* ModalDatePickerViewController.m */; };
 		107A42F714DD0F3700EE41B0 /* ModalDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 107A42F514DD0F3700EE41B0 /* ModalDatePickerViewController.xib */; };
 		112079A214BB291B008B2E86 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112079A114BB291B008B2E86 /* EventKit.framework */; };
@@ -62,6 +60,8 @@
 		11707C3414CC71B1005632E1 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11707C3214CC71B1005632E1 /* EventListViewController.m */; };
 		11707C3514CC71B1005632E1 /* EventListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11707C3314CC71B1005632E1 /* EventListViewController.xib */; };
 		117AA0E414C41E7C00153C9D /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AA0E314C41E7C00153C9D /* EventKitUI.framework */; };
+		118094A214DD599E00396733 /* DBMagager.m in Sources */ = {isa = PBXBuildFile; fileRef = 118094A114DD599E00396733 /* DBMagager.m */; };
+		118094A914DE79AF00396733 /* RouteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 118094A814DE79AF00396733 /* RouteData.m */; };
 		1181DF1B14AB17F9001E7780 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1A14AB17F9001E7780 /* UIKit.framework */; };
 		1181DF1D14AB17F9001E7780 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1C14AB17F9001E7780 /* Foundation.framework */; };
 		1181DF1F14AB17F9001E7780 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1E14AB17F9001E7780 /* CoreGraphics.framework */; };
@@ -80,8 +80,6 @@
 		11B49F6614CD1A2A003E4CE0 /* EventListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B49F6414CD1A2A003E4CE0 /* EventListCell.m */; };
 		11B49F6714CD1A2A003E4CE0 /* EventListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11B49F6514CD1A2A003E4CE0 /* EventListCell.xib */; };
 		11B49F7214CF0D42003E4CE0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B49F7114CF0D42003E4CE0 /* libsqlite3.0.dylib */; };
-		11B49F8314CF1D18003E4CE0 /* SqliteDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B49F8214CF1D18003E4CE0 /* SqliteDB.m */; };
-		11B49F8614CF203D003E4CE0 /* AccountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B49F8514CF203C003E4CE0 /* AccountModel.m */; };
 		11B49F8F14CF20C6003E4CE0 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B49F8914CF20C6003E4CE0 /* FMDatabase.m */; };
 		11B49F9014CF20C6003E4CE0 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B49F8B14CF20C6003E4CE0 /* FMDatabaseAdditions.m */; };
 		11B49F9214CF20C6003E4CE0 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B49F8E14CF20C6003E4CE0 /* FMResultSet.m */; };
@@ -188,9 +186,6 @@
 		10484BA814D99D7400BD122C /* reticle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reticle.png; sourceTree = "<group>"; };
 		10484BA914D99D7400BD122C /* map_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin.png; sourceTree = "<group>"; };
 		10484BAA14D99D7400BD122C /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
-		1071C28714DD773E00BD4FA2 /* ButtonEditableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonEditableCell.h; sourceTree = "<group>"; };
-		1071C28814DD773E00BD4FA2 /* ButtonEditableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonEditableCell.m; sourceTree = "<group>"; };
-		1071C28914DD773E00BD4FA2 /* ButtonEditableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonEditableCell.xib; sourceTree = "<group>"; };
 		107A42F314DD0F3700EE41B0 /* ModalDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalDatePickerViewController.h; sourceTree = "<group>"; };
 		107A42F414DD0F3700EE41B0 /* ModalDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalDatePickerViewController.m; sourceTree = "<group>"; };
 		107A42F514DD0F3700EE41B0 /* ModalDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModalDatePickerViewController.xib; sourceTree = "<group>"; };
@@ -206,6 +201,10 @@
 		11707C3214CC71B1005632E1 /* EventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListViewController.m; path = ../EventListViewController.m; sourceTree = "<group>"; };
 		11707C3314CC71B1005632E1 /* EventListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventListViewController.xib; path = ../EventListViewController.xib; sourceTree = "<group>"; };
 		117AA0E314C41E7C00153C9D /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		118094A014DD599E00396733 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		118094A114DD599E00396733 /* DBMagager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMagager.m; sourceTree = "<group>"; };
+		118094A714DE79AF00396733 /* RouteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteData.h; sourceTree = "<group>"; };
+		118094A814DE79AF00396733 /* RouteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteData.m; sourceTree = "<group>"; };
 		1181DF1614AB17F9001E7780 /* SisSis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SisSis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1181DF1A14AB17F9001E7780 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1181DF1C14AB17F9001E7780 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -229,10 +228,6 @@
 		11B49F6414CD1A2A003E4CE0 /* EventListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListCell.m; sourceTree = "<group>"; };
 		11B49F6514CD1A2A003E4CE0 /* EventListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventListCell.xib; sourceTree = "<group>"; };
 		11B49F7114CF0D42003E4CE0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		11B49F8114CF1D18003E4CE0 /* SqliteDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteDB.h; sourceTree = "<group>"; };
-		11B49F8214CF1D18003E4CE0 /* SqliteDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteDB.m; sourceTree = "<group>"; };
-		11B49F8414CF203C003E4CE0 /* AccountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountModel.h; sourceTree = "<group>"; };
-		11B49F8514CF203C003E4CE0 /* AccountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountModel.m; sourceTree = "<group>"; };
 		11B49F8814CF20C6003E4CE0 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		11B49F8914CF20C6003E4CE0 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		11B49F8A14CF20C6003E4CE0 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -294,9 +289,6 @@
 		1034061A14C425D60049DE5D /* TableParts */ = {
 			isa = PBXGroup;
 			children = (
-				1071C28714DD773E00BD4FA2 /* ButtonEditableCell.h */,
-				1071C28814DD773E00BD4FA2 /* ButtonEditableCell.m */,
-				1071C28914DD773E00BD4FA2 /* ButtonEditableCell.xib */,
 				1034061B14C425ED0049DE5D /* EditableCell.xib */,
 				1034061C14C425ED0049DE5D /* EditableCell.h */,
 				1034061D14C425ED0049DE5D /* EditableCell.m */,
@@ -508,10 +500,10 @@
 			isa = PBXGroup;
 			children = (
 				11B49F8714CF20A7003E4CE0 /* FMDB */,
-				11B49F8114CF1D18003E4CE0 /* SqliteDB.h */,
-				11B49F8214CF1D18003E4CE0 /* SqliteDB.m */,
-				11B49F8414CF203C003E4CE0 /* AccountModel.h */,
-				11B49F8514CF203C003E4CE0 /* AccountModel.m */,
+				118094A014DD599E00396733 /* DBManager.h */,
+				118094A114DD599E00396733 /* DBMagager.m */,
+				118094A714DE79AF00396733 /* RouteData.h */,
+				118094A814DE79AF00396733 /* RouteData.m */,
 			);
 			name = Sqlite;
 			sourceTree = "<group>";
@@ -645,7 +637,6 @@
 				10484BB014D99D7400BD122C /* list.png in Resources */,
 				1132270E14DA8E6600FB52B0 /* DayEventViewController.xib in Resources */,
 				107A42F714DD0F3700EE41B0 /* ModalDatePickerViewController.xib in Resources */,
-				1071C28B14DD773E00BD4FA2 /* ButtonEditableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,8 +683,6 @@
 				101B522314CABF92005534FD /* DeparturePositionDecideViewController.m in Sources */,
 				11707C3414CC71B1005632E1 /* EventListViewController.m in Sources */,
 				11B49F6614CD1A2A003E4CE0 /* EventListCell.m in Sources */,
-				11B49F8314CF1D18003E4CE0 /* SqliteDB.m in Sources */,
-				11B49F8614CF203D003E4CE0 /* AccountModel.m in Sources */,
 				11B49F8F14CF20C6003E4CE0 /* FMDatabase.m in Sources */,
 				11B49F9014CF20C6003E4CE0 /* FMDatabaseAdditions.m in Sources */,
 				11B49F9214CF20C6003E4CE0 /* FMResultSet.m in Sources */,
@@ -720,7 +709,8 @@
 				10484BA314D949A300BD122C /* json2.js in Sources */,
 				1132270D14DA8E6600FB52B0 /* DayEventViewController.m in Sources */,
 				107A42F614DD0F3700EE41B0 /* ModalDatePickerViewController.m in Sources */,
-				1071C28A14DD773E00BD4FA2 /* ButtonEditableCell.m in Sources */,
+				118094A214DD599E00396733 /* DBMagager.m in Sources */,
+				118094A914DE79AF00396733 /* RouteData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
