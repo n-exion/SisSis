@@ -62,6 +62,9 @@
 		117AA0E414C41E7C00153C9D /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AA0E314C41E7C00153C9D /* EventKitUI.framework */; };
 		118094A214DD599E00396733 /* DBMagager.m in Sources */ = {isa = PBXBuildFile; fileRef = 118094A114DD599E00396733 /* DBMagager.m */; };
 		118094A914DE79AF00396733 /* RouteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 118094A814DE79AF00396733 /* RouteData.m */; };
+		118094B814DE8EBE00396733 /* ExRouteDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 118094B614DE8EBE00396733 /* ExRouteDataCell.m */; };
+		118094B914DE8EBE00396733 /* ExRouteDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 118094B714DE8EBE00396733 /* ExRouteDataCell.xib */; };
+		118094BC14DE8F3C00396733 /* SSEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118094BB14DE8F3B00396733 /* SSEventViewController.m */; };
 		1181DF1B14AB17F9001E7780 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1A14AB17F9001E7780 /* UIKit.framework */; };
 		1181DF1D14AB17F9001E7780 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1C14AB17F9001E7780 /* Foundation.framework */; };
 		1181DF1F14AB17F9001E7780 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1E14AB17F9001E7780 /* CoreGraphics.framework */; };
@@ -205,6 +208,11 @@
 		118094A114DD599E00396733 /* DBMagager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMagager.m; sourceTree = "<group>"; };
 		118094A714DE79AF00396733 /* RouteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteData.h; sourceTree = "<group>"; };
 		118094A814DE79AF00396733 /* RouteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteData.m; sourceTree = "<group>"; };
+		118094B514DE8EBE00396733 /* ExRouteDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExRouteDataCell.h; sourceTree = "<group>"; };
+		118094B614DE8EBE00396733 /* ExRouteDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExRouteDataCell.m; sourceTree = "<group>"; };
+		118094B714DE8EBE00396733 /* ExRouteDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExRouteDataCell.xib; sourceTree = "<group>"; };
+		118094BA14DE8F3B00396733 /* SSEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSEventViewController.h; sourceTree = "<group>"; };
+		118094BB14DE8F3B00396733 /* SSEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSEventViewController.m; sourceTree = "<group>"; };
 		1181DF1614AB17F9001E7780 /* SisSis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SisSis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1181DF1A14AB17F9001E7780 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1181DF1C14AB17F9001E7780 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -397,9 +405,22 @@
 				1132270A14DA8E6600FB52B0 /* DayEventViewController.h */,
 				1132270B14DA8E6600FB52B0 /* DayEventViewController.m */,
 				1132270C14DA8E6600FB52B0 /* DayEventViewController.xib */,
+				118094B414DE8E5F00396733 /* EventKitExtend */,
 				11B49F7014CF0C01003E4CE0 /* TableParts */,
 			);
 			name = Calender;
+			sourceTree = "<group>";
+		};
+		118094B414DE8E5F00396733 /* EventKitExtend */ = {
+			isa = PBXGroup;
+			children = (
+				118094B514DE8EBE00396733 /* ExRouteDataCell.h */,
+				118094B614DE8EBE00396733 /* ExRouteDataCell.m */,
+				118094B714DE8EBE00396733 /* ExRouteDataCell.xib */,
+				118094BA14DE8F3B00396733 /* SSEventViewController.h */,
+				118094BB14DE8F3B00396733 /* SSEventViewController.m */,
+			);
+			name = EventKitExtend;
 			sourceTree = "<group>";
 		};
 		1181DF0B14AB17F9001E7780 = {
@@ -637,6 +658,7 @@
 				10484BB014D99D7400BD122C /* list.png in Resources */,
 				1132270E14DA8E6600FB52B0 /* DayEventViewController.xib in Resources */,
 				107A42F714DD0F3700EE41B0 /* ModalDatePickerViewController.xib in Resources */,
+				118094B914DE8EBE00396733 /* ExRouteDataCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +733,8 @@
 				107A42F614DD0F3700EE41B0 /* ModalDatePickerViewController.m in Sources */,
 				118094A214DD599E00396733 /* DBMagager.m in Sources */,
 				118094A914DE79AF00396733 /* RouteData.m in Sources */,
+				118094B814DE8EBE00396733 /* ExRouteDataCell.m in Sources */,
+				118094BC14DE8F3C00396733 /* SSEventViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
