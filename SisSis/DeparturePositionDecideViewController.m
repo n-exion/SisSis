@@ -120,8 +120,25 @@
     static NSString *CellIdentifier = @"Cell";
     
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if (cell == nil) {
+      CGRect frame = CGRectMake(0, 0, 300,44);
+      
       cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+      
+      //cell.frame = frame;
+      cell.selectionStyle = UITableViewCellSelectionStyleNone;
+      
+      UIButton* deleteButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+      deleteButton.frame = CGRectMake(198.0, 5.0, 97.0, 35.0);
+      [deleteButton setTitle:@"削除" forState:UIControlStateNormal];
+
+      deleteButton.backgroundColor = [UIColor clearColor];
+      [deleteButton addTarget:self action:@selector(pushDeleteButton:) forControlEvents:UIControlEventTouchUpInside];
+      
+      deleteButton.tag = 1;
+      [cell.contentView addSubview:deleteButton];
+
     }
     
     cell.textLabel.text = [positionList objectAtIndex:indexPath.row];
@@ -220,16 +237,7 @@
     addController.schedule.departurePosition = positionName;
     [departureDecideViewController syncTableWithScheduleData];
     [self.navigationController popViewControllerAnimated:YES];
-    
-    /*
-     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Warning" 
-     message:positionName
-     delegate:self 
-     cancelButtonTitle:@"OK" 
-     otherButtonTitles: nil] autorelease];
-     [alert show];
-     */
-    
+        
   }
 }
 
@@ -252,6 +260,14 @@
   
   [self.tableView endUpdates];
 
+}
+
+- (void)pushDeleteButton:(id)sender{
+  
+}
+
+- (IBAction)endEditing:(id)sender {
+  [sender resignFirstResponder];
 }
 
 
