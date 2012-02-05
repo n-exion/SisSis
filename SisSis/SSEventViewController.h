@@ -6,8 +6,8 @@
 //  Copyright (c) 2012年 東京工業大学. All rights reserved.
 //
 
-#import <EventKitUI/EventKitUI.h>
+#import <UIKit/UIKit.h>
 
-@interface SSEventViewController : EKEventViewController
+@interface SSEventViewController : UITableViewController
 
 @end

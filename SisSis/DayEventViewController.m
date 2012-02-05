@@ -7,7 +7,6 @@
 //
 
 #import "DayEventViewController.h"
-
 @implementation DayEventViewController
 
 @synthesize scrollView;
@@ -15,6 +14,7 @@
 @synthesize toolBar;
 @synthesize todayButton;
 @synthesize delegate;
+@synthesize backImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,6 +40,16 @@
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
   segControl.selectedSegmentIndex = 1;
+  UIImage *img = [UIImage imageNamed:@"back.png"];
+  backImageView = [[UIImageView alloc] initWithImage:[img imageByScalingProportionallyToSize:CGSizeMake(320.0, 1250.0)]];
+  scrollView.pagingEnabled = NO;  
+  scrollView.contentSize = backImageView.frame.size;  
+  scrollView.showsHorizontalScrollIndicator = NO;  
+  scrollView.showsVerticalScrollIndicator = YES;  
+  scrollView.scrollsToTop = YES;  
+  scrollView.delegate = self;  
+  
+  [scrollView addSubview:backImageView];
 }
 
 - (void)viewDidUnload

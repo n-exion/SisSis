@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SisSisAppDelegate.h"
+#import "ExtendClasses.h"
 
 @protocol CalSegControlDelegate;
-@interface DayEventViewController : UIViewController 
+@interface DayEventViewController : UIViewController <UIScrollViewDelegate>
 {
   UIToolbar *toolBar;
   UIBarButtonItem *todayButton;
@@ -21,6 +22,7 @@
   NSMutableArray *dataArray;
 	NSMutableDictionary *dataDictionary;
   NSDate *nowDate;
+  UIImageView *backImageView;
   id <CalSegControlDelegate> delegate;
 }
 
@@ -29,6 +31,7 @@
 @property (retain, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (retain, nonatomic) id <CalSegControlDelegate> delegate;
+@property (retain, nonatomic) UIImageView *backImageView;
 
 - (IBAction) changedSegmentedControlValue:(id)sender;
 - (IBAction) didPushedTodayButton:(id)sender;
