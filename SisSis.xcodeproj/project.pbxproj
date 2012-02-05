@@ -48,6 +48,8 @@
 		10484BAE14D99D7400BD122C /* reticle.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BA814D99D7400BD122C /* reticle.png */; };
 		10484BAF14D99D7400BD122C /* map_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BA914D99D7400BD122C /* map_pin.png */; };
 		10484BB014D99D7400BD122C /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BAA14D99D7400BD122C /* list.png */; };
+		1071C28A14DD773E00BD4FA2 /* ButtonEditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1071C28814DD773E00BD4FA2 /* ButtonEditableCell.m */; };
+		1071C28B14DD773E00BD4FA2 /* ButtonEditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1071C28914DD773E00BD4FA2 /* ButtonEditableCell.xib */; };
 		107A42F614DD0F3700EE41B0 /* ModalDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 107A42F414DD0F3700EE41B0 /* ModalDatePickerViewController.m */; };
 		107A42F714DD0F3700EE41B0 /* ModalDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 107A42F514DD0F3700EE41B0 /* ModalDatePickerViewController.xib */; };
 		112079A214BB291B008B2E86 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112079A114BB291B008B2E86 /* EventKit.framework */; };
@@ -186,6 +188,9 @@
 		10484BA814D99D7400BD122C /* reticle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reticle.png; sourceTree = "<group>"; };
 		10484BA914D99D7400BD122C /* map_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin.png; sourceTree = "<group>"; };
 		10484BAA14D99D7400BD122C /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
+		1071C28714DD773E00BD4FA2 /* ButtonEditableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonEditableCell.h; sourceTree = "<group>"; };
+		1071C28814DD773E00BD4FA2 /* ButtonEditableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonEditableCell.m; sourceTree = "<group>"; };
+		1071C28914DD773E00BD4FA2 /* ButtonEditableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonEditableCell.xib; sourceTree = "<group>"; };
 		107A42F314DD0F3700EE41B0 /* ModalDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalDatePickerViewController.h; sourceTree = "<group>"; };
 		107A42F414DD0F3700EE41B0 /* ModalDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalDatePickerViewController.m; sourceTree = "<group>"; };
 		107A42F514DD0F3700EE41B0 /* ModalDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModalDatePickerViewController.xib; sourceTree = "<group>"; };
@@ -289,6 +294,9 @@
 		1034061A14C425D60049DE5D /* TableParts */ = {
 			isa = PBXGroup;
 			children = (
+				1071C28714DD773E00BD4FA2 /* ButtonEditableCell.h */,
+				1071C28814DD773E00BD4FA2 /* ButtonEditableCell.m */,
+				1071C28914DD773E00BD4FA2 /* ButtonEditableCell.xib */,
 				1034061B14C425ED0049DE5D /* EditableCell.xib */,
 				1034061C14C425ED0049DE5D /* EditableCell.h */,
 				1034061D14C425ED0049DE5D /* EditableCell.m */,
@@ -637,6 +645,7 @@
 				10484BB014D99D7400BD122C /* list.png in Resources */,
 				1132270E14DA8E6600FB52B0 /* DayEventViewController.xib in Resources */,
 				107A42F714DD0F3700EE41B0 /* ModalDatePickerViewController.xib in Resources */,
+				1071C28B14DD773E00BD4FA2 /* ButtonEditableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +720,7 @@
 				10484BA314D949A300BD122C /* json2.js in Sources */,
 				1132270D14DA8E6600FB52B0 /* DayEventViewController.m in Sources */,
 				107A42F614DD0F3700EE41B0 /* ModalDatePickerViewController.m in Sources */,
+				1071C28A14DD773E00BD4FA2 /* ButtonEditableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
