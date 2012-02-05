@@ -625,12 +625,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisAppDelegate.m"
-         timestampString = "349972894.934735"
+         timestampString = "350128374.158967"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "98"
-         endingLineNumber = "98"
-         landmarkName = "-addEventToEventStore:"
+         startingLineNumber = "107"
+         endingLineNumber = "107"
+         landmarkName = "-addEventToCalendar:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -639,26 +639,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisAppDelegate.m"
-         timestampString = "349972894.934735"
+         timestampString = "350128374.158967"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "99"
-         endingLineNumber = "99"
-         landmarkName = "-addEventToEventStore:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "SisSis/SisSisAppDelegate.m"
-         timestampString = "349972901.208331"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "100"
-         endingLineNumber = "100"
-         landmarkName = "-addEventToEventStore:"
+         startingLineNumber = "108"
+         endingLineNumber = "108"
+         landmarkName = "-addEventToCalendar:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

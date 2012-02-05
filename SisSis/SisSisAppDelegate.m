@@ -9,6 +9,7 @@
 #import "SisSisAppDelegate.h"
 #import "AddScheduleViewController.h"
 #import "ScheduleData.h"
+#import "RouteData.h"
 
 @implementation SisSisAppDelegate
 
@@ -26,11 +27,7 @@
   [self.window addSubview:self.navController.view];
   [self.window makeKeyAndVisible];
   // DBファイル初期化
-  SqliteDB* db = [[SqliteDB alloc] init];
-  [db initializeDatabaseIfNeeded];
-  [db release];
-  // account model 取得
-  AccountModel* account = [AccountModel selectById:1];
+  dbManager = [[DBManager alloc] init];
   
   return YES;
 }
@@ -82,7 +79,7 @@
   [super dealloc];
 }
 
-- (void) addEventToEventStore:(ScheduleData*)data {
+- (void) addEventToCalendar:(ScheduleData*)data {
   if (!self.eventStore) {
     self.eventStore = [[EKEventStore alloc] init];
   }
@@ -96,6 +93,17 @@
   // イベントが関連付けられるカレンダーを設定
   [event setCalendar:[self.eventStore defaultCalendarForNewEvents]];
   [self.eventStore saveEvent:event span:EKSpanThisEvent error:&error];
+  [event release];
+  // 経路情報をDBにも登録
+  RouteData *route = [[RouteData alloc] init];
+  route.identifier = event.eventIdentifier;
+  route.departurePosition = data.departurePosition;
+  route.departureTime = data.departureTime;
+  route.arrivalTime = data.arrivalTime;
+  route.arrivalPosition = data.arrivalPosition;
+  route.travelMode = data.travelMode == UICGTravelModeDriving ? 0 : 1;
+  [dbManager addRoute:route];
+  [route release];
   NSLog(@"saved new Event");
 }
 
@@ -113,7 +121,7 @@
   data.startTime = [NSDate date];
   data.endTime = [NSDate dateWithTimeIntervalSinceNow:86400];
   data.position = @"自宅";
-  [self addEventToEventStore:data];
+  [self addEventToCalendar:data];
 }
 
 @end

@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <EventKit/EventKit.h>
 #import <EventKitUI/EventKitUI.h>
-#import "SqliteDB.h"
-#import "AccountModel.h"
+#import "DBManager.h"
 
 @class SisSisViewController;
 
@@ -18,6 +17,7 @@
   UIWindow *window;
   UINavigationController *navController;
   EKEventStore* eventStore;
+  DBManager* dbManager;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
