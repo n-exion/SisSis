@@ -11,6 +11,8 @@
 #import "UICGDirections.h"
 
 @class UICRouteOverlayMapView;
+@class DepartureDecideViewController;
+@class AddScheduleViewController;
 
 @interface MapDirectionsViewController : UIViewController<MKMapViewDelegate, UICGDirectionsDelegate> {
 	MKMapView *routeMapView;
@@ -20,6 +22,9 @@
 	NSString *endPoint;
 	NSArray *wayPoints;
 	UICGTravelModes travelMode;
+  
+  DepartureDecideViewController* departureController;
+  AddScheduleViewController* addController;
 }
 
 @property (nonatomic, retain) NSString *startPoint;
@@ -27,6 +32,8 @@
 @property (nonatomic, retain) NSArray *wayPoints;
 @property (nonatomic) UICGTravelModes travelMode;
 
+@property (nonatomic,weak) DepartureDecideViewController* departureController;
+@property (nonatomic,weak) AddScheduleViewController* addController;
 - (void)update;
 
 @end

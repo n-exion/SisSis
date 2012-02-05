@@ -11,12 +11,20 @@
 #import "UICRouteAnnotation.h"
 #import "RouteListViewController.h"
 
+#import "AddScheduleViewController.h"
+#import "DepartureDecideViewController.h"
+#import "ScheduleData.h"
+
+
 @implementation MapDirectionsViewController
 
 @synthesize startPoint;
 @synthesize endPoint;
 @synthesize wayPoints;
 @synthesize travelMode;
+
+@synthesize departureController;
+@synthesize addController;
 
 - (void)dealloc {
 	[routeOverlayView release];
@@ -139,6 +147,17 @@
 			[routeMapView addAnnotation:annotation];
 		}
 	}
+  
+  NSNumberFormatter* fmt = [[[NSNumberFormatter alloc] init] autorelease];
+  NSString* durationSecondStr = [fmt stringForObjectValue:[directions.duration objectForKey:@"seconds"]];
+  int second = [durationSecondStr intValue];
+  NSCalendar* calendar = [NSCalendar currentCalendar];
+  NSDateComponents* diff = [[[NSDateComponents alloc] init] autorelease];
+  diff.second = -second;
+    
+  addController.schedule.departureTime = [calendar dateByAddingComponents:diff toDate:addController.schedule.arrivalTime options:0];
+  [departureController syncTableWithScheduleData];
+
 		
 	[routeMapView addAnnotations:[NSArray arrayWithObjects:startAnnotation, endAnnotation, nil]];
 }

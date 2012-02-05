@@ -10,11 +10,15 @@
 
 @class DepartureDecideViewController;
 @class AddScheduleViewController;
+@class ButtonEditableCell;
 
 @interface DeparturePositionDecideViewController : UITableViewController{
   DepartureDecideViewController* departureDecideViewController;
   AddScheduleViewController* addController;
+  NSMutableArray* positionList;
 }
+
+@property (strong, nonatomic) IBOutlet ButtonEditableCell* buttonEditableCell;
 
 -(void) setDeparturePositionDecideViewController:(DepartureDecideViewController*)controller;
 -(void) setAddScheduleViewController:(AddScheduleViewController*)controller;

@@ -11,13 +11,15 @@
 #import "AddScheduleViewController.h"
 #import "ScheduleData.h"
 
+#import "ButtonEditableCell.h"
+
 @implementation DeparturePositionDecideViewController
+@synthesize buttonEditableCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
   self = [super initWithStyle:style];
   if (self) {
-    // Custom initialization
   }
   return self;
 }
@@ -43,7 +45,7 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
+
   // Uncomment the following line to preserve selection between presentations.
   // self.clearsSelectionOnViewWillAppear = NO;
   
@@ -61,6 +63,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
+  NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+  positionList = [[NSMutableArray alloc] init];
+  [positionList addObject:@"自宅"];
+  [positionList addObject:@"石川台駅"];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -96,42 +103,49 @@
   // Return the number of rows in the section.
   switch(section){
     case 0:
-      return 1;
+      return [positionList count];
     case 1:
-      return 2;
+      return 1;
   }
   
   return 0;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  static NSString *CellIdentifier = @"Cell";
-  
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (cell == nil) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-  }
-  
+
   if(indexPath.section == 0){
-    cell.textLabel.text = @"新しい出発地点の追加";
+    UITableViewCell *cell;
+    static NSString *CellIdentifier = @"Cell";
+    
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+      cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    cell.textLabel.text = [positionList objectAtIndex:indexPath.row];
+    return cell;
   }
   else if(indexPath.section == 1){
-    switch (indexPath.row) {
-      case 0:
-        cell.textLabel.text = @"石川台駅";
-        break;
-      case 1:
-        cell.textLabel.text = @"現在地点";
-        break;
-      default:
-        break;
+    static NSString *CellIdentifier = @"ButtonEditableCell";
+    
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ButtonEditableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+      [[NSBundle mainBundle] loadNibNamed:@"ButtonEditableCell" owner:self options:nil];
+      cell = (ButtonEditableCell*)buttonEditableCell;
+
     }
+
+    cell.inputField.placeholder = @"新しい出発地点";
+    return cell;
   }
   
   // Configure the cell...
-  
-  return cell;
+  return nil;
+
 }
 
 /*
@@ -175,6 +189,17 @@
 
 #pragma mark - Table view delegate
 
+- (NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+  switch(section){
+    case 0:
+      return @"出発地点";
+    case 1:
+      return @"出発地点の追加";
+    default:
+      return @"適当";
+  }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   // Navigation logic may go here. Create and push another view controller.
@@ -188,25 +213,51 @@
   int section = indexPath.section;
   
   //位置を指定したら前の画面に戻りつつ、場所入力
-  if(section == 1){
+  if(section == 0){
     UITableViewCell* targetCell = [self.tableView cellForRowAtIndexPath:indexPath];
     NSString* positionName = targetCell.textLabel.text;
     
     addController.schedule.departurePosition = positionName;
     [departureDecideViewController syncTableWithScheduleData];
     [self.navigationController popViewControllerAnimated:YES];
-
-    /*
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Warning" 
-                                                    message:positionName
-                                                   delegate:self 
-                                          cancelButtonTitle:@"OK" 
-                                          otherButtonTitles: nil] autorelease];
-    [alert show];
-     */
     
+    /*
+     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Warning" 
+     message:positionName
+     delegate:self 
+     cancelButtonTitle:@"OK" 
+     otherButtonTitles: nil] autorelease];
+     [alert show];
+     */
     
   }
 }
 
+- (IBAction)pushAddButton:(id)sender {
+  ButtonEditableCell* cell = (ButtonEditableCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+  NSString* new_position = cell.inputField.text;
+
+  //未入力ならなにもしない
+  if ([new_position isEqualToString:@""])
+    return;
+  
+  [cell.inputField resignFirstResponder];
+  
+  NSIndexPath* path = [NSIndexPath indexPathForRow:[positionList count] inSection:0];
+  [self.tableView beginUpdates];
+
+  [positionList addObject:new_position];
+  
+  [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationRight];
+  
+  [self.tableView endUpdates];
+
+}
+
+
+- (void)dealloc {
+  [buttonEditableCell release];
+  [positionList release];
+  [super dealloc];
+}
 @end
