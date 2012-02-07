@@ -11,6 +11,8 @@
 		101B521F14CABF77005534FD /* DepartureDecideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 101B521E14CABF77005534FD /* DepartureDecideViewController.xib */; };
 		101B522314CABF92005534FD /* DeparturePositionDecideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 101B522114CABF92005534FD /* DeparturePositionDecideViewController.m */; };
 		101B522414CABF92005534FD /* DeparturePositionDecideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 101B522214CABF92005534FD /* DeparturePositionDecideViewController.xib */; };
+		102305A314E168C300EF7D9A /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112079A114BB291B008B2E86 /* EventKit.framework */; };
+		102305A514E16A3A00EF7D9A /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AA0E314C41E7C00153C9D /* EventKitUI.framework */; };
 		1034061814C425BE0049DE5D /* AddScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034061614C425BE0049DE5D /* AddScheduleViewController.m */; };
 		1034061914C425BE0049DE5D /* AddScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1034061714C425BE0049DE5D /* AddScheduleViewController.xib */; };
 		1034062114C425ED0049DE5D /* EditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1034061B14C425ED0049DE5D /* EditableCell.xib */; };
@@ -52,18 +54,20 @@
 		107A42F714DD0F3700EE41B0 /* ModalDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 107A42F514DD0F3700EE41B0 /* ModalDatePickerViewController.xib */; };
 		10A6226B14DE960A005BBBEA /* ButtonEditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A6226914DE960A005BBBEA /* ButtonEditableCell.m */; };
 		10A6226C14DE960A005BBBEA /* ButtonEditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10A6226A14DE960A005BBBEA /* ButtonEditableCell.xib */; };
-		112079A214BB291B008B2E86 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112079A114BB291B008B2E86 /* EventKit.framework */; };
 		1132270D14DA8E6600FB52B0 /* DayEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1132270B14DA8E6600FB52B0 /* DayEventViewController.m */; };
 		1132270E14DA8E6600FB52B0 /* DayEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1132270C14DA8E6600FB52B0 /* DayEventViewController.xib */; };
+		11415FE714DEBD5200429E3B /* ExtendClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = 11415FE614DEBD5200429E3B /* ExtendClasses.m */; };
+		11415FE914DEC01A00429E3B /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 11415FE814DEC01A00429E3B /* back.png */; };
 		1144E90B14AB2225004017D2 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */; };
 		1144E90E14AB22EE004017D2 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E90714AB221C004017D2 /* libTapkuLibrary.a */; };
 		1144E91114AB2306004017D2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E90F14AB2306004017D2 /* MapKit.framework */; };
 		1144E91214AB2306004017D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1144E91014AB2306004017D2 /* QuartzCore.framework */; };
 		11707C3414CC71B1005632E1 /* EventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11707C3214CC71B1005632E1 /* EventListViewController.m */; };
 		11707C3514CC71B1005632E1 /* EventListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11707C3314CC71B1005632E1 /* EventListViewController.xib */; };
-		117AA0E414C41E7C00153C9D /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AA0E314C41E7C00153C9D /* EventKitUI.framework */; };
 		118094A214DD599E00396733 /* DBMagager.m in Sources */ = {isa = PBXBuildFile; fileRef = 118094A114DD599E00396733 /* DBMagager.m */; };
 		118094A914DE79AF00396733 /* RouteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 118094A814DE79AF00396733 /* RouteData.m */; };
+		118094DE14DE986D00396733 /* SSEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 118094DC14DE986D00396733 /* SSEventViewController.m */; };
+		118094DF14DE986D00396733 /* SSEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 118094DD14DE986D00396733 /* SSEventViewController.xib */; };
 		1181DF1B14AB17F9001E7780 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1A14AB17F9001E7780 /* UIKit.framework */; };
 		1181DF1D14AB17F9001E7780 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1C14AB17F9001E7780 /* Foundation.framework */; };
 		1181DF1F14AB17F9001E7780 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1181DF1E14AB17F9001E7780 /* CoreGraphics.framework */; };
@@ -198,6 +202,9 @@
 		1132270A14DA8E6600FB52B0 /* DayEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayEventViewController.h; sourceTree = "<group>"; };
 		1132270B14DA8E6600FB52B0 /* DayEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayEventViewController.m; sourceTree = "<group>"; };
 		1132270C14DA8E6600FB52B0 /* DayEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayEventViewController.xib; sourceTree = "<group>"; };
+		11415FE514DEBD5200429E3B /* ExtendClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendClasses.h; sourceTree = "<group>"; };
+		11415FE614DEBD5200429E3B /* ExtendClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendClasses.m; sourceTree = "<group>"; };
+		11415FE814DEC01A00429E3B /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		1144E8FE14AB221C004017D2 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Libraries/TapkuLibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		1144E90A14AB2225004017D2 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = Libraries/TapkuLibrary/src/TapkuLibrary.bundle; sourceTree = "<group>"; };
 		1144E90F14AB2306004017D2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -210,6 +217,9 @@
 		118094A114DD599E00396733 /* DBMagager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMagager.m; sourceTree = "<group>"; };
 		118094A714DE79AF00396733 /* RouteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteData.h; sourceTree = "<group>"; };
 		118094A814DE79AF00396733 /* RouteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteData.m; sourceTree = "<group>"; };
+		118094DB14DE986D00396733 /* SSEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSEventViewController.h; sourceTree = "<group>"; };
+		118094DC14DE986D00396733 /* SSEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSEventViewController.m; sourceTree = "<group>"; };
+		118094DD14DE986D00396733 /* SSEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSEventViewController.xib; sourceTree = "<group>"; };
 		1181DF1614AB17F9001E7780 /* SisSis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SisSis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1181DF1A14AB17F9001E7780 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1181DF1C14AB17F9001E7780 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -247,10 +257,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				102305A514E16A3A00EF7D9A /* EventKitUI.framework in Frameworks */,
+				102305A314E168C300EF7D9A /* EventKit.framework in Frameworks */,
 				103AB4AE14D2999B0020F9E1 /* CoreLocation.framework in Frameworks */,
 				11B49F7214CF0D42003E4CE0 /* libsqlite3.0.dylib in Frameworks */,
-				117AA0E414C41E7C00153C9D /* EventKitUI.framework in Frameworks */,
-				112079A214BB291B008B2E86 /* EventKit.framework in Frameworks */,
 				1144E91114AB2306004017D2 /* MapKit.framework in Frameworks */,
 				1144E91214AB2306004017D2 /* QuartzCore.framework in Frameworks */,
 				1144E90E14AB22EE004017D2 /* libTapkuLibrary.a in Frameworks */,
@@ -384,6 +394,13 @@
 			name = DepartureDecide;
 			sourceTree = "<group>";
 		};
+		11415FEA14DEC19B00429E3B /* ExtendEventKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ExtendEventKit;
+			sourceTree = "<group>";
+		};
 		1144E8FF14AB221C004017D2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,9 +422,24 @@
 				1132270A14DA8E6600FB52B0 /* DayEventViewController.h */,
 				1132270B14DA8E6600FB52B0 /* DayEventViewController.m */,
 				1132270C14DA8E6600FB52B0 /* DayEventViewController.xib */,
+				11415FE814DEC01A00429E3B /* back.png */,
+				11415FE514DEBD5200429E3B /* ExtendClasses.h */,
+				11415FE614DEBD5200429E3B /* ExtendClasses.m */,
+				11415FEA14DEC19B00429E3B /* ExtendEventKit */,
+				118094B414DE8E5F00396733 /* DetailView */,
 				11B49F7014CF0C01003E4CE0 /* TableParts */,
 			);
 			name = Calender;
+			sourceTree = "<group>";
+		};
+		118094B414DE8E5F00396733 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				118094DB14DE986D00396733 /* SSEventViewController.h */,
+				118094DC14DE986D00396733 /* SSEventViewController.m */,
+				118094DD14DE986D00396733 /* SSEventViewController.xib */,
+			);
+			name = DetailView;
 			sourceTree = "<group>";
 		};
 		1181DF0B14AB17F9001E7780 = {
@@ -646,6 +678,8 @@
 				1132270E14DA8E6600FB52B0 /* DayEventViewController.xib in Resources */,
 				107A42F714DD0F3700EE41B0 /* ModalDatePickerViewController.xib in Resources */,
 				10A6226C14DE960A005BBBEA /* ButtonEditableCell.xib in Resources */,
+				118094DF14DE986D00396733 /* SSEventViewController.xib in Resources */,
+				11415FE914DEC01A00429E3B /* back.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,6 +755,8 @@
 				118094A214DD599E00396733 /* DBMagager.m in Sources */,
 				118094A914DE79AF00396733 /* RouteData.m in Sources */,
 				10A6226B14DE960A005BBBEA /* ButtonEditableCell.m in Sources */,
+				118094DE14DE986D00396733 /* SSEventViewController.m in Sources */,
+				11415FE714DEBD5200429E3B /* ExtendClasses.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -795,6 +831,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -812,6 +849,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
