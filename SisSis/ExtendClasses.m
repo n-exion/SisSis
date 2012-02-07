@@ -70,11 +70,3 @@
   return newImage ;
 }
 @end
-
-
-@implementation EKEventViewController (Extras)
-- (UITableView *)getTableView {
-  return _tableView;
-}
-@end;
-
