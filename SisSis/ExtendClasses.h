@@ -13,7 +13,3 @@
 @interface UIImage (Extras)
 - (UIImage *)imageByScalingProportionallyToSize:(CGSize)targetSize;
 @end;
-
-@interface EKEventViewController (Extras)
-- (UITableView *)getTableView;
-@end;
