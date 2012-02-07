@@ -50,6 +50,8 @@
 		10484BB014D99D7400BD122C /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = 10484BAA14D99D7400BD122C /* list.png */; };
 		107A42F614DD0F3700EE41B0 /* ModalDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 107A42F414DD0F3700EE41B0 /* ModalDatePickerViewController.m */; };
 		107A42F714DD0F3700EE41B0 /* ModalDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 107A42F514DD0F3700EE41B0 /* ModalDatePickerViewController.xib */; };
+		10A6226B14DE960A005BBBEA /* ButtonEditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A6226914DE960A005BBBEA /* ButtonEditableCell.m */; };
+		10A6226C14DE960A005BBBEA /* ButtonEditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10A6226A14DE960A005BBBEA /* ButtonEditableCell.xib */; };
 		112079A214BB291B008B2E86 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112079A114BB291B008B2E86 /* EventKit.framework */; };
 		1132270D14DA8E6600FB52B0 /* DayEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1132270B14DA8E6600FB52B0 /* DayEventViewController.m */; };
 		1132270E14DA8E6600FB52B0 /* DayEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1132270C14DA8E6600FB52B0 /* DayEventViewController.xib */; };
@@ -189,6 +191,9 @@
 		107A42F314DD0F3700EE41B0 /* ModalDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalDatePickerViewController.h; sourceTree = "<group>"; };
 		107A42F414DD0F3700EE41B0 /* ModalDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalDatePickerViewController.m; sourceTree = "<group>"; };
 		107A42F514DD0F3700EE41B0 /* ModalDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModalDatePickerViewController.xib; sourceTree = "<group>"; };
+		10A6226814DE960A005BBBEA /* ButtonEditableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonEditableCell.h; sourceTree = "<group>"; };
+		10A6226914DE960A005BBBEA /* ButtonEditableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonEditableCell.m; sourceTree = "<group>"; };
+		10A6226A14DE960A005BBBEA /* ButtonEditableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonEditableCell.xib; sourceTree = "<group>"; };
 		112079A114BB291B008B2E86 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		1132270A14DA8E6600FB52B0 /* DayEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayEventViewController.h; sourceTree = "<group>"; };
 		1132270B14DA8E6600FB52B0 /* DayEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayEventViewController.m; sourceTree = "<group>"; };
@@ -289,6 +294,9 @@
 		1034061A14C425D60049DE5D /* TableParts */ = {
 			isa = PBXGroup;
 			children = (
+				10A6226814DE960A005BBBEA /* ButtonEditableCell.h */,
+				10A6226914DE960A005BBBEA /* ButtonEditableCell.m */,
+				10A6226A14DE960A005BBBEA /* ButtonEditableCell.xib */,
 				1034061B14C425ED0049DE5D /* EditableCell.xib */,
 				1034061C14C425ED0049DE5D /* EditableCell.h */,
 				1034061D14C425ED0049DE5D /* EditableCell.m */,
@@ -637,6 +645,7 @@
 				10484BB014D99D7400BD122C /* list.png in Resources */,
 				1132270E14DA8E6600FB52B0 /* DayEventViewController.xib in Resources */,
 				107A42F714DD0F3700EE41B0 /* ModalDatePickerViewController.xib in Resources */,
+				10A6226C14DE960A005BBBEA /* ButtonEditableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +720,7 @@
 				107A42F614DD0F3700EE41B0 /* ModalDatePickerViewController.m in Sources */,
 				118094A214DD599E00396733 /* DBMagager.m in Sources */,
 				118094A914DE79AF00396733 /* RouteData.m in Sources */,
+				10A6226B14DE960A005BBBEA /* ButtonEditableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

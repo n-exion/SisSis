@@ -126,18 +126,20 @@
       
       cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
       
-      //cell.frame = frame;
+      cell.frame = frame;
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
       
       UIButton* deleteButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-      deleteButton.frame = CGRectMake(198.0, 5.0, 97.0, 35.0);
+      deleteButton.frame = CGRectMake(240.0, 5.0, 50.0, 35.0);
       [deleteButton setTitle:@"削除" forState:UIControlStateNormal];
-
+      [deleteButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+      
       deleteButton.backgroundColor = [UIColor clearColor];
+      deleteButton.tag = 1;
+
       [deleteButton addTarget:self action:@selector(pushDeleteButton:) forControlEvents:UIControlEventTouchUpInside];
       
-      deleteButton.tag = 1;
-      [cell.contentView addSubview:deleteButton];
+      [cell addSubview:deleteButton];
 
     }
     
@@ -263,6 +265,13 @@
 }
 
 - (void)pushDeleteButton:(id)sender{
+  UIButton* button = (UIButton*)sender;
+  UITableViewCell *cell = (UITableViewCell*)[button superview];
+  NSIndexPath* path = [self.tableView indexPathForCell:cell];
+  
+  [positionList removeObjectAtIndex:path.row];
+  [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationRight];
+  
   
 }
 
