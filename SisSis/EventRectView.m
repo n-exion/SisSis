@@ -66,6 +66,7 @@
     utv_title.opaque = NO;
     utv_title.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
     utv_title.text = event.title;
+    utv_title.editable = NO;
     [self addSubview:utv_title];
     [utv_title release];
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
@@ -76,6 +77,7 @@
     utv_time.opaque = NO;
     utv_time.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
     utv_time.text = [NSString stringWithFormat:@"%@ 〜 %@", startTime, endTime];
+    utv_time.editable = NO;
     //utv_time.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
     [self addSubview:utv_time];
     [utv_time release];
