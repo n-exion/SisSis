@@ -32,7 +32,7 @@
   
   //登録するスケジュールデータの作成(初期値をここで与える)
   schedule = [[ScheduleData alloc] init];
-  schedule.departurePosition = @"自宅";
+  schedule.departurePosition = @"現在地点";
   schedule.departureTime = nil;
   
   NSDate* now = [NSDate date];

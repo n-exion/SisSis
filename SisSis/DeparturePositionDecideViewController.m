@@ -32,6 +32,19 @@
   addController = controller;
 }
 
+//データの追加とともに設定に保存する
+-(void)addDeparturePosition:(NSString*)position{
+  [positionList addObject:position];
+  NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+  [defaults setObject:positionList forKey:@"positionList"];
+
+}
+
+-(void)deleteDeparturePosition:(NSInteger)index{
+  [positionList removeObjectAtIndex:index];
+}
+
+
 - (void)didReceiveMemoryWarning
 {
   // Releases the view if it doesn't have a superview.
@@ -64,9 +77,26 @@
 {
   [super viewWillAppear:animated];
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-  positionList = [[NSMutableArray alloc] init];
-  [positionList addObject:@"自宅"];
-  [positionList addObject:@"石川台駅"];
+  NSArray* savedList = [defaults arrayForKey:@"positionList"];
+  
+  if (savedList) {
+    positionList = [[NSMutableArray alloc] initWithArray:savedList];
+  }
+  else{
+    positionList = [[NSMutableArray alloc] init];
+    [positionList addObject:@"現在地点"];
+  }
+  
+  int numPositionList = [positionList count];
+  BOOL findStart = NO;
+  
+  for(int i = 0; i < numPositionList;i++){
+    if([[positionList objectAtIndex:i] isEqualToString:@"現在地点"] )
+         findStart = YES;
+  }
+  if(!findStart){
+    [positionList insertObject:@"現在地点" atIndex:0];
+  }
 
 }
 
@@ -256,7 +286,8 @@
   NSIndexPath* path = [NSIndexPath indexPathForRow:[positionList count] inSection:0];
   [self.tableView beginUpdates];
 
-  [positionList addObject:new_position];
+  [self addDeparturePosition:new_position];
+  //[positionList addObject:new_position];
   
   [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationRight];
   
@@ -269,7 +300,7 @@
   UITableViewCell *cell = (UITableViewCell*)[button superview];
   NSIndexPath* path = [self.tableView indexPathForCell:cell];
   
-  [positionList removeObjectAtIndex:path.row];
+  [self deleteDeparturePosition:path.row];
   [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationRight];
   
   
