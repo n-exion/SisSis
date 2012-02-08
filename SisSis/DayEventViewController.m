@@ -15,6 +15,8 @@
 @synthesize todayButton;
 @synthesize delegate;
 @synthesize backImageView;
+@synthesize nowDate;
+@synthesize navTitle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,8 +50,14 @@
   scrollView.showsVerticalScrollIndicator = YES;  
   scrollView.scrollsToTop = YES;  
   scrollView.delegate = self;  
-  
   [scrollView addSubview:backImageView];
+  
+  if (nowDate) {
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setDateFormat:@"yyyy MM dd"];
+    navTitle.title = [outputFormatter stringFromDate:nowDate];
+    [outputFormatter release];
+  }
 }
 
 - (void)viewDidUnload
