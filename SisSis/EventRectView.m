@@ -40,9 +40,9 @@
   // 現在のコンテクストを取得
   CGContextRef context = UIGraphicsGetCurrentContext();
   // 枠線描画色指定
-  CGContextSetRGBStrokeColor(context, 0.2, 0.2, 0.5, 1.0);
+  CGContextSetRGBStrokeColor(context, 0.3, 0.3, 0.6, 1.0);
   // 枠内部色指定
-  CGContextSetRGBFillColor(context, 0.6, 0.6, 0.8, 1.0);
+  CGContextSetRGBFillColor(context, 0.7, 0.7, 0.85, 1.0);
   // 枠線太さ
   CGContextSetLineWidth(context, 2.0);
   
@@ -57,9 +57,28 @@
   for (event in eventArray) {
     int sm = ([event.startDate timeIntervalSinceDate:nowDate] / 60);
     int em = ([event.endDate timeIntervalSinceDate:nowDate] / 60);
+    float width = 320.0 - 60.0;
+    float x = 54.0;
+    float y = 48 + 0.8 * sm;
     CGContextFillStrokeRoundedRect(context, 
-                                   CGRectMake(54.0, 48.0 + 0.8 * sm, 320.0 - 60.0, 0.8 * (em - sm)), 
-                                   5.0) ;
+                                   CGRectMake(x, y, width, 0.8 * (em - sm)), 5.0) ;
+    UITextView *utv_title = [[UITextView alloc] initWithFrame:CGRectMake(x + 3.0, y + 4.0 , width - 12.0, 16.0)];
+    utv_title.opaque = NO;
+    utv_title.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
+    utv_title.text = event.title;
+    [self addSubview:utv_title];
+    [utv_title release];
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setDateFormat:@"hh:mm"];
+    NSString *startTime = [outputFormatter stringFromDate:event.startDate];
+    NSString *endTime = [outputFormatter stringFromDate:event.endDate];
+    UITextView *utv_time = [[UITextView alloc] initWithFrame:CGRectMake(x + 3.0, y + 20.0 , width - 12.0, 16.0)];
+    utv_time.opaque = NO;
+    utv_time.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
+    utv_time.text = [NSString stringWithFormat:@"%@ 〜 %@", startTime, endTime];
+    //utv_time.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+    [self addSubview:utv_time];
+    [utv_time release];
   }
 }
 
