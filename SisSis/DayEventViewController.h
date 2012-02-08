@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "SisSisAppDelegate.h"
 #import "ExtendClasses.h"
+#import "TapkuLibrary.h"
+#import "EventRectView.h"
 
 @protocol CalSegControlDelegate;
 @interface DayEventViewController : UIViewController <UIScrollViewDelegate>
@@ -38,6 +40,7 @@
 
 - (IBAction) changedSegmentedControlValue:(id)sender;
 - (IBAction) didPushedTodayButton:(id)sender;
+- (void) generateEventDataForStartDate:(NSDate*)start;
 @end
 
 @protocol CalSegControlDelegate
