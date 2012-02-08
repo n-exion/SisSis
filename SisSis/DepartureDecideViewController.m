@@ -332,8 +332,6 @@
     mapController.addController = addController;
     mapController.departureController = self;
 		
-		mapController.startPoint = addController.schedule.departurePosition;
-		mapController.endPoint = addController.schedule.arrivalPosition;
     mapController.travelMode = addController.schedule.travelMode;
 		
 		[self.navigationController pushViewController:mapController animated:YES];

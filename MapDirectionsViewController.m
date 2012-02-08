@@ -11,6 +11,7 @@
 #import "UICRouteAnnotation.h"
 #import "RouteListViewController.h"
 
+
 #import "AddScheduleViewController.h"
 #import "DepartureDecideViewController.h"
 #import "ScheduleData.h"
@@ -18,20 +19,19 @@
 
 @implementation MapDirectionsViewController
 
-@synthesize startPoint;
-@synthesize endPoint;
 @synthesize wayPoints;
 @synthesize travelMode;
+@synthesize locationManager;
+@synthesize currentLocation;
 
 @synthesize departureController;
 @synthesize addController;
 
 - (void)dealloc {
 	[routeOverlayView release];
-	[startPoint release];
-	[endPoint release];
-    [wayPoints release];
-    [super dealloc];
+  [wayPoints release];
+  [locationManager release];
+  [super dealloc];
 }
 
 - (void)loadView {
@@ -60,9 +60,40 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	if (diretions.isInitialized) {
-		[self update];
-	}
+  
+  ScheduleData* schedule = addController.schedule;
+  BOOL useGPS = NO;
+  
+  if([schedule.departurePosition isEqualToString:@"現在地点"]  || 
+     [ schedule.arrivalPosition isEqualToString:@"現在地点" ]){
+    useGPS = YES;
+  }
+  else{
+    if (diretions.isInitialized) {
+      [self update];
+    }
+    return;
+  }
+  
+  if(useGPS){
+    if(![CLLocationManager locationServicesEnabled]){
+      UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Warning" 
+                                                       message:@"目的地を入力してください"
+                                                      delegate:self 
+                                             cancelButtonTitle:@"OK" 
+                                             otherButtonTitles: nil] autorelease];
+      [alert show];
+      
+    }
+    else{
+      locationManager = [[CLLocationManager alloc] init];
+      locationManager.delegate = self;
+      
+      //位置情報の取得を開始
+      [locationManager startUpdatingLocation];
+    }
+
+  }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,14 +106,9 @@
 	
 	UICGDirectionsOptions *options = [[[UICGDirectionsOptions alloc] init] autorelease];
 	options.travelMode = travelMode;
-	if ([wayPoints count] > 0) {
-		NSArray *routePoints = [NSArray arrayWithObject:startPoint];
-		routePoints = [routePoints arrayByAddingObjectsFromArray:wayPoints];
-		routePoints = [routePoints arrayByAddingObject:endPoint];
-		[diretions loadFromWaypoints:routePoints options:options];
-	} else {
-		[diretions loadWithStartPoint:startPoint endPoint:endPoint options:options];
-	}
+
+  [diretions loadWithStartPoint:addController.schedule.departurePosition endPoint:addController.schedule.arrivalPosition options:options];
+
 }
 
 - (void)moveToCurrentLocation:(id)sender {
@@ -129,12 +155,12 @@
 	
 	// Add annotations
 	UICRouteAnnotation *startAnnotation = [[[UICRouteAnnotation alloc] initWithCoordinate:[[routePoints objectAtIndex:0] coordinate]    
-                                                                                    title:startPoint
+                                                                                    title:addController.schedule.departurePosition
 																		   annotationType:UICRouteAnnotationTypeStart] autorelease];
 	UICRouteAnnotation *endAnnotation = 
     [[[UICRouteAnnotation alloc] initWithCoordinate:[
                                                      [routePoints lastObject] coordinate]
-                                              title:endPoint
+                                              title:addController.schedule.arrivalPosition
                                      annotationType:UICRouteAnnotationTypeEnd] autorelease];
 	if ([wayPoints count] > 0) {
 		NSInteger numberOfRoutes = [directions numberOfRoutes];
@@ -204,6 +230,37 @@
 	} else {
 		return [routeMapView viewForAnnotation:routeMapView.userLocation];
 	}
+}
+
+#pragma mark <CLLocationManagerDelegate> Methods
+-(void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+  // 位置情報更新
+  currentLocation = newLocation.coordinate;
+	//_longitude = newLocation.coordinate.longitude;
+	//_latitude = newLocation.coordinate.latitude;
+  NSLog([NSString stringWithFormat:@"long:%f lat:%f",currentLocation.longitude,currentLocation.latitude]);
+  
+  [locationManager stopUpdatingLocation];
+  
+  if (diretions.isInitialized) {
+    //addController.schedule
+    NSString* position = [NSString stringWithFormat:@"%f,%f",currentLocation.latitude,currentLocation.longitude];
+    
+    if([addController.schedule.departurePosition isEqualToString:@"現在地点"]){
+      addController.schedule.departurePosition = position;
+    }
+    if([addController.schedule.arrivalPosition isEqualToString:@"現在地点"]){
+      addController.schedule.arrivalPosition = position;
+    }
+
+		[self update];
+	}
+}
+
+-(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"エラー" message:@"位置情報が取得できませんでした。" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+  [alertView show];
+  [alertView release];
 }
 
 @end
