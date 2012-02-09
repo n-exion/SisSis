@@ -239,7 +239,8 @@
   } else if (value == 1) {
     DayEventViewController *dialog = [[DayEventViewController alloc]
                                       initWithNibName:@"DayEventViewController"
-                                      bundle:[NSBundle mainBundle]]; 
+                                      bundle:[NSBundle mainBundle]];
+    dialog.nowDate = [self.monthView dateSelected];
     dialog.delegate = self;
     [self.view addSubview:dialog.view];
   } 

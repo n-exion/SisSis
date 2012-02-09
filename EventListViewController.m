@@ -122,9 +122,9 @@
 	nowDate = [dateFormatter dateFromString:nowDateStr];
   [dateFormatter release];
   NSDateComponents *dateComp = [[NSDateComponents alloc] init];
-  [dateComp setMonth:-3];
+  [dateComp setMonth:-1];
 	NSDate *start = [[NSCalendar currentCalendar] dateByAddingComponents:dateComp toDate:[NSDate date] options:0];
-  [dateComp setMonth:6];
+  [dateComp setMonth:3];
   NSDate *end = [[NSCalendar currentCalendar] dateByAddingComponents:dateComp toDate:[NSDate date] options:0];
   [dateComp release];
   [self generateEventDataForStartDate:start endDate:end];

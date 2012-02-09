@@ -95,15 +95,18 @@
   [self.eventStore saveEvent:event span:EKSpanThisEvent error:&error];
   [event release];
   // 経路情報をDBにも登録
-  RouteData *route = [[RouteData alloc] init];
-  route.identifier = event.eventIdentifier;
-  route.departurePosition = data.departurePosition;
-  route.departureTime = data.departureTime;
-  route.arrivalTime = data.arrivalTime;
-  route.arrivalPosition = data.arrivalPosition;
-  route.travelMode = data.travelMode == UICGTravelModeDriving ? 0 : 1;
-  [dbManager addRoute:route];
-  [route release];
+  if (data.departurePosition && data.departureTime 
+      && data.arrivalTime && data.arrivalPosition) {
+    RouteData *route = [[RouteData alloc] init];
+    route.identifier = event.eventIdentifier; 
+    route.departurePosition = data.departurePosition;
+    route.departureTime = data.departureTime;
+    route.arrivalTime = data.arrivalTime;
+    route.arrivalPosition = data.arrivalPosition;
+    route.travelMode = data.travelMode == UICGTravelModeDriving ? 0 : 1;
+    [dbManager addRoute:route];
+    [route release];
+  }
   NSLog(@"saved new Event");
 }
 
