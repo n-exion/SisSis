@@ -13,7 +13,7 @@
 #import "EventRectView.h"
 
 @protocol CalSegControlDelegate;
-@interface DayEventViewController : UIViewController <UIScrollViewDelegate>
+@interface DayEventViewController : UIViewController <UIScrollViewDelegate, EventRectDelegate>
 {
   UIToolbar *toolBar;
   UIBarButtonItem *todayButton;
@@ -25,7 +25,6 @@
   NSMutableArray *dataArray;
 	NSMutableDictionary *dataDictionary;
   NSDate *nowDate;
-  UIImageView *backImageView;
   id <CalSegControlDelegate> delegate;
 }
 
@@ -35,12 +34,12 @@
 @property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (retain, nonatomic) IBOutlet UINavigationItem *navTitle;
 @property (retain, nonatomic) id <CalSegControlDelegate> delegate;
-@property (retain, nonatomic) UIImageView *backImageView;
-@property (retain, nonatomic) NSDate* nowDate;
+@property (assign, nonatomic) NSDate* nowDate;
 
 - (IBAction) changedSegmentedControlValue:(id)sender;
 - (IBAction) didPushedTodayButton:(id)sender;
 - (void) generateEventDataForStartDate:(NSDate*)start;
+- (void) showEKEventViewController:(EKEvent*) event;
 @end
 
 @protocol CalSegControlDelegate

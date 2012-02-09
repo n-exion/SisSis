@@ -43,7 +43,7 @@
 					<object class="IBUIScrollView" id="35804115">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{0, 44}, {320, 328}}</string>
+						<string key="NSFrame">{{0, 45}, {320, 328}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<string key="NSReuseIdentifierKey">_NS:190</string>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -239,9 +239,9 @@
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="35804115"/>
 							<reference ref="477774799"/>
 							<reference ref="637282667"/>
+							<reference ref="35804115"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>

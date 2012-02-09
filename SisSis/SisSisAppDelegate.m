@@ -80,9 +80,6 @@
 }
 
 - (void) addEventToCalendar:(ScheduleData*)data {
-  if (!self.eventStore) {
-    self.eventStore = [[EKEventStore alloc] init];
-  }
   EKEvent *event = [EKEvent eventWithEventStore:self.eventStore];
   event.title = data.title;
   event.location = data.position;
@@ -93,7 +90,6 @@
   // イベントが関連付けられるカレンダーを設定
   [event setCalendar:[self.eventStore defaultCalendarForNewEvents]];
   [self.eventStore saveEvent:event span:EKSpanThisEvent error:&error];
-  [event release];
   // 経路情報をDBにも登録
   if (data.departurePosition && data.departureTime 
       && data.arrivalTime && data.arrivalPosition) {
@@ -114,7 +110,7 @@
 - (IBAction)pushedAddButton:(id)sender{
   // ここで予定の追加の画面に遷移すればいいはず_egawa
   NSLog(@"pushed AddEventButton");
-  AddScheduleViewController* addView = [[AddScheduleViewController alloc] initWithNibName:@"AddScheduleViewController" bundle:nil];
+  AddScheduleViewController* addView = [[[AddScheduleViewController alloc] initWithNibName:@"AddScheduleViewController" bundle:nil] autorelease];
   [self.navController pushViewController:addView animated:YES];
 }
 
@@ -125,6 +121,7 @@
   data.endTime = [NSDate dateWithTimeIntervalSinceNow:86400];
   data.position = @"自宅";
   [self addEventToCalendar:data];
+  [data release];
 }
 
 @end

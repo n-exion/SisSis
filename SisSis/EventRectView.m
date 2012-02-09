@@ -12,6 +12,8 @@
 
 @implementation EventRectView
 @synthesize eventArray;
+@synthesize eventRects;
+@synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -31,6 +33,7 @@
   }
   return self;
 }
+
 
 - (void)drawRect:(CGRect)rect
 {
@@ -54,14 +57,19 @@
   NSDate *nowDate = [dateFormatter dateFromString:nowDateStr];
   [dateFormatter release];
   EKEvent *event;
+  if (eventRects) {
+    [eventRects release];
+  }
+  eventRects = [[NSMutableArray alloc] init];
   for (event in eventArray) {
     int sm = ([event.startDate timeIntervalSinceDate:nowDate] / 60);
     int em = ([event.endDate timeIntervalSinceDate:nowDate] / 60);
     float width = 320.0 - 60.0;
     float x = 54.0;
     float y = 48 + 0.8 * sm;
-    CGContextFillStrokeRoundedRect(context, 
-                                   CGRectMake(x, y, width, 0.8 * (em - sm)), 5.0) ;
+    CGRect rect = CGRectMake(x, y, width, 0.8 * (em - sm));
+    [eventRects addObject:[NSValue valueWithCGRect:rect]];
+    CGContextFillStrokeRoundedRect(context, rect, 5.0) ;
     UITextView *utv_title = [[UITextView alloc] initWithFrame:CGRectMake(x + 3.0, y + 4.0 , width - 12.0, 16.0)];
     utv_title.opaque = NO;
     utv_title.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
@@ -73,6 +81,7 @@
     [outputFormatter setDateFormat:@"hh:mm"];
     NSString *startTime = [outputFormatter stringFromDate:event.startDate];
     NSString *endTime = [outputFormatter stringFromDate:event.endDate];
+    [outputFormatter release];
     UITextView *utv_time = [[UITextView alloc] initWithFrame:CGRectMake(x + 3.0, y + 20.0 , width - 12.0, 16.0)];
     utv_time.opaque = NO;
     utv_time.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
@@ -80,6 +89,9 @@
     utv_time.editable = NO;
     [self addSubview:utv_time];
     [utv_time release];
+  }
+  if (delegate) {
+    [delegate finishedRectDraw:[[eventRects objectAtIndex:0] CGRectValue]];
   }
 }
 
@@ -93,14 +105,4 @@ void CGContextFillStrokeRoundedRect( CGContextRef context, CGRect rect, CGFloat 
   CGContextClosePath( context );
   CGContextDrawPath( context, kCGPathFillStroke );
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
 @end

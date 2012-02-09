@@ -133,6 +133,7 @@
     NSMutableArray *tempArray = [tempKeyArray mutableCopy];
     [tempArray addObject:nowDate];
     keyArray = [[NSArray alloc] initWithArray:[tempArray sortedArrayUsingSelector:@selector(compare:)]];
+    [tempArray release];
   } else {
     keyArray = [[NSArray alloc] initWithArray:[tempKeyArray sortedArrayUsingSelector:@selector(compare:)]];
   }
@@ -157,7 +158,7 @@
     cell = (EventListCell *)vc.view;
   }
   NSDate *key = [keyArray objectAtIndex:indexPath.section];
-  NSMutableArray *eventArray = [dataDictionary objectForKey:key];
+  NSMutableArray *eventArray = [[dataDictionary objectForKey:key] autorelease];
   EKEvent *event = [eventArray objectAtIndex:indexPath.row];
   [cell.eventLabel setText:event.title];
   if (event.allDay) {

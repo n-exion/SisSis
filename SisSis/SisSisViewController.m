@@ -53,7 +53,6 @@
 - (void)dealloc
 {
   [super dealloc];
-  if (self.monthView != nil) [self.monthView release];
 }
 
 
@@ -88,11 +87,9 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  
   static NSString *CellIdentifier = @"Cell";
   UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-  
 	
 	NSArray *ar = [dataDictionary objectForKey:[self.monthView dateSelected]];
   EKEvent *event = [ar objectAtIndex:indexPath.row];
