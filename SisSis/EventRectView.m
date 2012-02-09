@@ -62,33 +62,38 @@
   }
   eventRects = [[NSMutableArray alloc] init];
   for (event in eventArray) {
-    int sm = ([event.startDate timeIntervalSinceDate:nowDate] / 60);
-    int em = ([event.endDate timeIntervalSinceDate:nowDate] / 60);
-    float width = 320.0 - 60.0;
-    float x = 54.0;
-    float y = 48 + 0.8 * sm;
-    CGRect rect = CGRectMake(x, y, width, 0.8 * (em - sm));
-    [eventRects addObject:[NSValue valueWithCGRect:rect]];
-    CGContextFillStrokeRoundedRect(context, rect, 5.0) ;
-    UITextView *utv_title = [[UITextView alloc] initWithFrame:CGRectMake(x + 3.0, y + 4.0 , width - 12.0, 16.0)];
-    utv_title.opaque = NO;
-    utv_title.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
-    utv_title.text = event.title;
-    utv_title.editable = NO;
-    [self addSubview:utv_title];
-    [utv_title release];
-    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateFormat:@"hh:mm"];
-    NSString *startTime = [outputFormatter stringFromDate:event.startDate];
-    NSString *endTime = [outputFormatter stringFromDate:event.endDate];
-    [outputFormatter release];
-    UITextView *utv_time = [[UITextView alloc] initWithFrame:CGRectMake(x + 3.0, y + 20.0 , width - 12.0, 16.0)];
-    utv_time.opaque = NO;
-    utv_time.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
-    utv_time.text = [NSString stringWithFormat:@"%@ 〜 %@", startTime, endTime];
-    utv_time.editable = NO;
-    [self addSubview:utv_time];
-    [utv_time release];
+    if (event.allDay) {
+    } else {
+      int sm = ([event.startDate timeIntervalSinceDate:nowDate] / 60);
+      int em = ([event.endDate timeIntervalSinceDate:nowDate] / 60);
+      float width = 320.0 - 60.0;
+      float x = 54.0;
+      float y = 48 + 0.8 * sm;
+      CGRect rect = CGRectMake(x, y, width, 0.8 * (em - sm));
+      [eventRects addObject:[NSValue valueWithCGRect:rect]];
+      CGContextFillStrokeRoundedRect(context, rect, 5.0) ;
+      UITextView *utv_title = [[UITextView alloc] initWithFrame:CGRectMake(x + 3.0, y + 4.0 , width - 12.0, 16.0)];
+      utv_title.opaque = NO;
+      utv_title.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
+      utv_title.text = event.title;
+      utv_title.scrollEnabled = NO;
+      utv_title.editable = NO;
+      [self addSubview:utv_title];
+      [utv_title release];
+      NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+      [outputFormatter setDateFormat:@"hh:mm"];
+      NSString *startTime = [outputFormatter stringFromDate:event.startDate];
+      NSString *endTime = [outputFormatter stringFromDate:event.endDate];
+      [outputFormatter release];
+      UITextView *utv_time = [[UITextView alloc] initWithFrame:CGRectMake(x + 3.0, y + 20.0 , width - 12.0, 16.0)];
+      utv_time.opaque = NO;
+      utv_time.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
+      utv_time.text = [NSString stringWithFormat:@"%@ 〜 %@", startTime, endTime];
+      utv_time.editable = NO;
+      utv_time.scrollEnabled = NO;
+      [self addSubview:utv_time];
+      [utv_time release];
+    }
   }
   if (delegate) {
     [delegate finishedRectDraw:[[eventRects objectAtIndex:0] CGRectValue]];

@@ -51,9 +51,6 @@
   [super viewDidUnload];
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
-  if (dataArray) {
-    [dataArray release];
-  }
   if (dataDictionary) {
     [dataDictionary release];
   }
@@ -78,18 +75,13 @@
   NSPredicate *p = [appDelegate.eventStore predicateForEventsWithStartDate:start endDate:end calendars:[NSArray arrayWithObject:cal]];
   NSArray *events = [appDelegate.eventStore eventsMatchingPredicate:p];
 	
-  if (dataArray) {
-    [dataArray release];
-  }
   if (dataDictionary) {
     [dataDictionary release];
   }
-	dataArray = [[NSMutableArray alloc] init];
 	dataDictionary = [[NSMutableDictionary alloc] init];
 	
 	NSDate *d = start;
 	while(YES){
-    BOOL exist = NO;
     for (EKEvent *e in events) {
       if ([d isSameDay:e.startDate]) {
         NSMutableArray *array = [dataDictionary objectForKey:d];
@@ -98,11 +90,8 @@
         }
         [dataDictionary setObject:array forKey:d];
         [array addObject:e];
-        exist = YES;
       }
     }
-    [dataArray addObject:[NSNumber numberWithBool:exist]];
-		
 		TKDateInformation info = [d dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 		info.day++;
 		d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
@@ -113,7 +102,7 @@
 - (void) initKeyArray
 {
   if (keyArray) {
-    [keyArray release];
+    return;
   }
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setTimeStyle:NSDateFormatterNoStyle];
@@ -154,11 +143,11 @@
   static NSString *CellIdentifier = @"EventListCell";
   EventListCell *cell = (EventListCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
-    UIViewController *vc = [[UIViewController alloc] initWithNibName:@"EventListCell" bundle:nil];
+    UIViewController *vc = [[[UIViewController alloc] initWithNibName:@"EventListCell" bundle:nil] autorelease];;
     cell = (EventListCell *)vc.view;
   }
   NSDate *key = [keyArray objectAtIndex:indexPath.section];
-  NSMutableArray *eventArray = [[dataDictionary objectForKey:key] autorelease];
+  NSMutableArray *eventArray = [dataDictionary objectForKey:key];
   EKEvent *event = [eventArray objectAtIndex:indexPath.row];
   [cell.eventLabel setText:event.title];
   if (event.allDay) {
@@ -168,6 +157,7 @@
     [outputFormatter setDateFormat:@"hh:mm"];
     NSString *timeText = [outputFormatter stringFromDate:event.startDate];
     [cell.timeLabel setText:timeText];
+    [outputFormatter release];
   }
   return cell;
 }
@@ -179,6 +169,38 @@
   NSString *str = [outputFormatter stringFromDate:date];
   [outputFormatter release];
   return str; //ビルド警告回避用
+}
+
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  EKEventViewController *eventViewController = [[[EKEventViewController alloc] init] autorelease];
+  eventViewController.delegate = self;
+  NSDate *key = [keyArray objectAtIndex:indexPath.section];
+  NSMutableArray *eventArray = [dataDictionary objectForKey:key];
+  EKEvent *event = [eventArray objectAtIndex:indexPath.row];
+  eventViewController.event = event;
+  eventViewController.allowsEditing = YES;
+  [appDelegate.navController pushViewController:eventViewController animated:YES];
+}
+
+- (void)eventViewController:(EKEventViewController *)controller didCompleteWithAction:(EKEventViewAction)action
+{
+  NSError *error = nil;
+  switch (action) {
+    case EKEventViewActionDone:
+      [appDelegate.eventStore saveEvent:controller.event span:EKSpanThisEvent error:&error];
+      [self.eventTableView reloadData];
+      break;
+    case EKEventViewActionDeleted:
+      [appDelegate.eventStore removeEvent:controller.event span:EKSpanThisEvent error:&error];
+      [self.eventTableView reloadData];
+      break;
+    case EKEventViewActionResponded:
+      break;
+    default:
+      break;
+  }
+  [controller dismissModalViewControllerAnimated:YES];
 }
 
 // ツールバーでカレンダーの表示形式が変更された

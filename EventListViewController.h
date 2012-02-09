@@ -13,7 +13,8 @@
 #import "SisSisViewController.h"
 #import "DayEventViewController.h"
 
-@interface EventListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface EventListViewController : UIViewController 
+<UITableViewDelegate, UITableViewDataSource, EKEventViewDelegate>
 {
   UIToolbar *toolBar;
   UIBarButtonItem *todayButton;
@@ -21,8 +22,7 @@
   SisSisAppDelegate* appDelegate;
   UITableView *eventTableView;
   NSArray *keyArray;
-  NSMutableArray *dataArray;
-	NSMutableDictionary *dataDictionary;
+  NSMutableDictionary *dataDictionary;
   NSDate *nowDate;
   id <CalSegControlDelegate> delegate;
 }

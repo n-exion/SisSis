@@ -114,7 +114,7 @@
   [self.navController pushViewController:addView animated:YES];
 }
 
-- (IBAction)pushedCalenderButton:(id)sender {
+/*- (IBAction)pushedCalenderButton:(id)sender {
   ScheduleData *data = [[ScheduleData alloc] init];
   data.title = @"testEvent";
   data.startTime = [NSDate date];
@@ -122,6 +122,6 @@
   data.position = @"自宅";
   [self addEventToCalendar:data];
   [data release];
-}
+}*/
 
 @end

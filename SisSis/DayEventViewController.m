@@ -82,18 +82,19 @@
 - (void) handleTapGesture:(UITapGestureRecognizer*)sender {  
   NSLog(@"tap");  
   CGPoint tapPoint = [sender locationInView:self.scrollView];
-  EventRectView* erv;
+  EventRectView* erv = nil;
   for (int i = 0; i < [scrollView.subviews count]; i++) {
     id subView = [scrollView.subviews objectAtIndex:i];
     if ([subView isKindOfClass:[EventRectView class]]) {
       erv = subView;
     }
   }
-  for (int i = 0; i < [erv.eventRects count]; i++) {
+  for (int i = [erv.eventRects count] - 1; i > -1; i--) {
     CGRect rect = [[erv.eventRects objectAtIndex:i] CGRectValue];
     if (CGRectContainsPoint(rect, tapPoint)) {
       NSLog(@"taped%d", i);
       [self showEKEventViewController:[erv.eventArray objectAtIndex:i]];
+      break;
     }
   }
 }
