@@ -111,7 +111,8 @@
 - (IBAction)pushedAddButton:(id)sender{
   // ここで予定の追加の画面に遷移すればいいはず_egawa
   NSLog(@"pushed AddEventButton");
-  AddScheduleViewController* addView = [[AddScheduleViewController alloc] initWithNibName:@"AddScheduleViewController" bundle:nil];
+  AddScheduleViewController* addView = [[[AddScheduleViewController alloc] initWithDate:[NSDate date]] autorelease];
+  
   [self.navController pushViewController:addView animated:YES];
 }
 
