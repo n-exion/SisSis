@@ -37,6 +37,9 @@
 {
   [super viewDidLoad];
   segControl.selectedSegmentIndex = 2;
+  NSDate *myTimeZoneDay = [NSDate dateWithTimeInterval:60*60*9 sinceDate:[NSDate date]];
+  [self.monthView selectDate:myTimeZoneDay];
+  [self.tableView reloadData];
 }
 
 - (void) viewDidAppear:(BOOL)animated{
@@ -205,7 +208,7 @@
 // イベントハンドラから来る関数ども
 // ツールバーで"今日"ボタンが押された
 - (IBAction) didPushedTodayButton:(id)sender{
-  NSDate *now = [NSDate date];
+  NSDate *myTimeZoneDay = [NSDate dateWithTimeInterval:60*60*9 sinceDate:[NSDate date]];
   switch (segControl.selectedSegmentIndex) {
       // リスト形式
       case 0:
@@ -215,10 +218,8 @@
       break;
       // 月形式
       case 2:
-      // とりあえず今日ボタンが押された時に予定を足してみる。
       NSLog(@"MonthView pushed todayButton");
-      [self.monthView selectDate:now];
-      [self.monthView reload];
+      [self.monthView selectDate:myTimeZoneDay];
       [self.tableView reloadData];
       break;
       default:
