@@ -135,47 +135,6 @@
 	}
 }
 
-- (void) addEventData {
-  EKEvent *event = [EKEvent eventWithEventStore:appDelegate.eventStore];
-  event.title = @"This is title.";
-  event.location = @"Tokyo, Japan.";
-  event.startDate = [NSDate dateWithTimeIntervalSinceNow:0.0f];
-  event.endDate = [NSDate dateWithTimeIntervalSinceNow:3*60];
-  event.notes = @"This is notes.";
-  //[self.eventStore saveEvent:event span:EKSpanThisEvent error:&error];
-  EKEventEditViewController *eventEditViewController = [[[EKEventEditViewController alloc] init] autorelease];
-  eventEditViewController.editViewDelegate = self;
-  eventEditViewController.event = event;
-  eventEditViewController.eventStore = appDelegate.eventStore;
-  [self presentModalViewController:eventEditViewController animated:YES];
-}
-
-- (void)eventEditViewController:(EKEventEditViewController *)controller 
-          didCompleteWithAction:(EKEventEditViewAction)action
-{
-	
-	NSError *error = nil;
-	
-	switch (action) {
-		case EKEventEditViewActionCanceled:
-			break;
-			
-		case EKEventEditViewActionSaved:
-			[controller.eventStore saveEvent:controller.event span:EKSpanThisEvent error:&error];
-			break;
-			
-		case EKEventEditViewActionDeleted:
-			[controller.eventStore removeEvent:controller.event span:EKSpanThisEvent error:&error];
-			break;
-			
-		default:
-			break;
-	}
-  [self.monthView reload];
-  [self.tableView reloadData];
-	[controller dismissModalViewControllerAnimated:YES];
-}
-
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   EKEventViewController *eventViewController = [[[EKEventViewController alloc] init] autorelease];
@@ -206,7 +165,7 @@
   [self.monthView reload];
   [self.monthView selectDate:date];
   [self.tableView reloadData];
-  [appDelegate.navController popToViewController:controller animated:YES];
+  [appDelegate.navController popViewControllerAnimated:YES];
 }
 
 // イベントハンドラから来る関数ども

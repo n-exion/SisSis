@@ -15,7 +15,7 @@
 #import "DayEventViewController.h"
 
 @interface SisSisViewController : TKCalendarMonthTableViewController 
-<EKEventEditViewDelegate, EKEventViewDelegate, CalSegControlDelegate>
+<EKEventViewDelegate, CalSegControlDelegate>
 {
   // カレンダービュー追加
   UIToolbar *toolBar;
