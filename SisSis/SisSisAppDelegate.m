@@ -10,7 +10,10 @@
 #import "AddScheduleViewController.h"
 #import "ScheduleData.h"
 #import "RouteData.h"
+#import "ScheduleWatcher.h"
+
 #import "SisSisViewController.h"
+
 
 @implementation SisSisAppDelegate
 
@@ -31,6 +34,9 @@
   [self.window makeKeyAndVisible];
   // DBファイル初期化
   dbManager = [[DBManager alloc] init];
+  
+  scheduleWatcher = [[ScheduleWatcher alloc] init];
+  [scheduleWatcher setTodayTimer];
   
   return YES;
 }
@@ -79,6 +85,7 @@
   [window release];
   [navController release];
   if (eventStore != nil) [eventStore release];
+  [scheduleWatcher release];
   [super dealloc];
 }
 

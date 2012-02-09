@@ -12,7 +12,9 @@
 #import "AddScheduleViewController.h"
 #import "DBManager.h"
 
+
 @class SisSisViewController;
+@class ScheduleWatcher;
 
 @interface SisSisAppDelegate : NSObject <UIApplicationDelegate, AddScheduleDelegate>
 {
@@ -21,6 +23,7 @@
   EKEventStore* eventStore;
   SisSisViewController *ssViewController;
   DBManager* dbManager;
+  ScheduleWatcher* scheduleWatcher;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

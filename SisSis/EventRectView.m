@@ -7,6 +7,7 @@
 //
 
 #import "EventRectView.h"
+#import "SisSisAppDelegate.h"
 
 #define RADIUS 5.0
 
