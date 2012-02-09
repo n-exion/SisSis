@@ -124,15 +124,17 @@
 - (IBAction)pushedAddButton:(id)sender{
   // ここで予定の追加の画面に遷移すればいいはず_egawa
   NSLog(@"pushed AddEventButton");
-  
-  AddScheduleViewController* addView = [[[AddScheduleViewController alloc] initWithDate:[NSDate date]] autorelease];
+  NSDate* date = [self getSelectedDate];
+  if (!date) {
+    date = [NSDate date];
+  }
+  AddScheduleViewController* addView = [[[AddScheduleViewController alloc] initWithDate:date] autorelease];
   addView.delegate = self;
   [self.navController pushViewController:addView animated:YES];
 }
 
-- (void) addedSchedule:(ScheduleData*)schedule
+- (void) getMonthViewController
 {
-  [self addEventToCalendar:schedule];
   if (!ssViewController) {
     int count = self.navController.viewControllers.count;
     for (int i = 0; i < count; i++) {
@@ -143,7 +145,24 @@
       }
     }
   }
-  [ssViewController reload];
+}
+
+- (NSDate*) getSelectedDate
+{
+  [self getMonthViewController];
+  if (ssViewController) {
+    return [ssViewController.monthView dateSelected];
+  }
+  return nil;
+}
+
+- (void) addedSchedule:(ScheduleData*)schedule
+{
+  [self addEventToCalendar:schedule];
+  [self getMonthViewController];
+  if (ssViewController) {
+    [ssViewController reload];
+  }
 }
 
 @end

@@ -34,6 +34,7 @@
 @property (nonatomic, readonly, retain) DBManager* dbManager;
 
 - (IBAction)pushedAddButton:(id)sender;
+- (NSDate*) getSelectedDate;
 // 最終的には使わない
 //- (IBAction)pushedCalenderButton:(id)sender;
 
