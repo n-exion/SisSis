@@ -107,22 +107,20 @@
     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier] autorelease];
   }
   
-  dateFormat = [[NSDateFormatter alloc] init];
-  [dateFormat setDateFormat:@"MM-dd hh:mm"];
   NSString* date_converted;
   
   // Configure the cell...
   switch (indexPath.row){
     case 0:
       cell.textLabel.text = @"開始時刻";
-      date_converted = [dateFormat stringFromDate:startDate];
+      date_converted = [addScheduleController convertDateToString:startDate];
       
       cell.detailTextLabel.textAlignment = UITextAlignmentRight;
       cell.detailTextLabel.text = date_converted;
       break;
     case 1:
       cell.textLabel.text = @"終了時刻";
-      date_converted = [dateFormat stringFromDate:endDate];
+      date_converted = [addScheduleController convertDateToString:endDate];
       
       cell.detailTextLabel.textAlignment = UITextAlignmentRight;
       cell.detailTextLabel.text = date_converted;
@@ -147,7 +145,8 @@
   //全体更新
   //[self->addScheduleController.tableView reloadData];
   targetCell = [DataTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:selectedField inSection:0]];
-  targetCell.detailTextLabel.text = [dateFormat stringFromDate:datePicker.date];
+  targetCell.detailTextLabel.text = [addScheduleController convertDateToString:datePicker.date];
+
   
   //特定のcellを更新
   [targetCell setNeedsLayout];
@@ -172,6 +171,8 @@
     case 1:
       target = addScheduleController.schedule.endTime;
       break;
+    default:
+      target = nil;
   }
   
   [datePicker setDate:target];
@@ -180,7 +181,6 @@
 - (void)dealloc {
   [DataTable release];
   [datePicker release];
-  [dateFormat release];
   [super dealloc];
 }
 @end

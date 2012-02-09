@@ -14,8 +14,6 @@
 {
     //現在, どちらの時刻を編集中か
     NSInteger selectedField;
-    
-    NSDateFormatter* dateFormat;
     AddScheduleViewController* addScheduleController;
 }
 @property (retain, nonatomic) IBOutlet UITableView *DataTable;

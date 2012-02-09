@@ -14,6 +14,11 @@
 
 @class ScheduleData;
 
+@protocol AddScheduleDelegate
+- (void) addedSchedule:(ScheduleData*)schedule;
+@end
+
+
 //EventKit
 @interface AddScheduleViewController : UITableViewController<UITextFieldDelegate>{
   EditableCell* editableCell;
@@ -25,17 +30,24 @@
   
   EditableCell* titleCell;
   EditableCell* positionCell;
+  
+  id<AddScheduleDelegate> delegate;
 }
 
 @property (strong, nonatomic) IBOutlet EditableCell* editableCell;
 @property (strong, nonatomic) IBOutlet DoubleRowCell* doubleRowCell;
 @property (strong, nonatomic) ScheduleData* schedule;
 
-@property (strong) WorkTimeDecideViewController* workTimeDecideController;
-@property (strong) DepartureDecideViewController* departureDecideViewController;
+@property (strong, nonatomic) WorkTimeDecideViewController* workTimeDecideController;
+@property (strong, nonatomic) DepartureDecideViewController* departureDecideViewController;
+
+@property (strong, nonatomic) id<AddScheduleDelegate> delegate;
 
 - (void) updateStartTime:(NSDate*)start;
 - (void) updateEndTime:(NSDate*)end;
 - (NSString*) convertDateToString:(NSDate*)date;
+- (id)initWithDate:(NSDate*) now;
+
 
 @end
+

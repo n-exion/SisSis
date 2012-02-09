@@ -21,48 +21,53 @@
 @synthesize departureDecideViewController;
 
 @synthesize schedule;
+@synthesize delegate;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithDate:(NSDate*) now
 {
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  self = [super initWithNibName:@"AddScheduleViewController" bundle:nil];
   if (self) {
     self.title = @"予定の追加";
+    
+    //登録するスケジュールデータの作成(初期値をここで与える)
+    schedule = [[ScheduleData alloc] init];
+    schedule.departurePosition = @"現在地点";
+    schedule.departureTime = nil;
+    
+    //NSDate* now = [NSDate date];
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    
+    //１時間足すよう
+    NSDateComponents* diff = [[[NSDateComponents alloc] init] autorelease];
+    diff.hour = 1;
+    
+    NSDateComponents *dateComps = [calendar components:NSMinuteCalendarUnit
+                                              fromDate:now];
+    
+    diff.minute = -dateComps.minute;
+    
+    //予定開始時間
+    schedule.startTime = [calendar dateByAddingComponents:diff toDate:now options:0];
+    
+    diff.hour = 2;
+    schedule.endTime = [calendar dateByAddingComponents:diff toDate:now options:0];
+    
+    schedule.position = @"";
+    schedule.arrivalPosition = nil;
+    schedule.arrivalTime = nil;
+    
+    dateFormat = [[NSDateFormatter alloc] init];
+    //[dateFormat setDateFormat:@"MM-dd hh:mm"];
+    [dateFormat setDateFormat:@"hh:mm"];
   }
   
-  //登録するスケジュールデータの作成(初期値をここで与える)
-  schedule = [[ScheduleData alloc] init];
-  schedule.departurePosition = @"現在地点";
-  schedule.departureTime = nil;
-  
-  NSDate* now = [NSDate date];
-  NSCalendar* calendar = [NSCalendar currentCalendar];
-  
-  //１時間足すよう
-  NSDateComponents* diff = [[[NSDateComponents alloc] init] autorelease];
-  diff.hour = 1;
-  
-  NSDateComponents *dateComps = [calendar components:NSMinuteCalendarUnit
-                                            fromDate:now];
-  
-  diff.minute = -dateComps.minute;
-  
-  //予定開始時間
-  schedule.startTime = [calendar dateByAddingComponents:diff toDate:now options:0];
-  
-  diff.hour = 2;
-  schedule.endTime = [calendar dateByAddingComponents:diff toDate:now options:0];
-
-  schedule.position = @"";
-  schedule.arrivalPosition = nil;
-  schedule.arrivalTime = nil;
-  
-  dateFormat = [[NSDateFormatter alloc] init];
-  //[dateFormat setDateFormat:@"MM-dd hh:mm"];
-  [dateFormat setDateFormat:@"hh:mm"];
 
   return self;
 }
+
+  
+
 
 - (void) updateStartTime:(NSDate*)start{
   schedule.startTime = start;
@@ -103,10 +108,34 @@
 
 #pragma mark - View lifecycle
 
+-(void)pushPreviousButton{
+  [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)completeButton{
+  [delegate addedSchedule:self.schedule];
+}
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+  UIBarButtonItem* returnButton = [[[UIBarButtonItem alloc] 
+                                    initWithTitle:@"キャンセル" 
+                                    style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(pushPreviousButton)] autorelease];
+  
+  UIBarButtonItem* completeButton = [[[UIBarButtonItem alloc] 
+                                      initWithTitle:@"完了" 
+                                      style:UIBarButtonItemStylePlain
+                                      target:self
+                                      action:@selector(pushPreviousButton)] autorelease];
+  
+  
+  self.navigationItem.leftBarButtonItem = returnButton;
+  self.navigationItem.rightBarButtonItem = completeButton;
+  //self.navigationItem.rightBarButtonItem
 }
 
 - (void)viewDidUnload
@@ -188,7 +217,6 @@
   if (cell == nil) {
     [[NSBundle mainBundle] loadNibNamed:@"EditableCell" owner:self options:nil];
     cell = (EditableCell*)editableCell;
-    
     //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
   }
   cell.inputField.placeholder = defaultContent;
@@ -231,6 +259,7 @@
     if (cell == nil) {
       [[NSBundle mainBundle] loadNibNamed:@"DoubleRowCell" owner:self options:nil];
       cell = (DoubleRowCell*)doubleRowCell;
+      cell.addController = self;
       //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     [cell setTime:schedule.startTime endTime:schedule.endTime];
@@ -258,43 +287,6 @@
   return nil;
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source.
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
- }   
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -315,7 +307,7 @@
 
   if(indexPath.section == 1){
     if (!self.workTimeDecideController) {
-      self.workTimeDecideController = [[[WorkTimeDecideViewController alloc] initWithNibName:@"WorkTimeDecideViewController" bundle:nil] autorelease];
+      self.workTimeDecideController = [[[WorkTimeDecideViewController alloc] initWithNibName:@"WorkTImeDecideViewController" bundle:nil] autorelease];
       [self.workTimeDecideController setAddScheduleController:self];
     }
     

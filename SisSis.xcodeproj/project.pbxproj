@@ -13,14 +13,14 @@
 		101B522414CABF92005534FD /* DeparturePositionDecideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 101B522214CABF92005534FD /* DeparturePositionDecideViewController.xib */; };
 		102305A314E168C300EF7D9A /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112079A114BB291B008B2E86 /* EventKit.framework */; };
 		102305A514E16A3A00EF7D9A /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AA0E314C41E7C00153C9D /* EventKitUI.framework */; };
+		102EAE1614E3BF0900BFD26D /* WorkTimeDecideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102EAE1414E3BF0900BFD26D /* WorkTimeDecideViewController.m */; };
+		102EAE1714E3BF0900BFD26D /* WorkTimeDecideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 102EAE1514E3BF0900BFD26D /* WorkTimeDecideViewController.xib */; };
 		1034061814C425BE0049DE5D /* AddScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034061614C425BE0049DE5D /* AddScheduleViewController.m */; };
 		1034061914C425BE0049DE5D /* AddScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1034061714C425BE0049DE5D /* AddScheduleViewController.xib */; };
 		1034062114C425ED0049DE5D /* EditableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1034061B14C425ED0049DE5D /* EditableCell.xib */; };
 		1034062214C425ED0049DE5D /* EditableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034061D14C425ED0049DE5D /* EditableCell.m */; };
 		1034062314C425ED0049DE5D /* DoubleRowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1034061E14C425ED0049DE5D /* DoubleRowCell.xib */; };
 		1034062414C425ED0049DE5D /* DoubleRowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034062014C425ED0049DE5D /* DoubleRowCell.m */; };
-		1034062814C426C20049DE5D /* WorkTImeDecideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1034062514C426C20049DE5D /* WorkTImeDecideViewController.xib */; };
-		1034062914C426C20049DE5D /* WorkTImeDecideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1034062714C426C20049DE5D /* WorkTImeDecideViewController.m */; };
 		103AB49714D2944A0020F9E1 /* MapDirectionsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB47214D2944A0020F9E1 /* MapDirectionsAppDelegate.m */; };
 		103AB49814D2944A0020F9E1 /* MapDirectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB47414D2944A0020F9E1 /* MapDirectionsViewController.m */; };
 		103AB49914D2944A0020F9E1 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 103AB47614D2944A0020F9E1 /* NSObject+SBJSON.m */; };
@@ -131,6 +131,9 @@
 		101B522014CABF91005534FD /* DeparturePositionDecideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeparturePositionDecideViewController.h; sourceTree = "<group>"; };
 		101B522114CABF92005534FD /* DeparturePositionDecideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeparturePositionDecideViewController.m; sourceTree = "<group>"; };
 		101B522214CABF92005534FD /* DeparturePositionDecideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeparturePositionDecideViewController.xib; sourceTree = "<group>"; };
+		102EAE1314E3BF0900BFD26D /* WorkTimeDecideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkTimeDecideViewController.h; sourceTree = "<group>"; };
+		102EAE1414E3BF0900BFD26D /* WorkTimeDecideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkTimeDecideViewController.m; sourceTree = "<group>"; };
+		102EAE1514E3BF0900BFD26D /* WorkTimeDecideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkTimeDecideViewController.xib; sourceTree = "<group>"; };
 		1034061514C425BE0049DE5D /* AddScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddScheduleViewController.h; sourceTree = "<group>"; };
 		1034061614C425BE0049DE5D /* AddScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddScheduleViewController.m; sourceTree = "<group>"; };
 		1034061714C425BE0049DE5D /* AddScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddScheduleViewController.xib; sourceTree = "<group>"; };
@@ -140,9 +143,6 @@
 		1034061E14C425ED0049DE5D /* DoubleRowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoubleRowCell.xib; sourceTree = "<group>"; };
 		1034061F14C425ED0049DE5D /* DoubleRowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleRowCell.h; sourceTree = "<group>"; };
 		1034062014C425ED0049DE5D /* DoubleRowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubleRowCell.m; sourceTree = "<group>"; };
-		1034062514C426C20049DE5D /* WorkTImeDecideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkTImeDecideViewController.xib; sourceTree = "<group>"; };
-		1034062614C426C20049DE5D /* WorkTImeDecideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkTImeDecideViewController.h; sourceTree = "<group>"; };
-		1034062714C426C20049DE5D /* WorkTImeDecideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkTImeDecideViewController.m; sourceTree = "<group>"; };
 		103AB47014D2944A0020F9E1 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		103AB47114D2944A0020F9E1 /* MapDirectionsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDirectionsAppDelegate.h; sourceTree = "<group>"; };
 		103AB47214D2944A0020F9E1 /* MapDirectionsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDirectionsAppDelegate.m; sourceTree = "<group>"; };
@@ -295,11 +295,11 @@
 				1034061514C425BE0049DE5D /* AddScheduleViewController.h */,
 				1034061614C425BE0049DE5D /* AddScheduleViewController.m */,
 				1034061714C425BE0049DE5D /* AddScheduleViewController.xib */,
-				1034062514C426C20049DE5D /* WorkTImeDecideViewController.xib */,
-				1034062614C426C20049DE5D /* WorkTImeDecideViewController.h */,
-				1034062714C426C20049DE5D /* WorkTImeDecideViewController.m */,
 				103AB4AF14D699530020F9E1 /* ScheduleData.h */,
 				103AB4B014D699530020F9E1 /* ScheduleData.m */,
+				102EAE1314E3BF0900BFD26D /* WorkTimeDecideViewController.h */,
+				102EAE1414E3BF0900BFD26D /* WorkTimeDecideViewController.m */,
+				102EAE1514E3BF0900BFD26D /* WorkTimeDecideViewController.xib */,
 			);
 			name = AddSchedule;
 			sourceTree = "<group>";
@@ -668,7 +668,6 @@
 				1034061914C425BE0049DE5D /* AddScheduleViewController.xib in Resources */,
 				1034062114C425ED0049DE5D /* EditableCell.xib in Resources */,
 				1034062314C425ED0049DE5D /* DoubleRowCell.xib in Resources */,
-				1034062814C426C20049DE5D /* WorkTImeDecideViewController.xib in Resources */,
 				101B521F14CABF77005534FD /* DepartureDecideViewController.xib in Resources */,
 				101B522414CABF92005534FD /* DeparturePositionDecideViewController.xib in Resources */,
 				11707C3514CC71B1005632E1 /* EventListViewController.xib in Resources */,
@@ -685,6 +684,7 @@
 				10A6226C14DE960A005BBBEA /* ButtonEditableCell.xib in Resources */,
 				118094DF14DE986D00396733 /* SSEventViewController.xib in Resources */,
 				11415FE914DEC01A00429E3B /* back.png in Resources */,
+				102EAE1714E3BF0900BFD26D /* WorkTimeDecideViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,7 +726,6 @@
 				1034061814C425BE0049DE5D /* AddScheduleViewController.m in Sources */,
 				1034062214C425ED0049DE5D /* EditableCell.m in Sources */,
 				1034062414C425ED0049DE5D /* DoubleRowCell.m in Sources */,
-				1034062914C426C20049DE5D /* WorkTImeDecideViewController.m in Sources */,
 				101B521D14CABF6C005534FD /* DepartureDecideViewController.m in Sources */,
 				101B522314CABF92005534FD /* DeparturePositionDecideViewController.m in Sources */,
 				11707C3414CC71B1005632E1 /* EventListViewController.m in Sources */,
@@ -763,6 +762,7 @@
 				118094DE14DE986D00396733 /* SSEventViewController.m in Sources */,
 				11415FE714DEBD5200429E3B /* ExtendClasses.m in Sources */,
 				11DCBA9C14E2EFEF000F9471 /* EventRectView.m in Sources */,
+				102EAE1614E3BF0900BFD26D /* WorkTimeDecideViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
