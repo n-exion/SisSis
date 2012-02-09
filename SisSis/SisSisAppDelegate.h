@@ -14,10 +14,12 @@
 
 @class SisSisViewController;
 
-@interface SisSisAppDelegate : NSObject <UIApplicationDelegate, AddScheduleDelegate> {
+@interface SisSisAppDelegate : NSObject <UIApplicationDelegate, AddScheduleDelegate>
+{
   UIWindow *window;
   UINavigationController *navController;
   EKEventStore* eventStore;
+  SisSisViewController *ssViewController;
   DBManager* dbManager;
 }
 

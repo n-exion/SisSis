@@ -10,6 +10,7 @@
 #import "AddScheduleViewController.h"
 #import "ScheduleData.h"
 #import "RouteData.h"
+#import "SisSisViewController.h"
 
 @implementation SisSisAppDelegate
 
@@ -24,6 +25,7 @@
 {
   // Override point for customization after application launch.
 
+  ssViewController = nil;
   eventStore = [[EKEventStore alloc] init];
   [self.window addSubview:self.navController.view];
   [self.window makeKeyAndVisible];
@@ -82,6 +84,7 @@
 
 - (void) addEventToCalendar:(ScheduleData*)data {
   EKEvent *event = [EKEvent eventWithEventStore:self.eventStore];
+  NSString *test = data.title;
   event.title = data.title;
   event.location = data.position;
   event.startDate = data.startTime;
@@ -124,6 +127,17 @@
 - (void) addedSchedule:(ScheduleData*)schedule
 {
   [self addEventToCalendar:schedule];
+  if (!ssViewController) {
+    int count = self.navController.viewControllers.count;
+    for (int i = 0; i < count; i++) {
+      id vc = [navController.viewControllers objectAtIndex:i];
+      if ([vc isKindOfClass:[SisSisViewController class]]) {
+        ssViewController = vc;
+        break;
+      }
+    }
+  }
+  [ssViewController reload];
 }
 
 @end

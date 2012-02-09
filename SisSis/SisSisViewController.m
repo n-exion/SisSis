@@ -172,6 +172,7 @@
 			break;
 	}
   [self.monthView reload];
+  [self.tableView reloadData];
 	[controller dismissModalViewControllerAnimated:YES];
 }
 
@@ -201,8 +202,11 @@
     default:
       break;
   }
+  NSDate *date = [self.monthView dateSelected];
   [self.monthView reload];
-  [controller dismissModalViewControllerAnimated:YES];
+  [self.monthView selectDate:date];
+  [self.tableView reloadData];
+  [appDelegate.navController popToViewController:controller animated:YES];
 }
 
 // イベントハンドラから来る関数ども
@@ -225,6 +229,14 @@
       default:
       break;
   }
+}
+
+- (void) reload
+{
+  NSDate *date = [self.monthView dateSelected];
+  [self.monthView reload];
+  [self.monthView selectDate:date];
+  [self.tableView reloadData];
 }
 
 - (void) changeViewFromSegmentControl:(NSInteger)value {
