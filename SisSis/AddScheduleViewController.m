@@ -305,7 +305,7 @@
 
   if(indexPath.section == 1){
     if (!self.workTimeDecideController) {
-      self.workTimeDecideController = [[[WorkTimeDecideViewController alloc] initWithNibName:@"WorkTimeDecideViewController" bundle:nil] autorelease];
+      self.workTimeDecideController = [[[WorkTimeDecideViewController alloc] initWithNibName:@"WorkTImeDecideViewController" bundle:nil] autorelease];
       [self.workTimeDecideController setAddScheduleController:self];
     }
     
