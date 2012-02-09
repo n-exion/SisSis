@@ -114,6 +114,7 @@
 
 -(void)completeButton{
   [delegate addedSchedule:self.schedule];
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad
@@ -130,7 +131,7 @@
                                       initWithTitle:@"完了" 
                                       style:UIBarButtonItemStylePlain
                                       target:self
-                                      action:@selector(pushPreviousButton)] autorelease];
+                                      action:@selector(completeButton)] autorelease];
   
   
   self.navigationItem.leftBarButtonItem = returnButton;
