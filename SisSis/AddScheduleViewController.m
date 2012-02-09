@@ -342,8 +342,7 @@
       return;
     }
     
-    EditableCell* cell = (EditableCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-    [self textFieldDidEndEditing:cell.inputField];
+    [self textFieldDidEndEditing:positionCell.inputField];
     
     if(!self.departureDecideViewController){
       self.departureDecideViewController = [[[DepartureDecideViewController alloc] initWithNibName:@"DepartureDecideViewController" bundle:nil] autorelease];
