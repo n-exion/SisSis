@@ -19,6 +19,7 @@
 #import "ModalDatePickerViewController.h"
 #import "MapDirectionsViewController.h"
 
+#import "DetailMapViewController.h"
 
 @implementation DepartureDecideViewController
 
@@ -333,6 +334,16 @@
   }
   //検索開始が呼ばれたら
   if (indexPath.section == 2 && indexPath.row == 0) {
+    /*
+    DetailMapViewController* detailView;
+
+    detailView = [[DetailMapViewController alloc] initFrom:addController.schedule.departurePosition To:addController.schedule.arrivalPosition];
+    [self.navigationController pushViewController:detailView animated:YES];
+    
+    return;*/
+    
+
+    
     MapDirectionsViewController* mapController;
 
     mapController = [[[MapDirectionsViewController alloc] initWithNibName:@"MapDirectionsViewController" bundle:nil] autorelease];
