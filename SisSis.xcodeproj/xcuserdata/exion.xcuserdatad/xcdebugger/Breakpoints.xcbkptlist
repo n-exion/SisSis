@@ -176,20 +176,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "SisSis/DayEventViewController.m"
-         timestampString = "350506099.443468"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "181"
-         endingLineNumber = "181"
-         landmarkName = "-didPushedTodayButton:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "SisSis/SisSisViewController.m"
          timestampString = "350514440.166362"
          startingColumnNumber = "9223372036854775807"
@@ -420,8 +406,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "33"
          endingLineNumber = "33"
-         landmarkName = "@protocol EventRectDelegate"
-         landmarkType = "2">
+         landmarkName = "-initWithEvents:"
+         landmarkType = "4">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -429,11 +415,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/EventRectView.m"
-         timestampString = "350506673.069722"
+         timestampString = "350517951.814755"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "137"
-         endingLineNumber = "137"
+         startingLineNumber = "138"
+         endingLineNumber = "138"
          landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1129,7 +1115,7 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/EventRectView.m"
-         timestampString = "350506673.069722"
+         timestampString = "350517951.814755"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "105"

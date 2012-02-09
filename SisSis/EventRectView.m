@@ -103,6 +103,7 @@
       CGContextSetRGBFillColor(context, 0.9, 0.6, 0.5, 1.0);
       CGContextSetRGBStrokeColor(context, 0.8, 0.4, 0.2, 1.0);
       RouteData *route = [appDelegate.dbManager getRouteFromId:event.eventIdentifier];
+      if (!route.departureTime || !route.arrivalTime) continue;
       [routeArray addObject:route];
       sm = ([route.departureTime timeIntervalSinceDate:nowDate] / 60);
       em = ([route.arrivalTime timeIntervalSinceDate:nowDate] / 60);
