@@ -28,6 +28,6 @@
 
 - (IBAction)pushedAddButton:(id)sender;
 // 最終的には使わない
-- (IBAction)pushedCalenderButton:(id)sender;
+//- (IBAction)pushedCalenderButton:(id)sender;
 
 @end
