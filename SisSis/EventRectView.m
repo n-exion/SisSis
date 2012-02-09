@@ -19,7 +19,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+      //Initialization code
+      appDelegate = (SisSisAppDelegate*)[[UIApplication sharedApplication] delegate];
     }
     return self;
 }
@@ -42,10 +43,6 @@
   }
   // 現在のコンテクストを取得
   CGContextRef context = UIGraphicsGetCurrentContext();
-  // 枠線描画色指定
-  CGContextSetRGBStrokeColor(context, 0.3, 0.3, 0.6, 1.0);
-  // 枠内部色指定
-  CGContextSetRGBFillColor(context, 0.7, 0.7, 0.85, 1.0);
   // 枠線太さ
   CGContextSetLineWidth(context, 2.0);
   
@@ -62,6 +59,8 @@
   }
   eventRects = [[NSMutableArray alloc] init];
   for (event in eventArray) {
+    CGContextSetRGBStrokeColor(context, 0.3, 0.3, 0.6, 1.0);
+    CGContextSetRGBFillColor(context, 0.7, 0.7, 0.85, 1.0);
     if (event.allDay) {
     } else {
       int sm = ([event.startDate timeIntervalSinceDate:nowDate] / 60);
@@ -93,6 +92,39 @@
       utv_time.scrollEnabled = NO;
       [self addSubview:utv_time];
       [utv_time release];
+      // 枠内部色指定
+      CGContextSetRGBFillColor(context, 0.9, 0.6, 0.5, 1.0);
+      CGContextSetRGBStrokeColor(context, 0.8, 0.4, 0.2, 1.0);
+      RouteData *route = [appDelegate.dbManager getRouteFromId:event.eventIdentifier];
+      sm = ([route.departureTime timeIntervalSinceDate:nowDate] / 60);
+      em = ([route.arrivalTime timeIntervalSinceDate:nowDate] / 60);
+      y = 48 + 0.8 * sm;
+      rect = CGRectMake(x, y, width, 0.8 * (em - sm));
+      [eventRects addObject:[NSValue valueWithCGRect:rect]];
+      CGContextFillStrokeRoundedRect(context, rect, 5.0);
+      
+      //
+      UITextView *routeTitle = [[UITextView alloc] initWithFrame:CGRectMake(x + 3.0, y + 4.0 , width - 12.0, 16.0)];
+      routeTitle.opaque = NO;
+      routeTitle.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
+      routeTitle.text = event.title;
+      routeTitle.scrollEnabled = NO;
+      routeTitle.editable = NO;
+      [self addSubview:routeTitle];
+      [routeTitle release];
+      outputFormatter = [[NSDateFormatter alloc] init];
+      [outputFormatter setDateFormat:@"hh:mm"];
+      startTime = [outputFormatter stringFromDate:route.departureTime];
+      endTime = [outputFormatter stringFromDate:route.arrivalTime];
+      [outputFormatter release];
+      UITextView *routeTime = [[UITextView alloc] initWithFrame:CGRectMake(x + 3.0, y + 20.0 , width - 12.0, 16.0)];
+      routeTime.opaque = NO;
+      routeTime.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
+      routeTime.text = [NSString stringWithFormat:@"%@ 〜 %@", startTime, endTime];
+      routeTime.editable = NO;
+      routeTime.scrollEnabled = NO;
+      [self addSubview:routeTime];
+      [routeTime release];
     }
   }
   if (delegate) {

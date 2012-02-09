@@ -26,6 +26,7 @@
 @property (nonatomic, retain) NSMutableArray *dataArray;
 @property (nonatomic, retain) NSMutableDictionary *dataDictionary;
 @property (nonatomic, retain) EKEventStore *eventStore;
+@property (nonatomic, readonly, retain) DBManager* dbManager;
 
 - (IBAction)pushedAddButton:(id)sender;
 // 最終的には使わない

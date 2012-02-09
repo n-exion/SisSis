@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <EventKit/EventKit.h>
+#import "SisSisAppDelegate.h"
+
 @protocol EventRectDelegate;
 @interface EventRectView : UIView
 {
   NSArray *eventArray;
   NSMutableArray *eventRects;
+  SisSisAppDelegate* appDelegate;
   id <EventRectDelegate> delegate;
 }
 
