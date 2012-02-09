@@ -154,11 +154,11 @@
   static NSString *CellIdentifier = @"EventListCell";
   EventListCell *cell = (EventListCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
-    UIViewController *vc = [[UIViewController alloc] initWithNibName:@"EventListCell" bundle:nil];
+    UIViewController *vc = [[[UIViewController alloc] initWithNibName:@"EventListCell" bundle:nil] autorelease];;
     cell = (EventListCell *)vc.view;
   }
   NSDate *key = [keyArray objectAtIndex:indexPath.section];
-  NSMutableArray *eventArray = [[dataDictionary objectForKey:key] autorelease];
+  NSMutableArray *eventArray = [dataDictionary objectForKey:key];
   EKEvent *event = [eventArray objectAtIndex:indexPath.row];
   [cell.eventLabel setText:event.title];
   if (event.allDay) {
@@ -168,6 +168,7 @@
     [outputFormatter setDateFormat:@"hh:mm"];
     NSString *timeText = [outputFormatter stringFromDate:event.startDate];
     [cell.timeLabel setText:timeText];
+    [outputFormatter release];
   }
   return cell;
 }
