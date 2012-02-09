@@ -123,6 +123,9 @@
 }
 
 -(void)completeButton{
+  [self textFieldDidEndEditing:titleCell.inputField];
+  [self textFieldDidEndEditing:positionCell.inputField];
+
   [delegate addedSchedule:self.schedule];
   [self.navigationController popViewControllerAnimated:YES];
 }
@@ -353,6 +356,7 @@
       return;
     }
     
+    [self textFieldDidEndEditing:titleCell.inputField];
     [self textFieldDidEndEditing:positionCell.inputField];
     
     if(!self.departureDecideViewController){
