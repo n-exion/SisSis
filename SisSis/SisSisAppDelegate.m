@@ -100,7 +100,11 @@
     route.departureTime = data.departureTime;
     route.arrivalTime = data.arrivalTime;
     route.arrivalPosition = data.arrivalPosition;
-    route.travelMode = data.travelMode == UICGTravelModeDriving ? 0 : 1;
+    if (data.travelMode == UICGTravelModeDriving) {
+      route.travelMode = 0;
+    } else {
+      route.travelMode = 1;
+    }
     [dbManager addRoute:route];
     [route release];
   }

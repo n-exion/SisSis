@@ -102,12 +102,14 @@
 	FMResultSet*    results = [db executeQuery:SQL_SELECT_ID, identifier];
 	RouteData* route = [[[RouteData alloc] init] autorelease];
 
-	route.identifier = identifier;
-  route.departurePosition = [results stringForColumnIndex:0];
-  route.departureTime     = [results dateForColumnIndex:1];
-  route.arrivalPosition   = [results stringForColumnIndex:2];
-  route.arrivalTime       = [results dateForColumnIndex:3];
-  route.travelMode        = [results intForColumnIndex:4];
+  while ([results next]) {
+    route.identifier = identifier;
+    route.departurePosition = [results stringForColumnIndex:0];
+    route.departureTime     = [results dateForColumnIndex:1];
+    route.arrivalPosition   = [results stringForColumnIndex:2];
+    route.arrivalTime       = [results dateForColumnIndex:3];
+    route.travelMode        = [results intForColumnIndex:4];
+  }
 	
 	[db close];
 	
