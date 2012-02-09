@@ -238,10 +238,8 @@
   currentLocation = newLocation.coordinate;
 	//_longitude = newLocation.coordinate.longitude;
 	//_latitude = newLocation.coordinate.latitude;
-  NSLog([NSString stringWithFormat:@"long:%f lat:%f",currentLocation.longitude,currentLocation.latitude]);
   
-  [locationManager stopUpdatingLocation];
-  
+
   if (diretions.isInitialized) {
     //addController.schedule
     NSString* position = [NSString stringWithFormat:@"%f,%f",currentLocation.latitude,currentLocation.longitude];
@@ -254,7 +252,9 @@
     }
 
 		[self update];
+    [locationManager stopUpdatingLocation];
 	}
+
 }
 
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{

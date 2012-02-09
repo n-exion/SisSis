@@ -79,7 +79,6 @@
   //予定開始時間
   schedule.arrivalTime = [calendar dateByAddingComponents:diff toDate:start options:0];
 
-  
   DoubleRowCell* doubleCell =  (DoubleRowCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
   doubleCell.startTimeField.text = [dateFormat stringFromDate:start];
   [doubleCell setNeedsLayout];
