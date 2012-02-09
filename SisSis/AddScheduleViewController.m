@@ -231,6 +231,14 @@
 
 }
 
+-(void) textFieldEditingChanged:(UITextField *)textField{
+  schedule.position = textField.text;
+  schedule.arrivalPosition = textField.text;
+  
+}
+
+
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -334,12 +342,16 @@
       return;
     }
     
+    EditableCell* cell = (EditableCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    [self textFieldDidEndEditing:cell.inputField];
+    
     if(!self.departureDecideViewController){
       self.departureDecideViewController = [[[DepartureDecideViewController alloc] initWithNibName:@"DepartureDecideViewController" bundle:nil] autorelease];
       
       [self.departureDecideViewController setAddScheduleViewController:self];
       
     }
+    [self.departureDecideViewController syncTableWithScheduleData];
     
     //[self.departureDecideViewController syncTableWithScheduleData];
     [self.navigationController pushViewController:self.departureDecideViewController animated:YES];

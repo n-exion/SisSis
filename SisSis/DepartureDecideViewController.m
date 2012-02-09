@@ -78,10 +78,7 @@
 - (void)syncTableWithScheduleData{
   ScheduleData* schedule = addController.schedule;
   
-  NSLog(@"スケジュール足すよー");
-  
   NSInteger section = [[tableSectionDictionary objectForKey:@"DeparturePosition"] integerValue];
-  NSLog(@"スケジュール足したよー");
   NSInteger row = [[tableRowDictionary objectForKey:@"DeparturePosition"] integerValue];
   //ここがnilになる？
   UITableViewCell* targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
@@ -239,7 +236,7 @@
         cell.textLabel.text = NSLocalizedString(@"出発地点", nil);
         
         if (addController.schedule.departurePosition == nil){
-          addController.schedule.departurePosition = @"自宅";
+          addController.schedule.departurePosition = @"現在地点";
         }
         cell.detailTextLabel.text = addController.schedule.departurePosition;
         
