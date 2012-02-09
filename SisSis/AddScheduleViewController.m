@@ -9,6 +9,7 @@
 #import "AddScheduleViewController.h"
 #import "DoubleRowCell.h"
 #import "DepartureDecideViewController.h"
+#import "DetailMapViewController.h"
 
 #import "ScheduleData.h"
 

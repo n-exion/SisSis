@@ -35,7 +35,7 @@
 }
 
 - (void)loadView {
-	UIView *contentView = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 372.0f)] autorelease];
+	UIView *contentView = [[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 420.0f)] autorelease];
 	self.view = contentView;
 
 	routeMapView = [[MKMapView alloc] initWithFrame:contentView.frame];
@@ -46,13 +46,7 @@
 	
 	routeOverlayView = [[UICRouteOverlayMapView alloc] initWithMapView:routeMapView];
 	
-	UIBarButtonItem *space = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil] autorelease];
-	UIBarButtonItem *currentLocationButton = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reticle.png"] style:UIBarButtonItemStylePlain target:self action:@selector(moveToCurrentLocation:)] autorelease];
-	UIBarButtonItem *mapPinButton = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"map_pin.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addPinAnnotation:)] autorelease];
-	UIBarButtonItem *routesButton = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"list.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showRouteListView:)] autorelease];
-    
-	self.toolbarItems = [NSArray arrayWithObjects:currentLocationButton, space, mapPinButton, routesButton, nil];
-	[self.navigationController setToolbarHidden:NO animated:NO];
+	[self.navigationController setToolbarHidden:YES animated:NO];
 	
 	diretions = [UICGDirections sharedDirections];
 	diretions.delegate = self;
