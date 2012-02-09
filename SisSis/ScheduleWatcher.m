@@ -51,6 +51,14 @@
   
   NSString* position = [NSString stringWithFormat:@"%f,%f",currentLocation.latitude,currentLocation.longitude];
   
+  NSDate* tommorow = [NSDate date];
+  NSDateComponents *dc  = [[NSDateComponents alloc] init];
+  [dc setDay:1];
+  tommorow = [[NSCalendar currentCalendar] dateByAddingComponents:dc toDate:tommorow options:0];
+
+  
+  
+  //starttimeが一番近い奴を監視
   for (int i = 0; i < [watchingEvents count];i++){
     EKEvent* e = [watchingEvents objectAtIndex:i];
     RouteData* route = [dbManager getRouteFromId:e.eventIdentifier];
