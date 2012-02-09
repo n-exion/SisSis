@@ -135,46 +135,6 @@
 	}
 }
 
-- (void) addEventData {
-  EKEvent *event = [EKEvent eventWithEventStore:appDelegate.eventStore];
-  event.title = @"This is title.";
-  event.location = @"Tokyo, Japan.";
-  event.startDate = [NSDate dateWithTimeIntervalSinceNow:0.0f];
-  event.endDate = [NSDate dateWithTimeIntervalSinceNow:3*60];
-  event.notes = @"This is notes.";
-  //[self.eventStore saveEvent:event span:EKSpanThisEvent error:&error];
-  EKEventEditViewController *eventEditViewController = [[[EKEventEditViewController alloc] init] autorelease];
-  eventEditViewController.editViewDelegate = self;
-  eventEditViewController.event = event;
-  eventEditViewController.eventStore = appDelegate.eventStore;
-  [self presentModalViewController:eventEditViewController animated:YES];
-}
-
-- (void)eventEditViewController:(EKEventEditViewController *)controller 
-          didCompleteWithAction:(EKEventEditViewAction)action
-{
-	
-	NSError *error = nil;
-	
-	switch (action) {
-		case EKEventEditViewActionCanceled:
-			break;
-			
-		case EKEventEditViewActionSaved:
-			[controller.eventStore saveEvent:controller.event span:EKSpanThisEvent error:&error];
-			break;
-			
-		case EKEventEditViewActionDeleted:
-			[controller.eventStore removeEvent:controller.event span:EKSpanThisEvent error:&error];
-			break;
-			
-		default:
-			break;
-	}
-  [self.monthView reload];
-	[controller dismissModalViewControllerAnimated:YES];
-}
-
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   EKEventViewController *eventViewController = [[[EKEventViewController alloc] init] autorelease];
@@ -201,8 +161,11 @@
     default:
       break;
   }
+  NSDate *date = [self.monthView dateSelected];
   [self.monthView reload];
-  [controller dismissModalViewControllerAnimated:YES];
+  [self.monthView selectDate:date];
+  [self.tableView reloadData];
+  [appDelegate.navController popViewControllerAnimated:YES];
 }
 
 // イベントハンドラから来る関数ども
@@ -225,6 +188,14 @@
       default:
       break;
   }
+}
+
+- (void) reload
+{
+  NSDate *date = [self.monthView dateSelected];
+  [self.monthView reload];
+  [self.monthView selectDate:date];
+  [self.tableView reloadData];
 }
 
 - (void) changeViewFromSegmentControl:(NSInteger)value {

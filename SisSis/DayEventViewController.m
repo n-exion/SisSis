@@ -89,12 +89,20 @@
       erv = subView;
     }
   }
+  for (int i = [erv.routeRects count] - 1; i > -1; i--) {
+    CGRect rect = [[erv.routeRects objectAtIndex:i] CGRectValue];
+    if (CGRectContainsPoint(rect, tapPoint)) {
+      NSLog(@"taped%d", i);
+      [self showDetailMapViewController:[erv.routeArray objectAtIndex:i]];
+      return;
+    }
+  }
   for (int i = [erv.eventRects count] - 1; i > -1; i--) {
     CGRect rect = [[erv.eventRects objectAtIndex:i] CGRectValue];
     if (CGRectContainsPoint(rect, tapPoint)) {
       NSLog(@"taped%d", i);
       [self showEKEventViewController:[erv.eventArray objectAtIndex:i]];
-      break;
+      return;
     }
   }
 }
@@ -105,6 +113,12 @@
   eventViewController.event = event;
   eventViewController.allowsEditing = NO;
   [appDelegate.navController pushViewController:eventViewController animated:YES];
+}
+
+- (void) showDetailMapViewController:(RouteData *) route
+{
+  DetailMapViewController *dmvc = [[[DetailMapViewController alloc] initFrom:route.departurePosition To:route.arrivalPosition] autorelease];
+  [appDelegate.navController pushViewController:dmvc animated:YES];
 }
 
 - (void)finishedRectDraw:(CGRect)rect
@@ -146,14 +160,6 @@
       [dataArray addObject:e];
     }
   }
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-  if (!scrollView.dragging) {
-    [self.nextResponder touchesBegan:touches withEvent:event];
-  }
-  [super touchesBegan:touches withEvent:event];
 }
 
 // ツールバーで"今日"ボタンが押された

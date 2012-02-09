@@ -15,7 +15,7 @@
 #import "DayEventViewController.h"
 
 @interface SisSisViewController : TKCalendarMonthTableViewController 
-<EKEventEditViewDelegate, EKEventViewDelegate, CalSegControlDelegate>
+<EKEventViewDelegate, CalSegControlDelegate>
 {
   // カレンダービュー追加
   UIToolbar *toolBar;
@@ -32,6 +32,7 @@
 
 - (void) generateEventDataForStartDate:(NSDate*)start endDate:(NSDate*)end;
 - (void) addEventData;
+- (void) reload;
 - (IBAction) didPushedTodayButton:(id)sender;
 - (IBAction) changedSegmentedControlValue:(id)sender;
 @end

@@ -13,7 +13,9 @@
 
 @implementation EventRectView
 @synthesize eventArray;
+@synthesize routeArray;
 @synthesize eventRects;
+@synthesize routeRects;
 @synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame
@@ -32,6 +34,8 @@
   self = [self initWithFrame:CGRectMake(0.0, 0.0, 320.0, 1250.0)];
   if (self) {
     // Initialization code
+    routeRects = nil;
+    eventRects = nil;
   }
   return self;
 }
@@ -55,10 +59,12 @@
   NSDate *nowDate = [dateFormatter dateFromString:nowDateStr];
   [dateFormatter release];
   EKEvent *event;
-  if (eventRects) {
-    [eventRects release];
-  }
+  if (eventRects) [eventRects release];
+  if (routeRects) [routeRects release];
+  if (routeArray) [routeArray release];
   eventRects = [[NSMutableArray alloc] init];
+  routeRects = [[NSMutableArray alloc] init];
+  routeArray = [[NSMutableArray alloc] init];
   for (event in eventArray) {
     CGContextSetRGBStrokeColor(context, 0.3, 0.3, 0.6, 1.0);
     CGContextSetRGBFillColor(context, 0.7, 0.7, 0.85, 1.0);
@@ -97,11 +103,12 @@
       CGContextSetRGBFillColor(context, 0.9, 0.6, 0.5, 1.0);
       CGContextSetRGBStrokeColor(context, 0.8, 0.4, 0.2, 1.0);
       RouteData *route = [appDelegate.dbManager getRouteFromId:event.eventIdentifier];
+      [routeArray addObject:route];
       sm = ([route.departureTime timeIntervalSinceDate:nowDate] / 60);
       em = ([route.arrivalTime timeIntervalSinceDate:nowDate] / 60);
       y = 48 + 0.8 * sm;
       rect = CGRectMake(x, y, width, 0.8 * (em - sm));
-      [eventRects addObject:[NSValue valueWithCGRect:rect]];
+      [routeRects addObject:[NSValue valueWithCGRect:rect]];
       CGContextFillStrokeRoundedRect(context, rect, 5.0);
       
       //

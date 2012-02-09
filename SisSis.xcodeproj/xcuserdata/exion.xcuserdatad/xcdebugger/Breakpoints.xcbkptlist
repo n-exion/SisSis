@@ -37,27 +37,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisViewController.m"
-         timestampString = "350504440.818038"
+         timestampString = "350511474.000952"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "213"
-         endingLineNumber = "213"
+         startingLineNumber = "176"
+         endingLineNumber = "176"
          landmarkName = "-didPushedTodayButton:"
          landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "SisSis/SisSisViewController.m"
-         timestampString = "350504440.818038"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "152"
-         endingLineNumber = "152"
-         landmarkName = "@implementation SisSisViewController"
-         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -93,11 +79,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisViewController.m"
-         timestampString = "350504440.818038"
+         timestampString = "350511474.000952"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "181"
-         endingLineNumber = "181"
+         startingLineNumber = "141"
+         endingLineNumber = "141"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -107,11 +93,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisViewController.m"
-         timestampString = "350504440.818038"
+         timestampString = "350511474.000952"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "183"
-         endingLineNumber = "183"
+         startingLineNumber = "143"
+         endingLineNumber = "143"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -163,11 +149,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisViewController.m"
-         timestampString = "350504440.818038"
+         timestampString = "350511474.000952"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "180"
-         endingLineNumber = "180"
+         startingLineNumber = "140"
+         endingLineNumber = "140"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -191,11 +177,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/DayEventViewController.m"
-         timestampString = "350472568.933312"
+         timestampString = "350506099.443468"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "175"
-         endingLineNumber = "175"
+         startingLineNumber = "181"
+         endingLineNumber = "181"
          landmarkName = "-didPushedTodayButton:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -205,11 +191,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisViewController.m"
-         timestampString = "350504440.818038"
+         timestampString = "350511474.000952"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "253"
-         endingLineNumber = "253"
+         startingLineNumber = "224"
+         endingLineNumber = "224"
          landmarkName = "-changedSegmentControlValue:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -261,11 +247,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisAppDelegate.m"
-         timestampString = "350498563.261675"
+         timestampString = "350510208.839514"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "108"
-         endingLineNumber = "108"
+         startingLineNumber = "111"
+         endingLineNumber = "111"
          landmarkName = "-addEventToCalendar:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -275,11 +261,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisAppDelegate.m"
-         timestampString = "350498563.261675"
+         timestampString = "350510208.839514"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "109"
-         endingLineNumber = "109"
+         startingLineNumber = "112"
+         endingLineNumber = "112"
          landmarkName = "-addEventToCalendar:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -331,11 +317,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/DayEventViewController.m"
-         timestampString = "350472568.933312"
+         timestampString = "350506099.443468"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "134"
-         endingLineNumber = "134"
+         startingLineNumber = "148"
+         endingLineNumber = "148"
          landmarkName = "-generateEventDataForStartDate:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -373,11 +359,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/EventRectView.m"
-         timestampString = "350500476.200768"
+         timestampString = "350506236.958728"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "49"
-         endingLineNumber = "49"
+         startingLineNumber = "53"
+         endingLineNumber = "53"
          landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -387,11 +373,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/EventRectView.m"
-         timestampString = "350500476.200768"
+         timestampString = "350506673.069722"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "68"
-         endingLineNumber = "68"
+         startingLineNumber = "74"
+         endingLineNumber = "74"
          landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -401,11 +387,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/EventRectView.m"
-         timestampString = "350500476.200768"
+         timestampString = "350506673.069722"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "66"
-         endingLineNumber = "66"
+         startingLineNumber = "72"
+         endingLineNumber = "72"
          landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -415,11 +401,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/EventRectView.m"
-         timestampString = "350500476.200768"
+         timestampString = "350506673.069722"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "76"
-         endingLineNumber = "76"
+         startingLineNumber = "82"
+         endingLineNumber = "82"
          landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -429,11 +415,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/EventRectView.h"
-         timestampString = "350496869.959967"
+         timestampString = "350506099.443468"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "29"
-         endingLineNumber = "29"
+         startingLineNumber = "33"
+         endingLineNumber = "33"
          landmarkName = "@protocol EventRectDelegate"
          landmarkType = "2">
       </FileBreakpoint>
@@ -443,11 +429,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/EventRectView.m"
-         timestampString = "350500476.200768"
+         timestampString = "350506673.069722"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "130"
-         endingLineNumber = "130"
+         startingLineNumber = "137"
+         endingLineNumber = "137"
          landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -457,40 +443,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisViewController.m"
-         timestampString = "350504440.818038"
+         timestampString = "350511474.000952"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "244"
-         endingLineNumber = "244"
+         startingLineNumber = "215"
+         endingLineNumber = "215"
          landmarkName = "-changeViewFromSegmentControl:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "SisSis/DayEventViewController.m"
-         timestampString = "350472568.933312"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "153"
-         endingLineNumber = "153"
-         landmarkName = "-touchesBegan:withEvent:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "SisSis/DayEventViewController.m"
-         timestampString = "350472568.933312"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "152"
-         endingLineNumber = "152"
-         landmarkName = "-touchesBegan:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -513,11 +471,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/DayEventViewController.m"
-         timestampString = "350471297.029995"
+         timestampString = "350506099.443468"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "92"
-         endingLineNumber = "92"
+         startingLineNumber = "100"
+         endingLineNumber = "100"
          landmarkName = "-handleTapGesture:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -527,11 +485,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/DayEventViewController.m"
-         timestampString = "350471297.029995"
+         timestampString = "350506099.443468"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "94"
-         endingLineNumber = "94"
+         startingLineNumber = "102"
+         endingLineNumber = "102"
          landmarkName = "-handleTapGesture:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -667,11 +625,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisViewController.m"
-         timestampString = "350504440.818038"
+         timestampString = "350511474.000952"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "237"
-         endingLineNumber = "237"
+         startingLineNumber = "208"
+         endingLineNumber = "208"
          landmarkName = "-changeViewFromSegmentControl:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -947,11 +905,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisAppDelegate.m"
-         timestampString = "350498563.261675"
+         timestampString = "350510208.839514"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "126"
-         endingLineNumber = "126"
+         startingLineNumber = "130"
+         endingLineNumber = "130"
          landmarkName = "-addedSchedule:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -975,11 +933,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisAppDelegate.m"
-         timestampString = "350496869.959967"
+         timestampString = "350510208.839514"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "97"
-         endingLineNumber = "97"
+         startingLineNumber = "100"
+         endingLineNumber = "100"
          landmarkName = "-addEventToCalendar:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -989,11 +947,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisAppDelegate.m"
-         timestampString = "350496869.959967"
+         timestampString = "350510351.196439"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "85"
-         endingLineNumber = "85"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
          landmarkName = "-addEventToCalendar:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1031,11 +989,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/SisSisAppDelegate.m"
-         timestampString = "350496869.959967"
+         timestampString = "350510208.839514"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "92"
-         endingLineNumber = "92"
+         startingLineNumber = "95"
+         endingLineNumber = "95"
          landmarkName = "-addEventToCalendar:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1045,11 +1003,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/EventRectView.m"
-         timestampString = "350497210.189963"
+         timestampString = "350506673.069722"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "98"
-         endingLineNumber = "98"
+         startingLineNumber = "104"
+         endingLineNumber = "104"
          landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1107,6 +1065,188 @@
          startingLineNumber = "86"
          endingLineNumber = "86"
          landmarkName = "-tableView:numberOfRowsInSection:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SisSis/DayEventViewController.m"
+         timestampString = "350506153.624738"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "83"
+         endingLineNumber = "83"
+         landmarkName = "-handleTapGesture:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SisSis/EventRectView.m"
+         timestampString = "350506210.818189"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "33"
+         endingLineNumber = "33"
+         landmarkName = "-initWithEvents:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SisSis/DayEventViewController.m"
+         timestampString = "350506295.111382"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "96"
+         endingLineNumber = "96"
+         landmarkName = "-handleTapGesture:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SisSis/DayEventViewController.m"
+         timestampString = "350506306.879371"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "93"
+         endingLineNumber = "93"
+         landmarkName = "-handleTapGesture:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SisSis/DayEventViewController.m"
+         timestampString = "350506432.608524"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "120"
+         endingLineNumber = "120"
+         landmarkName = "-showDetailMapViewController:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SisSis/EventRectView.m"
+         timestampString = "350506673.069722"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "105"
+         endingLineNumber = "105"
+         landmarkName = "-drawRect:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SisSis/DBMagager.m"
+         timestampString = "350508496.957252"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "51"
+         endingLineNumber = "51"
+         landmarkName = "-addRoute:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SisSis/DBMagager.m"
+         timestampString = "350508499.124574"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "50"
+         endingLineNumber = "50"
+         landmarkName = "-addRoute:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SisSis/SisSisViewController.m"
+         timestampString = "350511474.000952"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "157"
+         endingLineNumber = "157"
+         landmarkName = "-eventViewController:didCompleteWithAction:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SisSis/SisSisViewController.m"
+         timestampString = "350511474.000952"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "151"
+         endingLineNumber = "151"
+         landmarkName = "-eventViewController:didCompleteWithAction:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SisSis/SisSisViewController.m"
+         timestampString = "350511474.000952"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "152"
+         endingLineNumber = "152"
+         landmarkName = "-eventViewController:didCompleteWithAction:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SisSis/AddScheduleViewController.m"
+         timestampString = "350510838.275628"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "241"
+         endingLineNumber = "241"
+         landmarkName = "-textFieldDidEndEditing:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SisSis/AddScheduleViewController.m"
+         timestampString = "350510957.146327"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "126"
+         endingLineNumber = "126"
+         landmarkName = "-completeButton"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
