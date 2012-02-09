@@ -47,7 +47,8 @@
 	[db open];
   
 	[db setShouldCacheStatements:YES];
-	if( [db executeUpdate:SQL_INSERT, route.identifier, route.departurePosition, route.departureTime, route.arrivalPosition, route.arrivalTime, route.travelMode] )
+	if( [db executeUpdate:SQL_INSERT, route.identifier, route.departurePosition,
+       route.departureTime, route.arrivalPosition, route.arrivalTime, [NSNumber numberWithInt:route.travelMode]] )
 	{
     [db close];
 		return YES;
