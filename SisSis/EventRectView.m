@@ -19,7 +19,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+      //Initialization code
+      appDelegate = (SisSisAppDelegate*)[[UIApplication sharedApplication] delegate];
     }
     return self;
 }
@@ -93,6 +94,15 @@
       utv_time.scrollEnabled = NO;
       [self addSubview:utv_time];
       [utv_time release];
+      // 枠内部色指定
+      CGContextSetRGBFillColor(context, 0.7, 0.7, 0.85, 1.0);
+      RouteData *route = [appDelegate.dbManager getRouteFromId:event.eventIdentifier];
+      sm = ([route.departureTime timeIntervalSinceDate:nowDate] / 60);
+      em = ([route.arrivalTime timeIntervalSinceDate:nowDate] / 60);
+      y = 48 + 0.8 * sm;
+      rect = CGRectMake(x, y, width, 0.8 * (em - sm));
+      [eventRects addObject:[NSValue valueWithCGRect:rect]];
+      CGContextFillStrokeRoundedRect(context, rect, 5.0);
     }
   }
   if (delegate) {

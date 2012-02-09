@@ -18,6 +18,7 @@
 @synthesize eventStore;
 @synthesize dataArray;
 @synthesize dataDictionary;
+@synthesize dbManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -110,6 +111,7 @@
 - (IBAction)pushedAddButton:(id)sender{
   // ここで予定の追加の画面に遷移すればいいはず_egawa
   NSLog(@"pushed AddEventButton");
+  
   AddScheduleViewController* addView = [[[AddScheduleViewController alloc] initWithDate:[NSDate date]] autorelease];
   addView.delegate = self;
   [self.navController pushViewController:addView animated:YES];
