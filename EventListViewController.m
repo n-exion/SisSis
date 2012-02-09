@@ -201,7 +201,7 @@ static id dataDictionary;
     default:
       break;
   }
-  [controller dismissModalViewControllerAnimated:YES];
+  [appDelegate.navController popViewControllerAnimated:YES];
 }
 
 // ツールバーでカレンダーの表示形式が変更された

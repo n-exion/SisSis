@@ -111,22 +111,12 @@
       rect = CGRectMake(x, y, width, 0.8 * (em - sm));
       [routeRects addObject:[NSValue valueWithCGRect:rect]];
       CGContextFillStrokeRoundedRect(context, rect, 5.0);
-      
-      //
-      UITextView *routeTitle = [[UITextView alloc] initWithFrame:CGRectMake(x + 3.0, y + 4.0 , width - 12.0, 16.0)];
-      routeTitle.opaque = NO;
-      routeTitle.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
-      routeTitle.text = event.title;
-      routeTitle.scrollEnabled = NO;
-      routeTitle.editable = NO;
-      [self addSubview:routeTitle];
-      [routeTitle release];
       outputFormatter = [[NSDateFormatter alloc] init];
       [outputFormatter setDateFormat:@"hh:mm"];
       startTime = [outputFormatter stringFromDate:route.departureTime];
       endTime = [outputFormatter stringFromDate:route.arrivalTime];
       [outputFormatter release];
-      UITextView *routeTime = [[UITextView alloc] initWithFrame:CGRectMake(x + 3.0, y + 20.0 , width - 12.0, 16.0)];
+      UITextView *routeTime = [[UITextView alloc] initWithFrame:CGRectMake(x + 3.0, y, width - 12.0, 16.0)];
       routeTime.opaque = NO;
       routeTime.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
       routeTime.text = [NSString stringWithFormat:@"%@ 〜 %@", startTime, endTime];
