@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <EventKit/EventKit.h>
 #import <EventKitUI/EventKitUI.h>
+#import "AddScheduleViewController.h"
 #import "DBManager.h"
 
 @class SisSisViewController;
 
-@interface SisSisAppDelegate : NSObject <UIApplicationDelegate> {
+@interface SisSisAppDelegate : NSObject <UIApplicationDelegate, AddScheduleDelegate> {
   UIWindow *window;
   UINavigationController *navController;
   EKEventStore* eventStore;

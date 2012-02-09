@@ -23,16 +23,15 @@
   UITableView *eventTableView;
   NSArray *keyArray;
   NSMutableDictionary *dataDictionary;
-  NSDate *nowDate;
   id <CalSegControlDelegate> delegate;
 }
 
+@property (retain, nonatomic) NSMutableDictionary* dataDictionary;
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *todayButton;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segControl;
 @property (retain, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (retain, nonatomic) IBOutlet UITableView *eventTableView;
 @property (retain, nonatomic) NSArray *keyArray;
-@property (retain, nonatomic) NSDate *nowDate;
 @property (retain, nonatomic) id <CalSegControlDelegate> delegate;
 
 - (IBAction) changedSegmentedControlValue:(id)sender;

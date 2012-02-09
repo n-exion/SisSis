@@ -111,17 +111,13 @@
   // ここで予定の追加の画面に遷移すればいいはず_egawa
   NSLog(@"pushed AddEventButton");
   AddScheduleViewController* addView = [[[AddScheduleViewController alloc] initWithDate:[NSDate date]] autorelease];
+  addView.delegate = self;
   [self.navController pushViewController:addView animated:YES];
 }
 
-/*- (IBAction)pushedCalenderButton:(id)sender {
-  ScheduleData *data = [[ScheduleData alloc] init];
-  data.title = @"testEvent";
-  data.startTime = [NSDate date];
-  data.endTime = [NSDate dateWithTimeIntervalSinceNow:86400];
-  data.position = @"自宅";
-  [self addEventToCalendar:data];
-  [data release];
-}*/
+- (void) addedSchedule:(ScheduleData*)schedule
+{
+  [self addEventToCalendar:schedule];
+}
 
 @end

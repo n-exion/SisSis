@@ -231,8 +231,8 @@
     EventListViewController *dialog = [[EventListViewController alloc]
                                         initWithNibName:@"EventListViewController"
                                         bundle:[NSBundle mainBundle]];
-      dialog.delegate = self;
-      [self.view addSubview:dialog.view];
+    dialog.delegate = self;
+    [self.view addSubview:dialog.view];
   } else if (value == 1) {
     DayEventViewController *dialog = [[DayEventViewController alloc]
                                       initWithNibName:@"DayEventViewController"
