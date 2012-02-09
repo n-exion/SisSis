@@ -21,16 +21,17 @@
 
 
 @interface ScheduleWatcher : NSObject<MKMapViewDelegate, UICGDirectionsDelegate,CLLocationManagerDelegate>{
-  NSArray* watchingEvents;
+  NSMutableArray* watchingEvents;
   
   UICGDirections *diretions;
   CLLocationManager *locationManager;
   CLLocationCoordinate2D currentLocation;
-
+  int nearest_index;
 }
 
 
 - (void) setDayTimer:(NSDate*) start;
 - (void) setTodayTimer;
+- (void)watchEvents;
 
 @end

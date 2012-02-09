@@ -29,6 +29,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
   
   self.datePicker.datePickerMode = UIDatePickerModeTime;
+
   
   //自分から情報を供給する
   self.DataTable.delegate = self;
@@ -36,6 +37,7 @@
   
   //datePicker関係
   selectedField = 0;
+  self.datePicker.date = addScheduleController.schedule.startTime;
   
 }
 

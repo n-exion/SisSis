@@ -41,58 +41,98 @@
 	//_latitude = newLocation.coordinate.latitude;
   diretions = [UICGDirections sharedDirections];
   diretions.delegate = self;
+  
+  if(diretions.isInitialized){
+    [self startSearchDirection];
+  }
 }
 
 #pragma mark <UICGDirectionsDelegate> Methods
-
 - (void)directionsDidFinishInitialize:(UICGDirections *)directions {
+  [self startSearchDirection];
+}
+
+-(void) startSearchDirection{
   SisSisAppDelegate* appDelegate = (SisSisAppDelegate*)[[UIApplication sharedApplication] delegate];
   DBManager* dbManager = appDelegate.dbManager;
   
   NSString* position = [NSString stringWithFormat:@"%f,%f",currentLocation.latitude,currentLocation.longitude];
   
-  NSDate* tommorow = [NSDate date];
+  nearest_index = -1;
+  NSDate* nearest = [NSDate date];
   NSDateComponents *dc  = [[NSDateComponents alloc] init];
   [dc setDay:1];
-  tommorow = [[NSCalendar currentCalendar] dateByAddingComponents:dc toDate:tommorow options:0];
+  nearest = [[NSCalendar currentCalendar] dateByAddingComponents:dc toDate:nearest options:0];
 
-  
   
   //starttimeが一番近い奴を監視
   for (int i = 0; i < [watchingEvents count];i++){
     EKEvent* e = [watchingEvents objectAtIndex:i];
-    RouteData* route = [dbManager getRouteFromId:e.eventIdentifier];
     
-    //addController.schedule
+    if([nearest compare:e.startDate] == NSOrderedDescending){
+      nearest_index = i;
+      nearest = e.startDate;
+    }
+  }
+  
+  if (nearest_index == -1)
+    return;
+  
+  EKEvent* target = [watchingEvents objectAtIndex:nearest_index];
+  RouteData* route = [dbManager getRouteFromId:target.eventIdentifier];
+    
+  //addController.schedule
+  //空じゃないときだけやる気だす
+  if(route.arrivalPosition != nil && ![route.arrivalPosition isEqualToString:@""]){
     UICGDirectionsOptions *options = [[[UICGDirectionsOptions alloc] init] autorelease];
     options.travelMode = route.travelMode;
-    
     [diretions loadWithStartPoint:position endPoint:route.arrivalPosition options:options];
-
   }
-
+  else{
+    NSDate* now = [NSDate date];
+    if([now compare:target.startDate] == NSOrderedDescending){
+      NSString* message = [NSString stringWithFormat:@"予定「%@」がオーバーしそうです",target.title];
+      UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Warning" 
+                                                       message:message
+                                                      delegate:self 
+                                             cancelButtonTitle:@"OK" 
+                                             otherButtonTitles: nil] autorelease];
+      [alert show];
+    }
+    [watchingEvents removeObjectAtIndex:nearest_index];
+  }
 }
 
 
 - (void)directionsDidUpdateDirections:(UICGDirections *)directions {
+  EKEvent* target = [watchingEvents objectAtIndex:nearest_index];
+
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-	
-	// Overlay polylines
-	UICGPolyline *polyline = [directions polyline];
-	NSArray *routePoints = [polyline routePoints];
 	
   NSNumberFormatter* fmt = [[[NSNumberFormatter alloc] init] autorelease];
   NSString* durationSecondStr = [fmt stringForObjectValue:[directions.duration objectForKey:@"seconds"]];
   int second = [durationSecondStr intValue];
   NSCalendar* calendar = [NSCalendar currentCalendar];
   NSDateComponents* diff = [[[NSDateComponents alloc] init] autorelease];
-  diff.second = -second;
+  //TODO ここに柔軟性を持たせる. 今は5分固定
+  diff.second = second + 5 * 60;
   
-  //addController.schedule.departureTime = [calendar dateByAddingComponents:diff toDate:addController.schedule.arrivalTime options:0];
-  //[departureController syncTableWithScheduleData];
+  NSDate* now = [NSDate date];
+  NSDate* arrive_date = [calendar dateByAddingComponents:diff toDate:now options:0];
+ 
+  //時間すぎそう
+  if([arrive_date compare:now] == NSOrderedDescending){
+    NSString* message = [NSString stringWithFormat:@"予定「%@」がオーバーしそうです",target.title];
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Warning" 
+                                                     message:message
+                                                    delegate:self 
+                                           cancelButtonTitle:@"OK" 
+                                           otherButtonTitles: nil] autorelease];
+    [alert show];
+    [watchingEvents removeObjectAtIndex:nearest_index];
+
+  }
   
-  
-	//[routeMapView addAnnotations:[NSArray arrayWithObjects:startAnnotation, endAnnotation, nil]];
 }
 
 
@@ -139,8 +179,8 @@
   NSDate *end = [[NSCalendar currentCalendar] dateByAddingComponents:dc toDate:start options:0];
   [dc release];
   NSPredicate *p = [appDelegate.eventStore predicateForEventsWithStartDate:start endDate:end calendars:[NSArray arrayWithObject:cal]];
-  watchingEvents = [appDelegate.eventStore eventsMatchingPredicate:p];
-  [watchingEvents retain];
+  watchingEvents = [[NSMutableArray alloc] initWithArray: [appDelegate.eventStore eventsMatchingPredicate:p]];
+
 	
   for (int i = 0; i < [watchingEvents count];i++){
 

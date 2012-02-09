@@ -387,10 +387,10 @@
 		10484BA414D949AC00BD122C /* DepartureDecide */ = {
 			isa = PBXGroup;
 			children = (
+				101B521E14CABF77005534FD /* DepartureDecideViewController.xib */,
 				101B522014CABF91005534FD /* DeparturePositionDecideViewController.h */,
 				101B522114CABF92005534FD /* DeparturePositionDecideViewController.m */,
 				101B522214CABF92005534FD /* DeparturePositionDecideViewController.xib */,
-				101B521E14CABF77005534FD /* DepartureDecideViewController.xib */,
 				101B521B14CABF6B005534FD /* DepartureDecideViewController.m */,
 				101B521C14CABF6B005534FD /* DepartureDecideViewController.h */,
 				103AB47314D2944A0020F9E1 /* MapDirectionsViewController.h */,

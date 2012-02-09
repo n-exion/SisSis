@@ -56,6 +56,12 @@
     
     schedule.position = @"";
     schedule.arrivalPosition = nil;
+    
+    diff = [[[NSDateComponents alloc] init] autorelease];
+    diff.minute = -5;
+    //予定開始時間
+    schedule.arrivalTime = [calendar dateByAddingComponents:diff toDate:schedule.startTime options:0];
+
     schedule.arrivalTime = nil;
     
     dateFormat = [[NSDateFormatter alloc] init];

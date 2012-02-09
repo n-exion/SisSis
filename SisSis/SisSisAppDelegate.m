@@ -38,6 +38,14 @@
   scheduleWatcher = [[ScheduleWatcher alloc] init];
   [scheduleWatcher setTodayTimer];
   
+  NSInvocation* invocation = [NSInvocation invocationWithMethodSignature:
+                              [scheduleWatcher methodSignatureForSelector:@selector(watchEvents)]];
+  
+  [invocation setTarget:scheduleWatcher];
+  [invocation setSelector:@selector(watchEvents)];
+  
+  NSTimer* timer = [NSTimer scheduledTimerWithTimeInterval:10.0 invocation:invocation repeats:YES];
+
   return YES;
 }
 
