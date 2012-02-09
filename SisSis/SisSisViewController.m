@@ -30,6 +30,18 @@
 
 - (void)viewWillAppear:(BOOL)animated {
   // 画面が表示される直前にする処理
+  main_queue = dispatch_get_main_queue();
+  load_queue = dispatch_queue_create("SisSis.eventlist.load", NULL);
+  dispatch_async(load_queue, ^{
+    EventListViewController *elvc = [[EventListViewController alloc]
+                                     initWithNibName:@"EventListViewController"
+                                     bundle:[NSBundle mainBundle]];
+    elvc.loadingKeyArray = YES;
+    [elvc initKeyArray];
+    [elvc.eventTableView reloadData];
+    elvc.loadingKeyArray = NO;
+    elvc_dialog = elvc;
+  });
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -200,9 +212,10 @@
 
 - (void) changeViewFromSegmentControl:(NSInteger)value {
   if (value == 0) {
-    EventListViewController *dialog = [[EventListViewController alloc]
+ /*   EventListViewController *dialog = [[EventListViewController alloc]
                                         initWithNibName:@"EventListViewController"
-                                        bundle:[NSBundle mainBundle]];
+                                        bundle:[NSBundle mainBundle]];*/
+    EventListViewController *dialog = elvc_dialog;
     dialog.delegate = self;
     [self.view addSubview:dialog.view];
   } else if (value == 1) {
