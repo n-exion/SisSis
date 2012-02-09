@@ -236,18 +236,15 @@
 
 //場所を変更したときのみ呼ばれるようになってる
 -(void) textFieldDidEndEditing:(UITextField *)textField{
-  schedule.position = textField.text;
-  schedule.arrivalPosition = textField.text;
+  if(textField.tag == 0){
+    schedule.title = textField.text;
+  }
+  else if(textField.tag == 1){
+    schedule.position = textField.text;
+    schedule.arrivalPosition = textField.text;
+  }
 
 }
-
--(void) textFieldEditingChanged:(UITextField *)textField{
-  schedule.position = textField.text;
-  schedule.arrivalPosition = textField.text;
-  
-}
-
-
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -259,11 +256,14 @@
       case 0:
         //TODO: これらの解放は？
         titleCell = [self createEditableCell:@"タイトル" inView:tableView];
+        titleCell.inputField.delegate = self;
+        titleCell.inputField.tag = 0;
         return titleCell;
       case 1:
         positionCell = [self createEditableCell:@"場所" inView:tableView];
         positionCell.inputField.text = self->schedule.position;
         positionCell.inputField.delegate = self;
+        positionCell.inputField.tag = 1;
         return positionCell;
     }
   }
