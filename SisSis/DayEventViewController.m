@@ -164,20 +164,6 @@
 
 // ツールバーで"今日"ボタンが押された
 - (IBAction) didPushedTodayButton:(id)sender{
-  switch (segControl.selectedSegmentIndex) {
-      // リスト形式
-    case 0:
-      // NSIndexPath で指定したセルが表示されるように UITableView をスクロールします。
-      break;
-      // １日形式
-    case 1:
-      break;
-      // 月形式
-    case 2:
-      break;
-    default:
-      break;
-  }
 }
 
 // ツールバーでカレンダーの表示形式が変更された
