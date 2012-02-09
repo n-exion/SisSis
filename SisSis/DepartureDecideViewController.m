@@ -33,8 +33,8 @@
     self.title = NSLocalizedString(@"Master", @"Master");
   }
   
-  sectionDictionary = [[NSMutableDictionary alloc] init];
-  rowDictionary = [[NSMutableDictionary alloc] init];
+  sectionDictionary = [[[NSMutableDictionary alloc] init] autorelease] ;
+  rowDictionary = [[[NSMutableDictionary alloc] init] autorelease];
   
   [sectionDictionary setObject:[NSNumber numberWithInt:1] forKey:@"DeparturePosition"];
   [rowDictionary setObject:[NSNumber numberWithInt:0] forKey:@"DeparturePosition"];

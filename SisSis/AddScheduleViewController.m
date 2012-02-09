@@ -29,38 +29,39 @@
   self = [super initWithNibName:@"AddScheduleViewController" bundle:nil];
   if (self) {
     self.title = @"予定の追加";
+    
+    //登録するスケジュールデータの作成(初期値をここで与える)
+    schedule = [[ScheduleData alloc] init];
+    schedule.departurePosition = @"現在地点";
+    schedule.departureTime = nil;
+    
+    //NSDate* now = [NSDate date];
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    
+    //１時間足すよう
+    NSDateComponents* diff = [[[NSDateComponents alloc] init] autorelease];
+    diff.hour = 1;
+    
+    NSDateComponents *dateComps = [calendar components:NSMinuteCalendarUnit
+                                              fromDate:now];
+    
+    diff.minute = -dateComps.minute;
+    
+    //予定開始時間
+    schedule.startTime = [calendar dateByAddingComponents:diff toDate:now options:0];
+    
+    diff.hour = 2;
+    schedule.endTime = [calendar dateByAddingComponents:diff toDate:now options:0];
+    
+    schedule.position = @"";
+    schedule.arrivalPosition = nil;
+    schedule.arrivalTime = nil;
+    
+    dateFormat = [[NSDateFormatter alloc] init];
+    //[dateFormat setDateFormat:@"MM-dd hh:mm"];
+    [dateFormat setDateFormat:@"hh:mm"];
   }
   
-  //登録するスケジュールデータの作成(初期値をここで与える)
-  schedule = [[ScheduleData alloc] init];
-  schedule.departurePosition = @"現在地点";
-  schedule.departureTime = nil;
-  
-  //NSDate* now = [NSDate date];
-  NSCalendar* calendar = [NSCalendar currentCalendar];
-  
-  //１時間足すよう
-  NSDateComponents* diff = [[[NSDateComponents alloc] init] autorelease];
-  diff.hour = 1;
-  
-  NSDateComponents *dateComps = [calendar components:NSMinuteCalendarUnit
-                                            fromDate:now];
-  
-  diff.minute = -dateComps.minute;
-  
-  //予定開始時間
-  schedule.startTime = [calendar dateByAddingComponents:diff toDate:now options:0];
-  
-  diff.hour = 2;
-  schedule.endTime = [calendar dateByAddingComponents:diff toDate:now options:0];
-
-  schedule.position = @"";
-  schedule.arrivalPosition = nil;
-  schedule.arrivalTime = nil;
-  
-  dateFormat = [[NSDateFormatter alloc] init];
-  //[dateFormat setDateFormat:@"MM-dd hh:mm"];
-  [dateFormat setDateFormat:@"hh:mm"];
 
   return self;
 }
@@ -258,6 +259,7 @@
     if (cell == nil) {
       [[NSBundle mainBundle] loadNibNamed:@"DoubleRowCell" owner:self options:nil];
       cell = (DoubleRowCell*)doubleRowCell;
+      cell.addController = self;
       //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     [cell setTime:schedule.startTime endTime:schedule.endTime];

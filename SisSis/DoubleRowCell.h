@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class AddScheduleViewController;
+
 @interface DoubleRowCell : UITableViewCell{
+  AddScheduleViewController* addController;
     
 }
 
 @property (retain, nonatomic) IBOutlet UILabel *startTimeField;
 @property (retain, nonatomic) IBOutlet UILabel *endTimeField;
+@property (weak, nonatomic) AddScheduleViewController* addController;
 
 - (void) setTime:(NSDate*)startTime endTime:(NSDate*)endDate;
 

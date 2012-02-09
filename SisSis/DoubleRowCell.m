@@ -7,10 +7,12 @@
 //
 
 #import "DoubleRowCell.h"
+#import "AddScheduleViewController.h"
 
 @implementation DoubleRowCell
 @synthesize startTimeField;
 @synthesize endTimeField;
+@synthesize addController;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -29,11 +31,8 @@
 }
 
 - (void)setTime:(NSDate*)startTime endTime:(NSDate*)endTime{
-    NSDateFormatter* dateFormat = [[[NSDateFormatter alloc] init] autorelease];
-    [dateFormat setDateFormat:@"MM-dd hh:mm"];
-
-    self.startTimeField.text = [dateFormat stringFromDate:startTime];
-    self.endTimeField.text = [dateFormat stringFromDate:endTime];
+    self.startTimeField.text = [addController convertDateToString:startTime];
+    self.endTimeField.text = [addController convertDateToString:endTime];
 }
 
 - (void)dealloc {
