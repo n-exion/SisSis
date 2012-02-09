@@ -322,13 +322,6 @@
   //出発時刻決定シークエンスへ
   else if(indexPath.section == 2){
     //TODO: 到着時刻入力を促す
-    if(!self.departureDecideViewController){
-      self.departureDecideViewController = [[[DepartureDecideViewController alloc] initWithNibName:@"DepartureDecideViewController" bundle:nil] autorelease];
-      
-      [self.departureDecideViewController setAddScheduleViewController:self];
-      
-    }
-    
     //目的地を入れないと進めない
     if([positionCell.inputField.text isEqualToString:@""]){
       schedule.arrivalPosition = positionCell.inputField.text;
@@ -341,7 +334,14 @@
       return;
     }
     
-    [self.departureDecideViewController syncTableWithScheduleData];
+    if(!self.departureDecideViewController){
+      self.departureDecideViewController = [[[DepartureDecideViewController alloc] initWithNibName:@"DepartureDecideViewController" bundle:nil] autorelease];
+      
+      [self.departureDecideViewController setAddScheduleViewController:self];
+      
+    }
+    
+    //[self.departureDecideViewController syncTableWithScheduleData];
     [self.navigationController pushViewController:self.departureDecideViewController animated:YES];
     
   }

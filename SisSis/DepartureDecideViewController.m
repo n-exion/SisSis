@@ -33,19 +33,19 @@
     self.title = NSLocalizedString(@"Master", @"Master");
   }
   
-  sectionDictionary = [[[NSMutableDictionary alloc] init] autorelease] ;
-  rowDictionary = [[[NSMutableDictionary alloc] init] autorelease];
+  tableSectionDictionary = [[NSMutableDictionary alloc] init] ;
+  tableRowDictionary = [[NSMutableDictionary alloc] init] ;
   
-  [sectionDictionary setObject:[NSNumber numberWithInt:1] forKey:@"DeparturePosition"];
-  [rowDictionary setObject:[NSNumber numberWithInt:0] forKey:@"DeparturePosition"];
-  [sectionDictionary setObject:[NSNumber numberWithInt:1] forKey:@"ArrivalPosition"];
-  [rowDictionary setObject:[NSNumber numberWithInt:1] forKey:@"ArrivalPosition"];
-  [sectionDictionary setObject:[NSNumber numberWithInt:2] forKey:@"DepartureTime"];
-  [rowDictionary setObject:[NSNumber numberWithInt:0] forKey:@"DepartureTime"];
-  [sectionDictionary setObject:[NSNumber numberWithInt:2] forKey:@"ArrivalTime"];
-  [rowDictionary setObject:[NSNumber numberWithInt:1] forKey:@"ArrivalTime"];
-  [sectionDictionary setObject:[NSNumber numberWithInt:2] forKey:@"StartTime"];
-  [rowDictionary setObject:[NSNumber numberWithInt:2] forKey:@"StartTime"];
+  [tableSectionDictionary setObject:[NSNumber numberWithInt:1] forKey:@"DeparturePosition"];
+  [tableRowDictionary setObject:[NSNumber numberWithInt:0] forKey:@"DeparturePosition"];
+  [tableSectionDictionary setObject:[NSNumber numberWithInt:1] forKey:@"ArrivalPosition"];
+  [tableRowDictionary setObject:[NSNumber numberWithInt:1] forKey:@"ArrivalPosition"];
+  [tableSectionDictionary setObject:[NSNumber numberWithInt:2] forKey:@"DepartureTime"];
+  [tableRowDictionary setObject:[NSNumber numberWithInt:0] forKey:@"DepartureTime"];
+  [tableSectionDictionary setObject:[NSNumber numberWithInt:2] forKey:@"ArrivalTime"];
+  [tableRowDictionary setObject:[NSNumber numberWithInt:1] forKey:@"ArrivalTime"];
+  [tableSectionDictionary setObject:[NSNumber numberWithInt:2] forKey:@"StartTime"];
+  [tableRowDictionary setObject:[NSNumber numberWithInt:2] forKey:@"StartTime"];
   
   return self;
 }
@@ -58,11 +58,17 @@
 {
   if(departurePositionDecideViewController){
     [departurePositionDecideViewController release];
+    departurePositionDecideViewController = nil;
   }
-  [sectionDictionary release];
-  [rowDictionary release];
+  [tableSectionDictionary release];
+  tableRowDictionary = nil;
+  
+  [tableRowDictionary release];
+  tableRowDictionary = nil;
+  
   if(arrivalTimeController){
     [arrivalTimeController release];
+    arrivalTimeController = nil;
   }
   [super dealloc];
 }
@@ -72,36 +78,40 @@
 - (void)syncTableWithScheduleData{
   ScheduleData* schedule = addController.schedule;
   
-  NSInteger section = [[sectionDictionary objectForKey:@"DeparturePosition"] integerValue];
-  NSInteger row = [[rowDictionary objectForKey:@"DeparturePosition"] integerValue];
+  NSLog(@"スケジュール足すよー");
+  
+  NSInteger section = [[tableSectionDictionary objectForKey:@"DeparturePosition"] integerValue];
+  NSLog(@"スケジュール足したよー");
+  NSInteger row = [[tableRowDictionary objectForKey:@"DeparturePosition"] integerValue];
+  //ここがnilになる？
   UITableViewCell* targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
   targetCell.detailTextLabel.text = schedule.departurePosition;
   [targetCell setNeedsLayout];
   
-  section = [[sectionDictionary objectForKey:@"StartTime"] integerValue];
-  row = [[rowDictionary objectForKey:@"StartTime"] integerValue];
+  section = [[tableSectionDictionary objectForKey:@"StartTime"] integerValue];
+  row = [[tableRowDictionary objectForKey:@"StartTime"] integerValue];
   targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
   targetCell.detailTextLabel.text = [addController convertDateToString:schedule.startTime];
   [targetCell setNeedsLayout];
 
   //arrivalPositionの更新
-  section = [[sectionDictionary objectForKey:@"ArrivalPosition"] integerValue];
-  row = [[rowDictionary objectForKey:@"ArrivalPosition"] integerValue];
+  section = [[tableSectionDictionary objectForKey:@"ArrivalPosition"] integerValue];
+  row = [[tableRowDictionary objectForKey:@"ArrivalPosition"] integerValue];
   targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
   targetCell.detailTextLabel.text = schedule.arrivalPosition;
   [targetCell setNeedsLayout];
   
   //arrivalTimeの更新
-  section = [[sectionDictionary objectForKey:@"ArrivalTime"] integerValue];
-  row = [[rowDictionary objectForKey:@"ArrivalTime"] integerValue];
+  section = [[tableSectionDictionary objectForKey:@"ArrivalTime"] integerValue];
+  row = [[tableRowDictionary objectForKey:@"ArrivalTime"] integerValue];
   targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
   targetCell.detailTextLabel.text = [addController convertDateToString:schedule.arrivalTime];
   [targetCell setNeedsLayout];
 
   
   //departureTimeの更新
-  section = [[sectionDictionary objectForKey:@"DepartureTime"] integerValue];
-  row = [[rowDictionary objectForKey:@"DepartureTime"] integerValue];
+  section = [[tableSectionDictionary objectForKey:@"DepartureTime"] integerValue];
+  row = [[tableRowDictionary objectForKey:@"DepartureTime"] integerValue];
   targetCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
 
   if(schedule.departureTime)

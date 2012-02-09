@@ -22,8 +22,8 @@
 	UISegmentedControl *travelModeSegment;
   DeparturePositionDecideViewController* departurePositionDecideViewController;
     
-  NSMutableDictionary* sectionDictionary;
-  NSMutableDictionary* rowDictionary;
+  NSMutableDictionary* tableSectionDictionary;
+  NSMutableDictionary* tableRowDictionary;
   
   AddScheduleViewController* addController;
   UIActivityIndicatorView* searchIndicator;
