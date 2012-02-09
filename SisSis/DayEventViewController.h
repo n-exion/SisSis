@@ -11,6 +11,7 @@
 #import "ExtendClasses.h"
 #import "TapkuLibrary.h"
 #import "EventRectView.h"
+#import "DetailMapViewController.h"
 
 @protocol CalSegControlDelegate;
 @interface DayEventViewController : UIViewController <UIScrollViewDelegate, EventRectDelegate>
@@ -40,6 +41,7 @@
 - (IBAction) didPushedTodayButton:(id)sender;
 - (void) generateEventDataForStartDate:(NSDate*)start;
 - (void) showEKEventViewController:(EKEvent*) event;
+- (void) showDetailMapViewController:(RouteData *) route;
 @end
 
 @protocol CalSegControlDelegate

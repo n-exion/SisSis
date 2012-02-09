@@ -14,13 +14,17 @@
 @interface EventRectView : UIView
 {
   NSArray *eventArray;
+  NSMutableArray *routeArray;
   NSMutableArray *eventRects;
+  NSMutableArray *routeRects;
   SisSisAppDelegate* appDelegate;
   id <EventRectDelegate> delegate;
 }
 
 @property (copy, nonatomic) NSArray *eventArray;
+@property (copy, nonatomic) NSMutableArray *routeArray;
 @property (copy, nonatomic) NSMutableArray *eventRects;
+@property (copy, nonatomic) NSMutableArray *routeRects;
 @property (retain, nonatomic) id <EventRectDelegate> delegate;
 - (id)initWithEvents:(NSArray*)array;
 void CGContextFillStrokeRoundedRect( CGContextRef context, CGRect rect, CGFloat radius );
