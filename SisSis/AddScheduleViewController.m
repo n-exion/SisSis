@@ -72,13 +72,23 @@
 - (void) updateStartTime:(NSDate*)start{
   schedule.startTime = start;
   
+  
+  NSCalendar* calendar = [NSCalendar currentCalendar];
+  NSDateComponents* diff = [[[NSDateComponents alloc] init] autorelease];
+  diff.minute = -5;
+  //予定開始時間
+  schedule.arrivalTime = [calendar dateByAddingComponents:diff toDate:start options:0];
+
+  
   DoubleRowCell* doubleCell =  (DoubleRowCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
   doubleCell.startTimeField.text = [dateFormat stringFromDate:start];
   [doubleCell setNeedsLayout];
 }
 
 - (void) updateEndTime:(NSDate*)end{
+
   schedule.endTime = end;
+
   
   DoubleRowCell* doubleCell =  (DoubleRowCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
   doubleCell.endTimeField.text = [dateFormat stringFromDate:end];
@@ -350,6 +360,8 @@
       [self.departureDecideViewController setAddScheduleViewController:self];
       
     }
+    
+
     [self.departureDecideViewController syncTableWithScheduleData];
     
     //[self.departureDecideViewController syncTableWithScheduleData];
