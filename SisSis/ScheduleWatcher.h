@@ -27,11 +27,13 @@
   CLLocationManager *locationManager;
   CLLocationCoordinate2D currentLocation;
   int nearest_index;
+  BOOL direction_searching;
 }
 
 
 - (void) setDayTimer:(NSDate*) start;
 - (void) setTodayTimer;
 - (void)watchEvents;
+- (void)addWatchingEvent:(EKEvent*)event;
 
 @end

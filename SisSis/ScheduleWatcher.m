@@ -16,7 +16,7 @@
 @implementation ScheduleWatcher
 - (ScheduleWatcher*)init{
   self = [super init];
-  
+  direction_searching = NO;
 
 
   return self;
@@ -52,6 +52,10 @@
   [self startSearchDirection];
 }
 
+- (void)addWatchingEvent:(EKEvent*)event{
+  [watchingEvents addObject:event];
+}
+
 -(void) startSearchDirection{
   SisSisAppDelegate* appDelegate = (SisSisAppDelegate*)[[UIApplication sharedApplication] delegate];
   DBManager* dbManager = appDelegate.dbManager;
@@ -84,9 +88,13 @@
   //addController.schedule
   //空じゃないときだけやる気だす
   if(route.arrivalPosition != nil && ![route.arrivalPosition isEqualToString:@""]){
+    if (direction_searching) {
+      return;
+    }
     UICGDirectionsOptions *options = [[[UICGDirectionsOptions alloc] init] autorelease];
     options.travelMode = route.travelMode;
     [diretions loadWithStartPoint:position endPoint:route.arrivalPosition options:options];
+    direction_searching = YES;
   }
   else{
     NSDate* now = [NSDate date];
@@ -106,6 +114,7 @@
 
 - (void)directionsDidUpdateDirections:(UICGDirections *)directions {
   EKEvent* target = [watchingEvents objectAtIndex:nearest_index];
+  direction_searching = NO;
 
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	
@@ -121,7 +130,7 @@
   NSDate* arrive_date = [calendar dateByAddingComponents:diff toDate:now options:0];
  
   //時間すぎそう
-  if([arrive_date compare:now] == NSOrderedDescending){
+  if([arrive_date compare:target.startDate] == NSOrderedDescending){
     NSString* message = [NSString stringWithFormat:@"予定「%@」がオーバーしそうです",target.title];
     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Warning" 
                                                      message:message
@@ -179,15 +188,22 @@
   NSDate *end = [[NSCalendar currentCalendar] dateByAddingComponents:dc toDate:start options:0];
   [dc release];
   NSPredicate *p = [appDelegate.eventStore predicateForEventsWithStartDate:start endDate:end calendars:[NSArray arrayWithObject:cal]];
-  watchingEvents = [[NSMutableArray alloc] initWithArray: [appDelegate.eventStore eventsMatchingPredicate:p]];
+  
+  NSArray* today_events = [appDelegate.eventStore eventsMatchingPredicate:p];
+  //watchingEvents = [[NSMutableArray alloc] initWithArray: ];
+  watchingEvents = [[NSMutableArray alloc] init];
 
-	
-  for (int i = 0; i < [watchingEvents count];i++){
 
-    EKEvent* e = [watchingEvents objectAtIndex:i];
+	//過ぎ去ったイベントは足さない. 邪悪な設定
+  //TODO この辺、マジデモ用
+  for (int i = 0; i < [today_events count];i++){
+
+    EKEvent* e = [today_events objectAtIndex:i];
     //TODO: 本当はstartDateじゃないよ
     if([now compare:e.startDate] == NSOrderedDescending)
       continue;
+    
+    [watchingEvents addObject:e];
     //RouteData* route = [dbManager getRouteFromId:e.eventIdentifier];
     NSString* index = [NSString stringWithFormat:@"%d",i];
     

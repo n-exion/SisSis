@@ -44,7 +44,7 @@
   [invocation setTarget:scheduleWatcher];
   [invocation setSelector:@selector(watchEvents)];
   
-  NSTimer* timer = [NSTimer scheduledTimerWithTimeInterval:10.0 invocation:invocation repeats:YES];
+  NSTimer* timer = [NSTimer scheduledTimerWithTimeInterval:60.0*10 invocation:invocation repeats:YES];
 
   return YES;
 }
@@ -107,6 +107,8 @@
   NSError *error = nil;
   // イベントが関連付けられるカレンダーを設定
   [event setCalendar:[self.eventStore defaultCalendarForNewEvents]];
+  
+  [scheduleWatcher addWatchingEvent:event];
   [self.eventStore saveEvent:event span:EKSpanThisEvent error:&error];
   // 経路情報をDBにも登録
   if (data.departurePosition && data.departureTime 
