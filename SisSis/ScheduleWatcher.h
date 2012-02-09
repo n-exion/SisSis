@@ -8,16 +8,25 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+
+#import <CoreLocation/CoreLocation.h>
+
 #import "SisSisAppDelegate.h"
 #import "ExtendClasses.h"
 #import "TapkuLibrary.h"
 #import "EventRectView.h"
 
+#import "UICGDirections.h"
 
 
-
-@interface ScheduleWatcher : NSObject{
+@interface ScheduleWatcher : NSObject<MKMapViewDelegate, UICGDirectionsDelegate,CLLocationManagerDelegate>{
   NSArray* watchingEvents;
+  
+  UICGDirections *diretions;
+  CLLocationManager *locationManager;
+  CLLocationCoordinate2D currentLocation;
+
 }
 
 

@@ -91,7 +91,6 @@
 
 - (void) addEventToCalendar:(ScheduleData*)data {
   EKEvent *event = [EKEvent eventWithEventStore:self.eventStore];
-  NSString *test = data.title;
   event.title = data.title;
   event.location = data.position;
   event.startDate = data.startTime;
