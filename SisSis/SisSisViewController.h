@@ -11,9 +11,10 @@
 #import <EventKitUI/EventKitUI.h>
 #import "TapkuLibrary.h"
 #import "SisSisAppDelegate.h"
-#import "EventListViewController.h"
 #import "DayEventViewController.h"
+#import "EventListViewController.h"
 
+@class EventListViewController;
 @interface SisSisViewController : TKCalendarMonthTableViewController 
 <EKEventViewDelegate, CalSegControlDelegate>
 {
@@ -24,6 +25,9 @@
   SisSisAppDelegate* appDelegate;
   NSMutableArray *dataArray;
 	NSMutableDictionary *dataDictionary;
+  dispatch_queue_t main_queue;
+  dispatch_queue_t load_queue;
+  id elvc_dialog;
 }
 
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *todayButton;

@@ -14,9 +14,11 @@
 @synthesize segControl;
 @synthesize toolBar;
 @synthesize todayButton;
-@synthesize keyArray;
 @synthesize delegate;
-@synthesize dataDictionary;
+@synthesize loadingKeyArray;
+
+static id keyArray;
+static id dataDictionary;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,8 +26,7 @@
     if (self) {
       // Custom initialization
       appDelegate = (SisSisAppDelegate*)[[UIApplication sharedApplication] delegate];
-      keyArray = nil;
-      dataDictionary = nil;
+      loadingKeyArray = NO;
     }
     return self;
 }
@@ -61,6 +62,9 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
 {
+  if (loadingKeyArray) {
+    return 0;
+  }
   [self initKeyArray];
   return MAX([keyArray count], 1);
 }
@@ -114,7 +118,7 @@
   
   [self generateEventDataForStartDate:start endDate:end];
   
-  NSArray *tempKeyArray = dataDictionary.allKeys;
+  NSArray *tempKeyArray = [(NSMutableDictionary *)dataDictionary allKeys];
   if (![dataDictionary objectForKey:nowDateStr]){
     NSMutableArray *tempArray = [tempKeyArray mutableCopy];
     [tempArray addObject:nowDateStr];
@@ -127,6 +131,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+  if (loadingKeyArray) {
+    return 0;
+  }
   NSString *key = [keyArray objectAtIndex:section];
   NSMutableArray *array = [dataDictionary objectForKey:key];
   if (!array) {
@@ -141,7 +148,7 @@
   static NSString *CellIdentifier = @"EventListCell";
   EventListCell *cell = (EventListCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
-    UIViewController *vc = [[UIViewController alloc] initWithNibName:@"EventListCell" bundle:nil];
+    UIViewController *vc = [[[UIViewController alloc] initWithNibName:@"EventListCell" bundle:nil] autorelease];
     cell = (EventListCell *)vc.view;
   }
   NSString *key = [keyArray objectAtIndex:indexPath.section];
@@ -211,7 +218,7 @@
   [dateFormatter setDateFormat:@"yyyy MM dd"];
 	NSString *nowDateStr = [dateFormatter stringFromDate:[NSDate date]];
   [dateFormatter release];
-  for (i = 0; i < keyArray.count; i++) {
+  for (i = 0; i < [(NSArray *)keyArray count]; i++) {
     NSString *ds = [keyArray objectAtIndex:i];
     if ([ds isEqualToString:nowDateStr]) {
       break;
