@@ -35,7 +35,6 @@
 @property (retain, nonatomic) IBOutlet UIToolbar *toolBar;
 
 - (void) generateEventDataForStartDate:(NSDate*)start endDate:(NSDate*)end;
-- (void) addEventData;
 - (void) reload;
 - (IBAction) didPushedTodayButton:(id)sender;
 - (IBAction) changedSegmentedControlValue:(id)sender;

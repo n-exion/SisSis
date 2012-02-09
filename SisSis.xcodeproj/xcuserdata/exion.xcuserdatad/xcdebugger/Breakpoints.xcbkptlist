@@ -415,11 +415,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SisSis/EventRectView.m"
-         timestampString = "350517951.814755"
+         timestampString = "350520571.599134"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "138"
-         endingLineNumber = "138"
+         startingLineNumber = "128"
+         endingLineNumber = "128"
          landmarkName = "-drawRect:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -910,7 +910,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "116"
          endingLineNumber = "116"
-         landmarkName = "-didReceiveMemoryWarning"
+         landmarkName = "-dealloc"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1138,7 +1138,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
@@ -1204,7 +1204,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "241"
          endingLineNumber = "241"
-         landmarkName = "-textFieldDidEndEditing:"
+         landmarkName = "-createEditableCell:inView:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1218,8 +1218,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "126"
          endingLineNumber = "126"
-         landmarkName = "-completeButton"
-         landmarkType = "5">
+         landmarkName = "@implementation AddScheduleViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
